@@ -1,0 +1,117 @@
+/* Categories Container */
+.categories-container {
+  width: 100%;
+  padding: 3rem 1rem;
+  text-align: center;
+  background: linear-gradient(to bottom, #f8fafc, #e2e8f0);
+}
+
+.categories-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.categories-description {
+  font-size: 1.2rem;
+  color: #64748b;
+  margin-bottom: 2rem;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+}
+
+/* Categories Grid */
+.categories-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 1rem;
+}
+
+/* Category Card */
+.category-card {
+  width: 30rem;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.category-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Category Image */
+.category-image img {
+  width: 140px;
+  height: auto;
+  /* border-radius: 50%; */
+  /* object-fit: cover; */
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+
+.category-card:hover .category-image img {
+  transform: scale(1.1);
+}
+
+/* Category Name */
+.category-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+/* Explore Button */
+.explore-button {
+  padding: 0.5rem 1.5rem;
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.explore-button:hover {
+  background: #1d4ed8;
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .categories-title {
+    font-size: 2rem;
+  }
+
+  .categories-description {
+    font-size: 1.2rem;
+  }
+
+  .category-image img{
+    width: 120px;
+    height: auto;
+  }
+
+  .category-name {
+    font-size: 1.2rem;
+  }
+
+  .explore-button {
+    font-size: 0.9rem;
+    padding: 0.4rem 1.2rem;
+  }
+}

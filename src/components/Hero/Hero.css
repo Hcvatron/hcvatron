@@ -1,0 +1,191 @@
+/* 🔹 Main Hero Section */
+.hero-section {
+  width: 100%;
+  padding: 5rem 3rem;
+  background: var(--light-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  margin-top: 10rem;
+}
+
+/* 🔹 Hero Content Container */
+.hero-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  gap: 3rem;
+}
+
+/* 🔹 Left Side - Text */
+.hero-text {
+  flex: 1;
+}
+
+.hero-text h1 {
+  font-size: 5rem;
+  font-weight: bold;
+  color: #1e293b;
+}
+
+.hero-text h1 span {
+  color: #ff3d00;
+}
+
+.hero-text p {
+  font-size: 1.6rem;
+  color: #4b5563;
+  margin-top: 1rem;
+}
+
+/* 🔹 Buttons */
+.hero-buttons {
+  margin-top: 1.5rem;
+}
+
+.hero-section .cta-btn {
+  padding: 1rem 2rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+  border: none;
+}
+
+.hero-section .primary-btn {
+  background-color: #ff3d00;
+  color: white;
+}
+
+.hero-section .primary-btn:hover {
+  background-color: #d50000;
+}
+
+.hero-section .secondary-btn {
+  background: transparent;
+  color: #ff3d00;
+  border: 2px solid #ff3d00;
+  margin-left: 1rem;
+}
+
+.hero-section .secondary-btn:hover {
+  background-color: #d50000;
+  color: white;
+  border: 2px solid #d50000;
+}
+
+/* 🔹 Right Side - Image */
+.hero-image-container {
+  flex: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image {
+  max-width: 500px;
+  border-radius: 10px;
+}
+
+/* 🔹 Floating Stats */
+.floating-card {
+  position: absolute;
+  background: white;
+  padding: 0.8rem 1.2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: bold;
+}
+
+.floating-card .icon {
+  color: #ff3d00;
+  font-size: 1.5rem;
+}
+
+.top-left {
+  top: 10%;
+  left: 5%;
+}
+
+.bottom-right {
+  bottom: 5%;
+  right: 5%;
+}
+
+/* 🔹 Service Section */
+.hero-section .service-section {
+  margin-top: 6rem;
+  text-align: center;
+}
+
+.hero-section .service-section h3 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #1e293b;
+}
+
+.hero-section .service-list {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.hero-section .service-box {
+  background: white;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  text-align: center;
+  width: 180px;
+}
+
+.hero-section .service-box p{
+  font-size: 1.25rem;
+  margin-top: 1rem;
+}
+
+.hero-section .service-box:hover {
+  transform: scale(1.05);
+}
+
+.hero-section .service-icon {
+  font-size: 4rem;
+  color: #ff3d00;
+  margin-bottom: 0.5rem;
+}
+
+/* 🔹 Responsive Design */
+@media (max-width: 768px) {
+  .hero-section{
+   margin-top: 2.5rem;
+  }
+
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .hero-section .service-list {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .hero-image{
+    width: 350px;
+  }
+}

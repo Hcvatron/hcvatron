@@ -1,0 +1,35 @@
+/* TopNav.css */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #1e293b; 
+    color: white; /* White text */
+    font-family: Arial, sans-serif;
+  }
+  
+  .top-nav .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ecf0f1; /* Light text color */
+  }
+  
+  .top-nav .admin-info {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+  }
+  
+  .top-nav .admin-info span {
+    margin-left: 20px;
+  }
+  
+  .top-nav .admin-info span:first-child {
+    font-weight: bold;
+  }
+  
+  .top-nav .admin-info span:last-child {
+    font-size: 14px;
+  }
+  

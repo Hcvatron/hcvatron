@@ -1,0 +1,36 @@
+.allcate{
+    width: 100%;
+    margin-top: 14rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.allcate .cate-head h2{
+    font-size: 2.5rem;
+    padding-bottom: 1rem;
+}
+
+.allcate .cate-list{
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.allcate .cate-head h2:after{
+    content: "";
+  display: block;
+  width: 120px;
+  height: 3px;
+  margin: 0.5rem auto;
+  background-color: rgb(196, 9, 41);
+  border-radius: 2px;
+}
+
+.allcate .antiv{
+    margin-top: 2rem;
+}

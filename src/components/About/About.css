@@ -1,0 +1,12 @@
+.about{
+    min-height: 70rem;
+    margin-top: 12rem;
+    /* padding: 0 10rem; */
+}
+
+
+@media screen and (max-width: 768px) {
+    .about{
+        margin-top: 6rem;
+    }
+}

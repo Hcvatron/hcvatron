@@ -1,0 +1,288 @@
+/* General Styling */
+.windows {
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* 🔹 Banner Section */
+  .windowsBanner {
+    width: 100%;
+    min-height: 40rem;
+    background-image: url('https://res.cloudinary.com/dcf3mojai/image/upload/v1738149464/abstract-wave-background-element-for-design-digital-frequency-track-equalizer-stylized-line_e0akp1.jpg');
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 5rem 2rem;
+    overflow: hidden;
+    z-index: 10;
+  }
+  
+  .windowsBanner:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
+    z-index: -1;
+    opacity: 0.6;
+  }
+  
+  /* 🔹 Container */
+  .windowsBannerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1400px;
+    width: 100%;
+    padding-left: 10rem;
+    gap: 3rem;
+  }
+  
+  /* 🔹 Left Side - Text Content */
+  .windowsBannerLeft {
+    flex: 1;
+    color: white;
+    max-width: 600px;
+  }
+  
+  .windowsBannerLeft h2 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .windowsBannerLeft p {
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+  
+  /* 🔹 Customer Support Box */
+  .customersupportbox {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    display: inline-block;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .customersupportbox:hover {
+    transform: scale(1.05);
+  }
+  
+  .customersupportbox h3 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .customersupportbox a {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .customersupportbox a:hover {
+    color: #facc15;
+  }
+  
+  /* 🔹 Right Side - Banner Image */
+  .windowsBannerRight {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .bannerImage {
+    max-width: 200px;
+    transition: transform 0.4s ease-in-out;
+  }
+  
+  .bannerImage:hover {
+    transform: scale(1.05);
+  }
+  
+  /* 🔹 Logo Section */
+  .windowsLogoContainer {
+    position: absolute;
+    bottom: -2rem;
+    left: 90.5%;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    width: 14rem;
+    height: 14rem;
+    background-color: #fffcfc;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  
+  .windowsLogo {
+    width: 100px;
+    transition: transform 0.3s;
+  }
+  
+  .windowsLogo:hover {
+    transform: scale(1.1);
+  }
+  
+  /* 🔹 Product List */
+  .windowslist {
+    width: 100%;
+    padding: 5rem 2rem;
+    background: #f9fafb;
+    text-align: center;
+  }
+  
+  .windowslisthead {
+    margin-bottom: 3rem;
+  }
+  
+  .windowslisthead h2 {
+    font-size: 2.6rem;
+    font-weight: bold;
+    color: #1e293b;
+  }
+  
+  .windowslistdescription {
+    font-size: 1.5rem;
+    color: #64748b;
+    max-width: 700px;
+    margin: auto;
+    line-height: 1.6;
+  }
+  
+  /* 🔹 Product Grid */
+  .windowslistmain {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    justify-content: center;
+  }
+  
+  /* 🔹 Product Card */
+  .windowslistitem {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .windowslistitem:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+  }
+  
+  /* 🔹 Product Image */
+  .windowslistitemtop {
+    height: 250px;
+    background: #e0f2fe;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .product-image {
+    width: 200px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .windowslistitem:hover .product-image {
+    transform: scale(1.1);
+  }
+  
+  /* 🔹 Product Details */
+  .windowslistiteminfo {
+    padding: 1.5rem;
+  }
+  
+  .windowsiteminfohead {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 1rem;
+  }
+  
+  .windowsiteminfohead h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .windowsiteminfohead h3:hover {
+    color: #2563eb;
+  }
+  
+  .product-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  /* 🔹 Buttons */
+  .add-to-cart,
+  .added-to-cart {
+    width: 100%;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  /* 🔹 Add to Cart Button */
+  .add-to-cart {
+    background: linear-gradient(135deg, rgb(0, 112, 192), rgb(0, 112, 192));
+    color: white;
+  }
+  
+  .add-to-cart:hover {
+    background: linear-gradient(135deg, rgb(0, 92, 172), rgb(0, 92, 172));
+    transform: scale(1.05);
+  }
+  
+  /* 🔹 Added to Cart Button */
+  .added-to-cart {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    cursor: default;
+  }
+  
+  /* 🔹 Responsive Design */
+  @media (max-width: 768px) {
+    .windowsBanner {
+      padding: 4rem 1rem;
+      text-align: center;
+    }
+  
+    .windowsBannerContainer {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .windowslistmain {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+  }
+  

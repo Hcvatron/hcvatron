@@ -1,0 +1,75 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 600px;
+    max-width: 90%;
+    text-align: center;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #333;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 25px;
+    padding: 8px 12px;
+    background-color: var(--primary-color);
+    transition: 0.2s ease;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: var(--primary-color);
+}
+
+.order-summary, .billing-info, .order-items {
+    margin-top: 15px;
+    text-align: left;
+    font-size: 1.25rem;
+}
+
+.order-items ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.order-item img{
+width: 50px;
+}
+
+.orderitemmain{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.order-item {
+    background: #f8f9fa;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    text-align: left;
+}

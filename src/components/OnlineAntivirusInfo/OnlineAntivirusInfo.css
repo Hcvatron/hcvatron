@@ -1,0 +1,75 @@
+/* 🔹 Main Section Styling */
+.online-antivirus-info {
+    width: 100%;
+    padding: 4rem 2rem;
+    background: #f9fafb;
+    text-align: center;
+}
+
+/* 🔹 Section Title */
+.section-title {
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: #1e293b;
+    margin-bottom: 2rem;
+}
+
+/* 🔹 Content Box */
+.online-antivirus-info-content {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* 🔹 Individual Info Box */
+.info-box {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.info-box:hover {
+    transform: scale(1.02);
+}
+
+/* 🔹 Icons */
+.info-icon {
+    font-size: 2.5rem;
+    color: rgb(196, 9, 41);
+}
+
+/* 🔹 Text Formatting */
+.info-box p {
+    font-size: 1.6rem;
+    color: #475569;
+    text-align: left;
+}
+
+/* 🔹 Responsive Design */
+@media (max-width: 768px) {
+    .online-antivirus-info {
+        padding: 3rem 1.5rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .info-box {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem;
+    }
+
+    .info-icon {
+        font-size: 2rem;
+    }
+}

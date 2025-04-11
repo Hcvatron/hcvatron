@@ -1,0 +1,182 @@
+/* Contact Section */
+.contact-section {
+  padding: 5rem 2rem;
+  background: linear-gradient(120deg, #f0f4f8, #ffffff);
+  color: #333;
+  font-family: "Arial", sans-serif;
+}
+
+/* Header Section */
+.contact-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.contact-header h1 {
+  font-size: 3.5rem; /* Increased size */
+  font-weight: bold;
+  color: #1d3557;
+  margin-bottom: 1.5rem;
+}
+
+.contact-header h1 span {
+  color: #e63946;
+}
+
+.contact-header p {
+  font-size: 1.6rem; /* Increased size */
+  color: #6c757d;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* Contact Layout */
+.contact-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem; /* Increased spacing */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Form Container */
+.form-container {
+  flex: 1.5;
+  padding: 3rem; /* Increased padding */
+  background: #ffffff;
+  border-radius: 15px; /* Slightly larger */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Deeper shadow */
+}
+
+.form-container h2 {
+  font-size: 2.5rem; /* Increased size */
+  color: #1d3557;
+  margin-bottom: 1.5rem;
+}
+
+.form-container p {
+  font-size: 1.4rem; /* Increased size */
+  color: #6c757d;
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  display: flex;
+  gap: 1.5rem; /* Increased gap */
+  margin-bottom: 1.5rem;
+}
+
+.contact-section input,
+.contact-section textarea {
+  width: 100%;
+  padding: 1.5rem; /* Increased padding */
+  font-size: 1.4rem; /* Increased size */
+  border: 1px solid #d1d5db;
+  border-radius: 10px; /* Slightly larger */
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-section input:focus,
+.contact-section textarea:focus {
+  border-color: #1d3557;
+  box-shadow: 0 0 8px rgba(29, 53, 87, 0.3);
+}
+
+.contact-section textarea {
+  resize: none;
+  margin-top: 1rem;
+}
+
+.contact-section button {
+  width: 100%;
+  padding: 1.5rem; /* Increased padding */
+  font-size: 1.6rem; /* Increased size */
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(135deg, #1d3557, #457b9d);
+  border: none;
+  margin-top: 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.contact-section button:hover {
+  background: #1d3557;
+  transform: scale(1.05);
+}
+
+/* Info Container */
+.info-container {
+  flex: 1;
+  padding: 3rem; /* Increased padding */
+  background: #1d3557;
+  color: white;
+  border-radius: 15px; /* Slightly larger */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.info-container h2 {
+  font-size: 2.5rem; /* Increased size */
+  margin-bottom: 0.5rem;
+  color: #e63946;
+}
+
+.info-container p {
+  font-size: 1.4rem; /* Increased size */
+  color: #e9ecef;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.info-item {
+  margin-bottom: 2rem; /* Increased spacing */
+}
+
+.info-item h3 {
+  font-size: 1.6rem; /* Increased size */
+  margin: 0.5rem 0;
+  color: #e63946;
+
+}
+
+.info-item p {
+  font-size: 1.4rem; /* Increased size */
+  color: #f1faee;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact-layout {
+    flex-direction: column;
+  }
+
+  .form-group {
+    flex-direction: column;
+  }
+
+  .contact-header h1 {
+    font-size: 3rem;
+  }
+
+  .contact-header p {
+    font-size: 1.4rem;
+  }
+
+  .form-container h2,
+  .info-container h2 {
+    font-size: 2rem;
+  }
+
+  .form-container p,
+  .info-item p {
+    font-size: 1.2rem;
+  }
+
+  .contact-section button {
+    font-size: 1.4rem;
+    padding: 1.2rem;
+  }
+}

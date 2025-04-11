@@ -1,0 +1,17 @@
+.all-blogs {
+    padding: 20px;
+    /* text-align: center; */
+    margin-top: 12rem;
+  }
+  
+.all-blogs .categories-header{
+    display: flex;
+    justify-content: center;
+}
+
+
+@media screen and (max-width: 768px) {
+  .all-blogs{
+    margin-top: 4rem;
+  }
+}

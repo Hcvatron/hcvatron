@@ -1,0 +1,157 @@
+.aboutTop {
+    height: 70rem;
+    background-color: #f5ebead0;
+    padding: 50px 0;
+    font-family: Arial, sans-serif;
+}
+
+.aboutTop .carousel-width{
+  height: 50%;
+
+}
+
+.aboutTop .carousel .control-arrow {
+    margin-top: 5rem !important;
+  }
+
+.aboutTop__container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height:33rem;
+    max-height: 40rem;
+}
+
+.aboutTop__content {
+    display: flex;
+    justify-content: space-between;
+    gap: 5rem;
+    width: 100%;
+}
+
+.aboutTop__text {
+    max-width: 600px;
+}
+
+.aboutTop__text h4 {
+    color: var(--primary-color);
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.aboutTop__text h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin: 20px 0;
+}
+
+.aboutTop__text p {
+    font-size: 18px;
+    color: #555;
+}
+
+.aboutTop__button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.aboutTop__button:hover {
+    background-color: var(--secondary-color);
+}
+
+.aboutTop__container .aboutTop__image img {
+    width: 100%;
+    height: auto;
+    margin-top: -8rem;
+}
+
+
+
+/* About Bottom Container */
+.aboutBot__container {
+    margin-top: 50px;
+    padding: 50px 0;
+    padding-top: 20px;
+    background-color: #fff;
+    height: 50%; /* Allow height to adjust based on content */
+}
+
+/* Services Section */
+.aboutBot__services {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; /* Wrap services on smaller screens */
+    width: 85%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Individual Service Card */
+.aboutBot__service {
+    text-align: center;
+    max-width: 300px;
+    padding-bottom: 1rem;
+    border-bottom: 2.5px solid var(--primary-color);
+    margin: 20px; /* Added margin for spacing */
+}
+
+/* Service Title Styles */
+.aboutBot__service h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 15px 0;
+}
+
+/* Service Description Styles */
+.aboutBot__service p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Icon Styles */
+.icon-strategy, .icon-planning, .icon-hr {
+    font-size: 40px;
+    color: #0062ff;
+    margin-bottom: 10px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+
+    .aboutTop{
+        height: 100%;
+        padding-bottom: 0;
+    }
+
+    .aboutTop__container{
+        max-height: 70rem;
+    }
+
+    .aboutTop__content {
+        flex-direction: column; 
+        align-items: center; 
+        text-align: center;
+    }
+
+    .aboutTop__button {
+        font-size: 12.5px;
+    }
+    
+    .aboutTop__container .aboutTop__image img {
+        margin-top: -5rem; 
+    }
+    
+    .aboutBot__services {
+        flex-direction: column; 
+        align-items: center; 
+    }
+}

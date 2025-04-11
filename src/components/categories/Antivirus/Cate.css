@@ -1,0 +1,688 @@
+.antiv{
+    width: 100%;
+    height: 100%;
+}
+
+/* 🔹 General Banner Styling */
+.antivBanner {
+  width: 100%;
+  min-height: 40rem;
+  background-image: url('https://res.cloudinary.com/dcf3mojai/image/upload/v1738149464/abstract-wave-background-element-for-design-digital-frequency-track-equalizer-stylized-line_e0akp1.jpg');
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 5rem 2rem;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.antivBanner:before{
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background-color: black;
+  z-index: -1;
+  opacity: 0.6;
+}
+
+/* 🔹 Container to Organize Left & Right Sections */
+.antivBannerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1400px;
+  width: 100%;
+  padding-left: 10rem;
+  gap: 3rem;
+}
+
+
+
+/* 🔹 Left Side - Text Content */
+.antivBannerLeft {
+  flex: 1;
+  color: white;
+  max-width: 600px;
+}
+
+.antivBannerLeft h2 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.antivBannerLeft p {
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* 🔹 Customer Support Box */
+.customersupportbox {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  display: inline-block;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.customersupportbox:hover {
+  transform: scale(1.05);
+}
+
+.customersupportbox h3 {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.customersupportbox a {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.customersupportbox a:hover {
+  color: #facc15;
+}
+
+/* 🔹 Right Side - Banner Image */
+.antivBannerRight {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.bannerImage {
+  max-width: 200px;
+  transition: transform 0.4s ease-in-out;
+}
+
+.bannerImage:hover {
+  transform: scale(1.05);
+}
+
+/* 🔹 Logo Section */
+.antivLogoContainer {
+  position: absolute;
+  bottom: -2rem;
+  left: 90.5%;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  width: 14rem;
+  height: 14rem;
+  background-color: #fffcfc;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  flex-shrink: 0;
+  cursor: pointer;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.antivLogo {
+  width: 100px;
+  transition: transform 0.3s;
+}
+
+.antivLogo:hover {
+  transform: scale(1.1);
+}
+
+/* 🔹 Responsive Design */
+@media (max-width: 768px) {
+  .antivBanner {
+      padding: 4rem 1rem;
+      text-align: center;
+  }
+
+  .antivBannerContainer {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+  }
+
+  .customersupportbox {
+      width: 100%;
+      max-width: 300px;
+  }
+
+  .antivBannerRight {
+      margin-top: 2rem;
+  }
+
+  .bannerImage {
+      max-width: 280px;
+  }
+}
+
+/* antivlist */
+/* 🔹 General Section Styling */
+.antivlist {
+  width: 100%;
+  padding: 5rem 2rem;
+  background: #f9fafb; /* Soft Gray Background */
+  text-align: center;
+}
+
+.antivlisthead {
+  margin-bottom: 3rem;
+}
+
+.antivlisthead h2 {
+  font-size: 2.6rem;
+  font-weight: bold;
+  color: #1e293b; /* Dark Blue */
+}
+
+.antivlistdescription {
+  font-size: 1.5rem;
+  color: #64748b; /* Soft Gray */
+  margin-top: 1rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+/* 🔹 Product Grid */
+.antivlistmain {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  justify-content: center;
+}
+
+/* 🔹 Product Card */
+.antivlistitem {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.antivlistitem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* 🔹 Product Image Section */
+.antivlistitemtop {
+  height: 250px;
+  background: #e0f2fe; /* Light Blue Background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: background 0.3s ease;
+}
+
+.antivlistitemtop:hover {
+  background: #bae6fd; /* Slightly Brighter */
+}
+
+.product-image {
+  width: 200px;
+  height: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.antivlistitem:hover .product-image {
+  transform: scale(1.1);
+}
+
+/* 🔹 Product Details Section */
+.antivlistiteminfo {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.antiviteminfohead {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 1rem;
+}
+
+.antiviteminfohead h3 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #0f172a; /* Dark Blue */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.antiviteminfohead h3:hover {
+  color: #2563eb; /* Light Blue */
+}
+
+.product-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #475569; /* Dark Gray */
+}
+
+/* 🔹 Buttons */
+.antiviteminfobtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.add-to-cart,
+.added-to-cart {
+  width: 100%;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* 🔹 Add to Cart Button */
+.add-to-cart {
+  background: linear-gradient(135deg, rgb(196, 9, 41), rgb(196, 9, 41));
+  color: white;
+}
+
+.add-to-cart:hover {
+  background: linear-gradient(135deg, rgb(197, 29, 57), rgb(199, 30, 58));
+  transform: scale(1.05);
+}
+
+/* 🔹 Added to Cart Button */
+.added-to-cart {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  cursor: default;
+}
+
+/* 🔹 Responsive Design */
+@media (max-width: 768px) {
+  .antivlist {
+    padding: 3rem 1rem;
+  }
+
+  .antivlisthead h2 {
+    font-size: 2.2rem;
+  }
+
+  .antivlistdescription {
+    font-size: 1.4rem;
+  }
+
+  .antivlistmain {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  .product-image {
+    max-width: 75%;
+  }
+
+  .add-to-cart {
+    font-size: 1.2rem;
+  }
+}
+
+
+
+
+/* Bottom Section */
+/* 🔹 General Section Styling */
+.bottom-section {
+  width: 100%;
+  padding: 5rem 3rem;
+  background: #f9fafb; /* Light Background */
+  text-align: center;
+}
+
+/* 🔹 Section Headings */
+.bottom-section h2 {
+  font-size: 2.6rem;
+  font-weight: bold;
+  color: #1e293b; /* Dark Blue */
+  margin-bottom: 1.5rem;
+}
+
+/* 🔹 Why Choose Us Section */
+.why-choose {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+.why-choose p {
+  font-size: 1.6rem;
+  color: #475569; /* Dark Gray */
+  line-height: 1.8;
+}
+
+/* 🔹 Features Section */
+.features {
+  max-width: 700px;
+  margin: 0 auto 4rem;
+  padding: 2rem;
+  background: #e0f2fe; /* Light Blue */
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.features ul {
+  list-style: none;
+  padding: 0;
+}
+
+.features li {
+  display: flex;
+  align-items: center;
+  font-size: 1.6rem;
+  color: #0f172a;
+  padding: 1rem;
+  transition: background 0.3s ease-in-out;
+}
+
+.features li:hover {
+  background: #dbeafe;
+  border-radius: 8px;
+}
+
+.feature-icon {
+  font-size: 1.8rem;
+  color: #2563eb; /* Blue */
+  margin-right: 1rem;
+}
+
+/* 🔹 Testimonials Section */
+.customer-testimonials {
+  max-width: 900px;
+  margin: auto;
+}
+
+.testimonial-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease-in-out;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+}
+
+.testimonial-icon {
+  font-size: 2rem;
+  color: #facc15; /* Gold Star */
+  margin-bottom: 1rem;
+}
+
+.testimonial-card p {
+  font-size: 1.5rem;
+  font-style: italic;
+  color: #334155;
+}
+
+/* 🔹 Responsive Design */
+@media (max-width: 768px) {
+  .bottom-section {
+    padding: 3rem 1.5rem;
+  }
+
+  .bottom-section h2 {
+    font-size: 2.2rem;
+  }
+
+  .features {
+    padding: 1.5rem;
+  }
+
+  .testimonial-card {
+    padding: 1.5rem;
+  }
+}
+
+
+
+  /* How to Buy and Install Section */
+/* 🔹 Updated How-to Section Styling */
+.how-to-section {
+  padding: 4rem 3rem;
+  margin: 3rem auto;
+  background: #ffffff; /* Pure White */
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  max-width: 1100px;
+  text-align: left;
+  transition: transform 0.3s ease-in-out;
+}
+
+.how-to-section:hover {
+  transform: scale(1.02);
+}
+
+/* 🔹 Section Heading */
+.how-to-section h2 {
+  font-size: 2.6rem;
+  font-weight: bold;
+  color: #1e293b; /* Dark Blue */
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* 🔹 Step List */
+.how-to-section ul {
+  list-style: none; /* Remove default bullets */
+  padding: 0;
+  font-size: 1.6rem;
+  line-height: 1.8;
+  color: #475569; /* Soft Gray */
+}
+
+.how-to-section ul li {
+  display: flex;
+  align-items: center;
+  background: #f8fafc; /* Light Gray Background */
+  padding: 1.4rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.how-to-section ul li:hover {
+  background: #e0f2fe; /* Light Blue */
+  transform: translateX(8px);
+}
+
+/* 🔹 Step Number Styling */
+.how-to-section ul li strong {
+  color: #2563eb; /* Blue */
+  margin-left: 0.5rem;
+}
+
+/* 🔹 Step Icon Styling */
+.step-icon {
+  font-size: 2rem;
+  color: #2563eb;
+  margin-right: 1rem;
+  transition: color 0.3s ease-in-out;
+}
+
+.how-to-section ul li:hover .step-icon {
+  color: #1d4ed8; /* Darker Blue */
+}
+
+/* 🔹 Last Step Margin Fix */
+.how-to-section ul li:last-child {
+  margin-bottom: 0;
+}
+
+/* 🔹 Responsive Design */
+@media (max-width: 768px) {
+  .how-to-section {
+    padding: 3rem 1.5rem;
+  }
+
+  .how-to-section h2 {
+    font-size: 2.2rem;
+  }
+
+  .how-to-section ul {
+    font-size: 1.4rem;
+  }
+
+  .step-icon {
+    font-size: 1.8rem;
+  }
+
+  .how-to-section ul li {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .how-to-section ul li strong {
+    margin-left: 0;
+  }
+}
+
+
+  
+  
+  /* Responsive Design */
+  @media only screen and (max-width: 768px) {
+    .bottom {
+      padding: 2rem;
+    }
+  
+    .bottom h2 {
+      font-size: 2rem;
+    }
+  
+    .bottom p,
+    .bottom ul {
+      font-size: 1rem;
+    }
+  
+    .customerTestimonials .testimonial {
+      padding: 1.5rem;
+    }
+  }
+  
+
+
+@media only screen and (max-width:768px) {
+    .antiv .antivBanner{
+        flex-direction: column-reverse;
+        height: 65rem;
+        align-items: center;
+        padding-top: 4rem;
+    }
+
+    
+
+    .antivBannerContainer{
+      padding-left: 0;
+      padding-top: 5rem;
+    }
+
+    .antiv .antivBanner .antivlogo{
+      position: relative;
+    align-items: center;
+    }
+
+    .antiv .antivBanner .antivpic {  
+          position: relative;
+          left:-10%;
+ }
+ 
+
+    .antiv .antivBanner .antivsupport{
+        display: flex;
+        align-items: center;
+        text-align: center;
+    }
+
+    .antiv .antivBanner .antivsupport h2{
+        font-size: 2.5rem;
+    }
+
+    
+    .antiv .antivBanner .antivsupport  h3{
+       font-size: 1.5rem;
+    }
+
+    .antiv .antivBanner .customersupportbox{
+        margin-left: 0rem;
+        padding: 1rem 3rem;
+    }
+
+    .antiv .antivBanner .antivsupport a{
+        font-size: 2.8rem;
+    }
+
+
+    .antiv .antivBanner .antivpic{
+        margin-left: 6rem;
+    }
+
+    .antivlist .antivlisthead h2 {
+      font-size: 2rem;
+    }
+  
+    .antivlist .antivlistitem .antivlistitemtop {
+      height: 150px;
+    }
+
+    
+  
+    .antivlist .antivlistitem .antiviteminfohead h3 {
+      font-size: 1.2rem;
+    }
+  
+    .antivlist .antivlistitem .antiviteminfohead p {
+      font-size: 1.4rem;
+    }
+  
+    .antivlist .antivlistitem .antiviteminfobtn button {
+      font-size: 0.9rem;
+      padding: 0.6rem;
+    }
+
+    .antivLogoContainer{
+      left:0;
+      width: 10rem;
+      height: 10rem;
+    }
+
+    .antivLogo{
+      width: 80px;
+    }
+}

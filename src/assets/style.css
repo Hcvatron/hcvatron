@@ -1,0 +1,53 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import "react-responsive-carousel/lib/styles/carousel.min.css";
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+:root {
+    --primary-color: #ff3d00;  
+    --secondary-color: #1e293b; 
+    --light-bg: #f8f8f0; 
+    --text-dark: #333333;
+    --text-light: #ffffff; 
+    --accent-color: #ffd700; 
+}
+
+html{
+    font-size: 10px;
+    font-family: 'Open Sans';
+}
+
+body{
+    width: 100%;
+    overflow-x: hidden;
+    /* background-color: rgb(222, 221, 221); */
+    /* background-color: #f0f4f8; */
+    background: var(--light-bg);
+}
+
+.comp{
+    margin-top:8rem;
+}
+
+.head h2{
+    font-size: 2.5rem;
+    font-weight: 200;
+}
+
+.categories-header{
+    width: 100%;
+    margin-top: 2rem;
+    padding-left: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+    .comp{
+        margin-top: 0rem;
+    }
+}
