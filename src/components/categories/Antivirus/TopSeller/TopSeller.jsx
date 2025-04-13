@@ -47,7 +47,7 @@ const TopSeller = () => {
     <div
       className="products-container"
       style={{
-        marginTop: location.pathname === '/top-rated' ? '10rem' : '0',
+        marginTop: location.pathname === '/top-rated' ? window.innerWidth <= 768 ? "4rem" :  '10rem' : '0rem',
       }}
     >
       <div className="products-header">

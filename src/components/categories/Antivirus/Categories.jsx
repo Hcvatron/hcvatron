@@ -14,9 +14,13 @@ const Categories = () => {
   const { setSelectedAntiv, setCatenav } = useProduct();
   const { categoryMetadata } = useMetadata();
 
+
   useEffect(() => {
     document.title = `Brands | ${webinfo.name}`;
   }, []);
+
+
+
 
   const categories = [
     { id: "01", name: "McAfee", img: "https://res.cloudinary.com/dcf3mojai/image/upload/v1737531060/McAfee-Logo_ueh5ul.png", route: "/mcafee" },
@@ -41,9 +45,9 @@ const Categories = () => {
 
   return (
     <>
-      <div className="categories-container"
+      <div  className="categories-container"
         style={{
-          marginTop: location.pathname === '/categories/antivirus' ? '12rem' : '0rem',
+          marginTop: location.pathname === '/categories/antivirus' ? window.innerWidth <= 768 ? "5rem" :  '12rem' : '0rem',
         }}
       >
         <h1 className="categories-title">Top Antivirus Brands</h1>

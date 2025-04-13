@@ -7,6 +7,7 @@ import { useLocalContext } from "../../context/LocalContext";
 
 const Footer = () => {
 
+
   const navigate = useNavigate();
   const {webinfo } = useLocalContext();
 
@@ -14,6 +15,9 @@ const Footer = () => {
      navigate(route);
   }
 
+
+
+ 
   return (
     <footer className="footer">
       {/* 🔹 Get Started Section */}
@@ -23,7 +27,7 @@ const Footer = () => {
           Protect your devices with premium security software, genuine Windows licenses, 
           and top-quality printers. Get started today with our reliable solutions for individuals and businesses.
         </p>
-        <button className="btn-primary">Shop Now</button>
+        <button className="btn-primary" onClick={() => navigate("/categories/antivirus")}>Shop Now</button>
       </div>
 
       {/* 🔹 Company Logos */}

@@ -48,6 +48,6 @@ body{
 
 @media screen and (max-width: 768px) {
     .comp{
-        margin-top: 0rem;
+        margin-top: 1rem;
     }
 }

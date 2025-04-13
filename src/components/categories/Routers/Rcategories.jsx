@@ -36,8 +36,8 @@ const Rcategories = () => {
       <>
         <div className="categories-container"
           style={{
-            marginTop: location.pathname === '/categories/router' ? '12rem' : '0rem',
-            height: location.pathname === '/categories/router' ? '70vh' : ''
+            marginTop: location.pathname === '/categories/router' ? window.innerWidth <= 768 ? "5rem" :  '12rem' : '0rem',
+            height: location.pathname === '/categories/router'  ?  window.innerWidth <= 768 ? "" : '70vh' : ''
           }}
         >
           <h1 className="categories-title">Top Router Brands</h1>

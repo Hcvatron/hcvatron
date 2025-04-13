@@ -34,8 +34,8 @@ const Prcategories = () => {
     <>
       <div className="categories-container"
         style={{
-          marginTop: location.pathname === '/categories/printer' ? '12rem' : '0rem',
-          height: location.pathname === '/categories/printer' ? '60vh' : ''
+          marginTop: location.pathname === '/categories/printer' ? window.innerWidth <= 768 ? "5rem" :  '12rem' : '0rem',
+          height: location.pathname === '/categories/printer' ?  window.innerWidth <= 768 ? "" : '60vh' : ''
         }}
       >
         <h1 className="categories-title">Top Printer Brands</h1>

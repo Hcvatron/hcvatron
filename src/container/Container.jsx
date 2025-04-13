@@ -25,7 +25,6 @@ import WproductPage from "../components/categories/Windows/WproductPage";
 import Prcategories from "../components/categories/Printer/Prcategories";
 import Prcate from "../components/categories/Printer/Prcate";
 import PrproductPage from "../components/categories/Printer/PrproductPage";
-import Login from "../components/Admin/Signin/Login";
 import AdminLayout from "./AdminLayout";
 import Rcate from "../components/categories/Routers/Rcate";
 import Rcategories from "../components/categories/Routers/Rcategories";
@@ -154,7 +153,7 @@ const MainContent = () => {
           <Route path="/privacypolicy" element={<PrivacyPolicy />} />
           <Route path="/returnandrefundpolicy" element={<Refund />} />
           <Route path="/shipping-policy" element={<ShippingPolicy />} />
-          <Route path="/admin" element={<Login />} />
+          
         </Routes>
       )}
       {isAdminPage && <AdminLayout />}

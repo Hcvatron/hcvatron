@@ -33,8 +33,8 @@ const Wcategories = () => {
     <>
       <div className="categories-container"
         style={{
-          marginTop: location.pathname === '/categories/windows' ? '12rem' : '0rem',
-          height: location.pathname === '/categories/windows' ? '60vh' : ''
+          marginTop: location.pathname === '/categories/windows' ? window.innerWidth <= 768 ? "5rem" :  '12rem' : '0rem',
+          height: location.pathname === '/categories/windows' ?  window.innerWidth <= 768 ? "" : '60vh' : '',
         }}
       >
         <h1 className="categories-title">Top Windows OS</h1>

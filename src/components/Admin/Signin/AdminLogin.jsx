@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAdminContext } from '../../../context/AdminContext';
 import './Login.css';  // Import the CSS file
 
-const Login = () => {
+const AdminLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -58,4 +58,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default AdminLogin;
