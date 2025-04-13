@@ -104,13 +104,12 @@ const Footer = () => {
         
         {/* Right: Social Media Icons */}
         <div className="footer-social">
-          <FaYoutube />
-          <FaXTwitter />
-          <FaFacebookF />
-          <FaLinkedinIn />
-          <FaInstagram />
-          <FaTiktok />
-        </div>
+  <a href="https://www.youtube.com/@Hc_Vatron" target="_blank" rel="noopener noreferrer"><FaYoutube /></a>
+  <a href="https://x.com/Hc_Vatron" target="_blank" rel="noopener noreferrer"><FaXTwitter /></a>
+  <a href="https://www.facebook.com/hcvatron" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
+  <a href="https://www.linkedin.com/company/hcvatron" target="_blank" rel="noopener noreferrer"><FaLinkedinIn /></a>
+  <a href="https://www.instagram.com/hc_vatron/" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
+</div>
       </div>
     </footer>
   );

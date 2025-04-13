@@ -29,7 +29,7 @@ const Home = () => {
   return (
     <>
       <div className='comp home' style={{ width: '100%' }}>
-       <Hero />
+       <Hero  />
        {/* <Hero2 /> */}
        {/* <CarouselComponent /> */}
        <AboutServices />
