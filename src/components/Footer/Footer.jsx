@@ -86,7 +86,7 @@ const Footer = () => {
         <div className="footer-section">
           <h3>Contact</h3>
           <p><strong>Email:</strong> info@hcvatron.com</p>
-          <p><strong>Phone:</strong> (Add phone number if available)</p>
+          <p><strong>Phone:</strong> </p>
           <p><strong>Address:</strong> 105 Jagriti Bhawan, near Adarsh Nagar, Bariatu, Ranchi - 834009 Jharkhand</p>
         </div>
       </div>
