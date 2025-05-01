@@ -34,6 +34,10 @@ import AllBlogs from "../components/blogs/AllBlogs";
 import UserLogin from "../components/User/UserLogin";
 import { useUserContext } from "../context/UserContext";
 import UserProfileLayout from "./UserProfileLayout";
+import DigitalCategories from "../components/categories/Digital/DigitalCategories";
+import DigitalCate from "../components/categories/Digital/DigitalMarketting/DigitalCate";
+import WebDevCate from "../components/categories/Digital/WebDevelopment/WebDevCate";
+import { useLocalContext } from "../context/LocalContext";
 
 const ScrollToTop = () => {
   const location = useLocation();
@@ -61,6 +65,19 @@ const ScrollToTop = () => {
 
   return null;
 };
+
+const RouteDetermination = ()=>{
+  const location = useLocation();
+  const {setToPayment} = useLocalContext();
+  useEffect(()=>{
+    if(location.pathname.toLowerCase === '/payment'){
+      setToPayment(true);
+    }else{
+      setToPayment(false);
+    }
+  },[location.pathname])
+  return null;
+}
 
 const URLStateHandler = () => {
   const location = useLocation();
@@ -115,6 +132,7 @@ const MainContent = () => {
   const location = useLocation();
   const isAdminPage = location.pathname.includes("admin");
   const isUserPage = location.pathname.includes("user");
+  const isLoginPage = location.pathname.includes("/user/login");
   const { isUserLoggedIn } = useUserContext();
 
   return (
@@ -122,15 +140,17 @@ const MainContent = () => {
       {!isAdminPage && <Header />}
       {!isAdminPage && <URLStateHandler />}
       {!isAdminPage && <ScrollToTop />}
+      {/* <RouteDetermination /> */}
       {!isAdminPage && (
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/login" element={<UserLogin />} />
+          <Route exact path="/user/login" element={<UserLogin />} />
           <Route exact path="/home" element={<Home />} />
           <Route exact path="/about" element={<About />} />
           <Route exact path="/contact" element={<Contact />} />
-          <Route exact path="/explore-blogs" element={<AllBlogs />} />
+          <Route exact path="/blogs" element={<AllBlogs />} />
           <Route exact path="/categories/antivirus" element={<Categories />} />
+          <Route exact path="/categories/digital" element={<DigitalCategories />} />
           <Route exact path="/categories/windows" element={<Wcategories />} />
           <Route exact path="/categories/printer" element={<Prcategories />} />
           <Route exact path="/categories/router" element={<Rcategories />} />
@@ -139,7 +159,8 @@ const MainContent = () => {
           <Route exact path="/top-rated" element={<TopSeller />} />
           <Route path="/blog/:blog" element={<Blogspage />} />
           <Route exact path="/categories" element={<AllCate />} />
-          <Route path="/antivirus/:category" element={<Cate />} />
+          <Route path="/digital/digital-marketing" element={<DigitalCate />} />
+          <Route path="/digital/web-development" element={<WebDevCate />} />
           <Route path="/router/:category" element={<Rcate />} />
           <Route path="/windows/:category" element={<Wcate />} />
           <Route path="/printer/:category" element={<Prcate />} />
@@ -153,11 +174,11 @@ const MainContent = () => {
           <Route path="/privacypolicy" element={<PrivacyPolicy />} />
           <Route path="/returnandrefundpolicy" element={<Refund />} />
           <Route path="/shipping-policy" element={<ShippingPolicy />} />
-          
+          <Route exact path="/user/login" element={<UserLogin />} />
         </Routes>
       )}
       {isAdminPage && <AdminLayout />}
-      {isUserPage && <UserProfileLayout />}
+      {isUserPage && !isLoginPage && <UserProfileLayout />}
       {!isAdminPage && !isUserPage && <Footer />}
     </>
   );

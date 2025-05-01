@@ -33,7 +33,7 @@ const Blogs = () => {
 
   const handleBlogClick = (blog) => {
     setSelectedUserBlog(blog);
-    navigate(`/blog/${blog.id}`);
+    navigate(`/blog/${blog.title.toLowerCase()}`);
   };
 
   return (
@@ -64,7 +64,7 @@ const Blogs = () => {
           ))}
         </div>
         <div className="blogs-footer">
-          <button className="explore-button" onClick={()=>navigate('/explore-blogs')}>Explore Our Blogs</button>
+          <button className="explore-button" onClick={()=>navigate('/blogs')}>Explore Our Blogs</button>
         </div>
       </div>
     </>

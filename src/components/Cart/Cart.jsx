@@ -4,6 +4,7 @@ import "./Cart.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useLocalContext } from "../../context/LocalContext";
+import { useUserContext } from "../../context/UserContext";
 
 const Cart = () => {
   const { cart, setCart } = useProduct();
@@ -11,6 +12,7 @@ const Cart = () => {
   const [discount, setDiscount] = useState(0);
   const navigate = useNavigate();
   const { webinfo } = useLocalContext();
+  const { isUserLoggedIn } = useUserContext();
 
   useEffect(() => {
     document.title = `Cart | ${webinfo.name}`;
@@ -47,7 +49,13 @@ const Cart = () => {
 
   const handleProceedToPay = () => {
     if (cart.length > 0) {
-      navigate("/payment");
+      if(isUserLoggedIn){
+        navigate("/payment");
+      }else{
+          navigate('/user/login')
+          toast.warning("Kindly login to proceed!!");
+      }
+     
     } else {
       toast.warning("Can't Proceed! Cart Is Empty");
     }

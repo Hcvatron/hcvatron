@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./Header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -18,6 +18,7 @@ import { toast } from "react-toastify";
 
 const Header = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { isUserLoggedIn, setIsUserLoggedIn } = useUserContext();
   const { cart } = useProduct();
   const { webinfo } = useLocalContext();
@@ -25,12 +26,15 @@ const Header = () => {
   const [scrolling, setScrolling] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCategoryDropdownOpen, setCategoryDropdownOpen] = useState(false);
+  const isLoginPage = location.pathname.includes("/user/login");
 
   const categories = [
     { id: "02", name: "Antivirus", route: "/categories/antivirus" },
     { id: "03", name: "Windows", route: "/categories/windows" },
     { id: "04", name: "Printer", route: "/categories/printer" },
     { id: "05", name: "Router", route: "/categories/router" },
+    { id: "06", name: "Digital", route: "/categories/digital" },
+    { id: "07", name: "Blogs", route: "/blogs" },
   ];
 
   // Track scroll position
@@ -121,7 +125,7 @@ const Header = () => {
               <div className="login-btn">
                 <FontAwesomeIcon icon={faUser} />
                 <span style={{ marginLeft: "5px" }}>
-                  Welcome, {isUserLoggedIn.name}
+                  Welcome, {isUserLoggedIn.firstName}
                 </span>
               </div>
 
@@ -160,7 +164,7 @@ const Header = () => {
                 <div className="dropdown-menu">
                   <div
                     className="dropdown-item"
-                    onClick={() => handleNavigation("/login")}
+                    onClick={() => handleNavigation("/user/login")}
                   >
                     Login / Signup
                   </div>
@@ -178,7 +182,7 @@ const Header = () => {
       </div>
 
       {/* Bottom Section - Navigation */}
-      <div className="header-nav">
+   {!isLoginPage &&  <div className="header-nav">
         <nav className="nav-links">
           {categories.map((category) => (
             <p
@@ -200,6 +204,7 @@ const Header = () => {
           </p>
         </nav>
       </div>
+}
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
@@ -220,7 +225,7 @@ const Header = () => {
               ) : (
                 <div
                   className="mobile-login-btn"
-                  onClick={() => handleNavigation("/login")}
+                  onClick={() => handleNavigation("/user/login")}
                 >
                   <FontAwesomeIcon icon={faUser} />
                   <span>Login / Signup</span>

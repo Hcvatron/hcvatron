@@ -50,7 +50,7 @@
 }
 
 /* Form Groups */
-.form-group {
+.addblog-form .form-group {
   display: flex;
   flex-direction: column;
 }

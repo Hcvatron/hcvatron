@@ -34,7 +34,7 @@ const AllBlogs = () => {
   
     const handleBlogClick = (blog) => {
       setSelectedUserBlog(blog);
-      navigate(`/blog/${blog.id}`);
+      navigate(`/blog/${blog.title.toLowerCase()}`);
     };
 
 

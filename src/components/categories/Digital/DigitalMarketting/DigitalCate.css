@@ -1,0 +1,307 @@
+/* ===============================
+  DESKTOP FIRST: Base Styles
+================================= */
+.digital-cate-main {
+    padding: 6rem 16rem;
+  }
+  
+  .digital-cate-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+  }
+  
+  .digital-cate-text {
+    max-width: 600px;
+  }
+  
+  .digital-cate-subtitle {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ff5722;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+  
+  .digital-cate-title {
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.2;
+  }
+  
+  .digital-cate-description {
+    font-size: 1.25rem;
+    color: #555;
+    margin: 1rem 0 2rem;
+  }
+  
+  .digital-cate-button {
+    background: #ff5722;
+    color: white;
+    font-size: 1.2rem;
+    padding: 0.9rem 2rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  .digital-cate-button:hover {
+    background: #e64a19;
+  }
+  
+  .digital-cate-image-box {
+    position: relative;
+    width: 360px;
+    height: 360px;
+  }
+  .digital-cate-image-circle {
+    width: 100%;
+    height: 100%;
+    background: #ffe6d9;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .digital-cate-image-circle img {
+    width: 92%;
+    height: 92%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  /* Floating Icons */
+  .digital-cate-icon {
+    position: absolute;
+    background: white;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    z-index: 2;
+  }
+  .digital-cate-top-left { top: 12px; left: 12px; }
+  .digital-cate-top-right { top: 12px; right: 12px; }
+  
+
+  /* Stat Box */
+  .digital-cate-stat-box {
+    position: absolute;
+    bottom: -40px;
+    right: -30px;
+    background: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  }
+  .digital-cate-stat-number {
+    color: #ff5722;
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  .digital-cate-skill-bars span {
+    display: inline-block;
+    width: 6px;
+    margin-right: 3px;
+    border-radius: 2px;
+    background: #ff5722;
+  }
+  .digital-cate-skill-bars span:nth-child(1) { height: 8px; }
+  .digital-cate-skill-bars span:nth-child(2) { height: 12px; }
+  .digital-cate-skill-bars span:nth-child(3) { height: 16px; }
+  .digital-cate-skill-bars span:nth-child(4) { height: 20px; }
+  
+  /* ===============================
+    SERVICES SECTION
+  ================================= */
+  .digital-cate-services {
+    padding: 5rem 2rem;
+    text-align: center;
+  }
+  .section-heading {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .section-subheading {
+    font-size: 1.25rem;
+    color: #666;
+    margin-bottom: 2.5rem;
+  }
+  .digital-cate-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+  .service-card {
+    background: #fffaf7;
+    width: 350px;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: left;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+    transition: transform 0.3s ease;
+  }
+  .service-card:hover {
+    transform: translateY(-5px);
+  }
+  .service-card h4 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+  .service-card p {
+    font-size: 1.1rem;
+    color: #666;
+  }
+  .service-icon .icon {
+    font-size: 2rem;
+  }
+  .icon.blue { color: #3cbfd7; }
+  .icon.purple { color: #5b5bd6; }
+  .icon.green { color: #58c596; }
+  
+  /* ===============================
+    COLLABORATION SECTION
+  ================================= */
+  .digital-cate-collaboration {
+    display: flex;
+    justify-content: space-between;
+    padding: 5rem 2rem;
+    background: #fffaf7;
+  }
+  .collab-text {
+    max-width: 520px;
+  }
+  .collab-text h2 {
+    font-size: 3rem;
+    font-weight: 700;
+  }
+  .collab-text p {
+    margin: 1rem 0 1.5rem;
+    font-size: 1.25rem;
+    line-height: 1.6;
+  }
+  .collab-images {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .collab-images img {
+    width: 260px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+  
+  /* ===============================
+    NEWSLETTER SECTION
+  ================================= */
+  .newsletter-section {
+    padding: 5rem 2rem;
+    background: linear-gradient(to right, #fff6f0, #fdf8f6);
+    text-align: center;
+  }
+  .newsletter-form {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  .input-group {
+    position: relative;
+    max-width: 400px;
+    width: 100%;
+  }
+  .input-group input {
+    width: 100%;
+    padding: 1.25rem 3rem;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    font-size: 1.1rem;
+  }
+  .input-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+  }
+  .newsletter-button {
+    padding: 1rem 1.5rem;
+    background: #ff5722;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .newsletter-button:hover {
+    background: #e64a19;
+  }
+  
+  /* ===============================
+    RESPONSIVE: Tablet
+  ================================= */
+  @media (max-width: 992px) {
+    .digital-cate-main {
+      padding: 3rem 3rem;
+    }
+  
+    .digital-cate-container {
+      flex-direction: column-reverse;
+      text-align: center;
+    }
+  
+    .digital-cate-title {
+      font-size: 3rem;
+    }
+  
+    .collab-text h2 {
+      font-size: 2.5rem;
+    }
+  
+    .collab-images {
+      flex-direction: row;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+  
+  /* ===============================
+    RESPONSIVE: Mobile
+  ================================= */
+  @media (max-width: 576px) {
+    .digital-cate-main {
+      padding: 2rem 1rem;
+    }
+  
+    .digital-cate-title {
+      font-size: 2rem;
+    }
+  
+    .newsletter-form {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    .newsletter-button {
+      width: 100%;
+      font-size: 1.1rem;
+    }
+  
+    .collab-images img {
+      width: 100%;
+    }
+  
+    .service-card {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  

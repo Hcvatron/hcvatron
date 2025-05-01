@@ -36,7 +36,8 @@ const Profile = () => {
   }, [isUserLoggedIn]);
 
   const [user, setUser] = useState({
-    name: isUserLoggedIn.name,
+    firstName: isUserLoggedIn.firstName,
+    lastName: isUserLoggedIn.lastName,
     email: isUserLoggedIn.email,
     
   });
@@ -112,7 +113,7 @@ const Profile = () => {
             </div>
           ) : (
             <div>
-              <p><strong>Name:</strong> {user.name}</p>
+              <p><strong>Name:</strong> {user.firstName} {user.lastName}</p>
               <p><strong>Email:</strong> {user.email}</p>
               {/* <p><strong>Phone:</strong> {user.phone}</p> */}
               <button onClick={() => setEditMode(true)}>Edit</button>

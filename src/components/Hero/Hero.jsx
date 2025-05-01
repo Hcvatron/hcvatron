@@ -2,10 +2,12 @@ import React from "react";
 import "./Hero.css";
 import { useLocalContext } from "../../context/LocalContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 import { faShieldAlt, faTrophy, faUserShield, faLaptopCode, faGlobe, faFingerprint } from "@fortawesome/free-solid-svg-icons";
 
 const Hero = () => {
   const { webinfo } = useLocalContext();
+  const navigate = useNavigate();
 
   return (
     <section className="hero-section">
@@ -18,8 +20,8 @@ const Hero = () => {
           
           {/* Call-to-Action Buttons */}
           <div className="hero-buttons">
-            <button className="cta-btn primary-btn">Get Protected</button>
-            <button className="cta-btn secondary-btn">Learn More</button>
+            <button className="cta-btn primary-btn" onClick={()=>navigate('/categories')}>Get Protected</button>
+            <button className="cta-btn secondary-btn" onClick={()=>navigate('/about')}>Learn More</button>
           </div>
         </div>
 

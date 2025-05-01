@@ -10,10 +10,13 @@ import MediaUploader from '../components/Admin/Media/MediaUploader';
 import { useAdminContext } from '../context/AdminContext';
 import AdminLogin from '../components/Admin/Signin/AdminLogin';
 import AdminPrivateRoute from './AdminPrivateRoute';  // Import your AdminPrivateRoute
+import { Navigate } from 'react-router-dom';
+
 
 const AdminLayout = () => {
 
   const location = useLocation();
+  const { admin } = useAdminContext();
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', overflow: 'hidden' }}>
@@ -26,11 +29,10 @@ const AdminLayout = () => {
         {/* Right Side: Content */}
         <div style={{ flex: 1, padding: '20px', overflowY: 'auto' }}>
           <Routes>
-            <Route path="/admin/dashboard" element={
-              <AdminPrivateRoute>
-                <Dashboard />
-              </AdminPrivateRoute>
-            } />
+          <Route path="/admin" element={
+    admin ? <Navigate to="/admin/dashboard" replace /> : <Navigate to="/admin/login" replace />
+  } />
+
             <Route path="/admin/blog" element={
               <AdminPrivateRoute>
                 <BlogDash />

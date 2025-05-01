@@ -8,12 +8,13 @@ import Footer from "../components/Footer/Footer";
 import OrderList from "../components/User/order/OrderList";
 import AddressList from "../components/User/Address/AddressList";
 import PrivateRoute from "./PrivateRoute";
-// import ViewOrderModal from "../components/User/ViewOrderModal";
+
 
 const UserProfileLayout = () => {
   const { isUserLoggedIn } = useUserContext();
   const [isScrolled, setIsScrolled] = useState(false);
   const dashRightRef = useRef(null);
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,6 +40,7 @@ const UserProfileLayout = () => {
         <DashNav isScrolled={isScrolled} />
         <div ref={dashRightRef} style={{ width: '100%', padding: "20px", overflowY: "auto" }} className={`dashright  ${isScrolled ? "scrolled" : ""}`}>
           <Routes>
+            
           <Route path="/user/account" element={<Navigate to="/user/dashboard" />} />
   
   <Route
@@ -49,6 +51,8 @@ const UserProfileLayout = () => {
       </PrivateRoute>
     }
   />
+
+
 
   <Route
     path="/user/orders"

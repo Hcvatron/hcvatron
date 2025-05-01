@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { auth } from '../../../firebase/firebaseConfig'; // Adjust path as needed
+import { auth } from '../../../firebase/firebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { useAdminContext } from '../../../context/AdminContext';
-import './Login.css';  // Import the CSS file
+import './Login.css';  
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../../../firebase/firebaseConfig';
+
 
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
@@ -17,17 +20,31 @@ const AdminLogin = () => {
     e.preventDefault();
   
     try {
-      console.log("Email-->",email,"password-->",password);
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const userEmail = userCredential.user.email;
+  
+      // Check if the user exists in the admin collection
+      const adminDocRef = doc(db, 'admin', userCredential.user.uid); 
+      const adminDoc = await getDoc(adminDocRef);
+  
+      if (!adminDoc.exists()) {
+        throw new Error('Access denied: Not an admin');
+      }
+  
+      const adminData = adminDoc.data();
+      if (adminData.email !== userEmail || adminData.role !== 'all') {
+        throw new Error('Access denied: Unauthorized role');
+      }
+  
       toast.success('Sign in successful');
-      setAdmin(email);
+      setAdmin(userEmail);
       navigate('/admin/dashboard');
     } catch (err) {
-      console.error("Firebase Login Error:", err); 
-      toast.error(err.message); 
+      console.error('Login error:', err);
+      toast.error(err.message);
+      setError(err.message);
     }
   };
-  
 
   return (
     <div className="login-container">
@@ -52,7 +69,7 @@ const AdminLogin = () => {
             required
           />
         </div>
-        <button type="submit">Login</button>
+        <button className='adminbtn' type="submit">Login</button>
       </form>
     </div>
   );

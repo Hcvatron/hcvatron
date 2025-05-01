@@ -30,7 +30,7 @@
   }
   
   /* Button styling */
-  .login-container  button {
+  .login-container  .adminbtn {
     width: 100%;
     padding: 12px;
     background-color: #007bff;
@@ -43,7 +43,7 @@
   }
   
   /* Button hover effect */
-  .login-container button:hover {
+  .login-container .adminbtn:hover {
     background-color: #0056b3;
   }
   

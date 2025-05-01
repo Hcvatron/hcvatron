@@ -65,12 +65,12 @@ const Contact = () => {
             </div>
             <div className="info-item">
               <h3>Address</h3>
-              <p>{webinfo.address}</p>
+              <p>India : {webinfo.address}</p>
+              <p>USA : {webinfo.address2}</p>
             </div>
             <div className="info-item">
               <h3>Office Hours</h3>
-              <p>Monday to Friday: 9 AM - 6 PM</p>
-              <p>Saturday: 10 AM - 4 PM</p>
+              <p>Available 24/7 — including weekends and holidays</p>
             </div>
           </div>
         </div>
