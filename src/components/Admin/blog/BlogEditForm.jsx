@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { db } from '../../../firebase/firebaseConfig'; // Adjust path as needed
 import { doc, updateDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
@@ -20,6 +20,7 @@ const BlogEditForm = () => {
   const [imageLink, setImageLink] = useState('');  // New field for image link
   const [author, setAuthor] = useState('');  // New field for author
   const [date, setDate] = useState('');  // New field for date
+  const [urlSlug, setUrlSlug] = useState(''); // New field for URL slug
 
   // Categories list
   const categories = ['Antivirus', 'Printer', 'Windows OS'];
@@ -33,8 +34,21 @@ const BlogEditForm = () => {
       setImageLink(selectedBlog.imageLink || ''); // Set the image link if available
       setAuthor(selectedBlog.author || ''); // Set the author if available
       setDate(selectedBlog.date || ''); // Set the date if available
+      setUrlSlug(selectedBlog.urlSlug || ''); // Set the URL slug if available
     }
   }, [selectedBlog]);
+
+  // Handle title change to update the URL slug
+  const handleTitleChange = (e) => {
+    const newTitle = e.target.value;
+    setTitle(newTitle);
+    // Generate URL slug by converting title to URL-friendly format
+    const slug = newTitle
+      .toLowerCase()
+      .replace(/\s+/g, '-')  // Replace spaces with hyphens
+      .replace(/[^\w-]+/g, ''); // Remove non-alphanumeric characters
+    setUrlSlug(slug);
+  };
 
   // Handle image change
   const handleImageChange = (e) => {
@@ -52,7 +66,7 @@ const BlogEditForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!title || !content || !category || !author || !date) {
+    if (!title || !content || !category || !author || !date || !urlSlug) {
       toast.error('All fields are required!');
       return;
     }
@@ -67,6 +81,7 @@ const BlogEditForm = () => {
         imageLink,  // Save the image link if provided
         author,
         date,
+        urlSlug,   // Save the URL slug
         updatedAt: new Date(),
       });
 
@@ -88,7 +103,7 @@ const BlogEditForm = () => {
               type="text"
               id="title"
               value={title}
-              onChange={(e) => setTitle(e.target.value)}
+              onChange={handleTitleChange}
               placeholder="Enter blog title"
               required
             />
@@ -120,7 +135,7 @@ const BlogEditForm = () => {
               theme="snow"
               placeholder="Edit your blog content..."
               required
-              className='custom-quill'
+              className="custom-quill"
             />
           </div>
 

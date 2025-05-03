@@ -35,7 +35,8 @@ const Blogs = () => {
 
   const handleBlogClick = (blog) => {
     setSelectedUserBlog(blog);
-    navigate(`/blog/${blog.title.toLowerCase()}`);
+    const formattedTitle = blog.title.toLowerCase().replace(/\s+/g, '-');  // Replace spaces with hyphens
+    navigate(`/blog/${formattedTitle}`);
   };
 
   return (

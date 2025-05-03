@@ -18,7 +18,17 @@ const AddBlogForm = ({onClose}) => {
     const [link, setLink] = useState(''); // Link field
     const [imageLink, setImageLink] = useState(''); // Image URL field
 
+    const navigate = useNavigate();
+
     const categories = ['Antivirus', 'Printer', 'Windows OS'];
+
+    // Helper function to format title into URL format
+    const formatTitleForURL = (title) => {
+        return title
+            .toLowerCase()
+            .replace(/\s+/g, '-')  // Replace spaces with hyphens
+            .replace(/[^\w\-]+/g, ''); // Remove non-word characters (except for hyphens)
+    };
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -45,6 +55,9 @@ const AddBlogForm = ({onClose}) => {
             return;
         }
 
+        // Format the title for URL
+        const formattedTitle = formatTitleForURL(title);
+
         try {
             // Save blog data to Firestore
             const blogRef = collection(db, '_blogs');
@@ -57,9 +70,11 @@ const AddBlogForm = ({onClose}) => {
                 createdAt: new Date(),
                 formattedDate: date,
                 author, // Custom author name
+                urlSlug: formattedTitle, // Save the formatted title for URL
             });
 
             toast.success('Blog added successfully!');
+
 
             // Reset form
             setTitle('');
