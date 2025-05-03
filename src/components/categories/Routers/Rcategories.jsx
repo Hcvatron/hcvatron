@@ -5,6 +5,8 @@ import { useProduct } from "../../../context/ProductContext";
 import Disclaimer from "../../T&C/Disclaimer";
 import { useLocalContext } from "../../../context/LocalContext";
 import { useMetadata } from "../../../context/Metadatacontext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeadset, faPhone } from "@fortawesome/free-solid-svg-icons";
 
 const Rcategories = () => {
     const navigate = useNavigate();
@@ -36,8 +38,8 @@ const Rcategories = () => {
       <>
         <div className="categories-container"
           style={{
-            marginTop: location.pathname === '/categories/router' ? window.innerWidth <= 768 ? "5rem" :  '12rem' : '0rem',
-            height: location.pathname === '/categories/router'  ?  window.innerWidth <= 768 ? "" : '70vh' : ''
+            marginTop: location.pathname === '/router' ? window.innerWidth <= 768 ? "5rem" :  '12rem' : '0rem',
+            height: location.pathname === '/router'  ?  window.innerWidth <= 768 ? "" : '100%' : ''
           }}
         >
           <h1 className="categories-title">Top Router Brands</h1>
@@ -59,6 +61,47 @@ const Rcategories = () => {
               </div>
             ))}
           </div>
+          {location.pathname === '/router' && (
+  <div className="categories-extra-feature">
+    {/* Info Section */}
+    <div className="info-block">
+      <h2>Why Choose Our Router Services?</h2>
+      <p>
+        Whether you're setting up a new home Wi-Fi or managing multiple networks at work, our router services offer expert guidance, seamless configuration, and ongoing support. We handle brands like TP-Link, Netgear, ASUS, D-Link, and more.
+      </p>
+    </div>
+
+    {/* Router Service Highlights */}
+    <div className="highlight-grid">
+      <div className="highlight-card">
+        <h3>Router Setup & Configuration</h3>
+        <p>Quick installation, IP configuration, SSID naming, and password protection for reliable wireless connectivity.</p>
+      </div>
+      <div className="highlight-card">
+        <h3>Speed & Range Optimization</h3>
+        <p>Boost internet speed and coverage with channel tuning, antenna positioning, and dual-band setup.</p>
+      </div>
+      <div className="highlight-card">
+        <h3>Security & Access Control</h3>
+        <p>Enhance network safety with firewall setup, parental controls, and guest access restrictions.</p>
+      </div>
+    </div>
+
+    {/* Call to Action */}
+    <div className="cta-section">
+      <h2>Need Help with Your Router?</h2>
+      <p>Our networking experts are just a call away to assist with installation, speed issues, or advanced configurations.</p>
+
+      <div className="cta-actions">
+        <a href={`tel:${webinfo.phonecall}`} className="cta-call-button">
+          <FontAwesomeIcon icon={faHeadset} /> <span>Talk to a Router Expert: {webinfo.phone}</span>
+        </a>
+        <p className="cta-note">Fast Setup | Secure Networks | 24/7 Support</p>
+      </div>
+    </div>
+  </div>
+)}
+
         </div>
        {location.pathname === '/categories' ? (
         <p></p>

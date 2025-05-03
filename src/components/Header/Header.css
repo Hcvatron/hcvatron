@@ -44,19 +44,20 @@
   font-size: 1.25rem;
   font-weight: bold;
   gap: 0.5rem;
-  color: var(--primary-color);
+  color: var(--secondary-color);
 }
 
 .phone-number {
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   font-weight: bold;
-  color: var(--text-dark);
   margin-left: 5px;
+  color: var(--primary-color);
   text-decoration: none;
+  text-shadow: 0.5px 0.5px 1px rgba(0,0,0,0.2);
 }
 
 .phone-number:hover {
-  color: var(--primary-color);
+  color: var(--secondary-color);
 }
 
 /* 🔹 Logo */
@@ -72,6 +73,10 @@
 .logo-main {
   color: black;
   font-family: "Arial Black", sans-serif;
+}
+
+.header-logo img{
+  width: 160px;
 }
 
 /* 🔹 Cart and Login */
@@ -92,7 +97,7 @@
 }
 
 .cart-btn:hover {
-  background: var(--primary-color);
+  background: var(--secondary-color);
   color: white;
 }
 
@@ -100,7 +105,7 @@
   position: absolute;
   top: -5px;
   right: -5px;
-  background: var(--primary-color);
+  background: var(--secondary-color);
   color: var(--text-light);
   font-size: 1rem;
   padding: 0.3rem 0.6rem;
@@ -116,7 +121,7 @@
 }
 
 .login-btn:hover {
-  color: var(--primary-color);
+  color: var(--secondary-color);
 }
 
 .user-dropdown {
@@ -170,7 +175,7 @@
 }
 
 .nav-link:hover {
-  color: var(--primary-color);
+  color: var(--secondary-color);
 }
 
 /* 🔹 Dropdown Menu */
@@ -206,7 +211,7 @@
 }
 
 .dropdown-menu p:hover {
-  background: var(--primary-color);
+  background: var(--secondary-color);
   color: var(--text-light);
 }
 

@@ -1,0 +1,285 @@
+.appdev-main {
+    padding: 4rem 16rem;
+    background-color: var(--light-bg);
+    color: var(--text-dark);
+    font-family: 'Segoe UI', sans-serif;
+    margin-top: 14rem;
+  }
+  
+  /* Hero Section */
+  .appdev-hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 3rem;
+    margin-bottom: 6rem;
+  }
+
+
+  
+  .appdev-hero .tagline {
+    color: var(--highlight-text);
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+  
+  .hero-content {
+    flex: 1;
+  }
+  
+  .hero-content h1 {
+    font-size: 3.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-content h1 span {
+    color: var(--secondary-color);
+  }
+  
+  .hero-content p {
+    font-size: 1.6rem;
+    color: #555;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-btn {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .hero-btn:hover {
+    background: var(--primary-color);
+  }
+  
+  .hero-image img {
+    max-width: 360px;
+    border-radius: 12px;
+  }
+  
+  /* Features Section */
+  .appdev-features {
+    text-align: center;
+    margin-bottom: 6rem;
+  }
+  
+  .appdev-features h2 {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+  }
+  
+  .features-grid {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .feature-card {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 300px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+    text-align: center;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .feature-card .icon {
+    font-size: 2.5rem;
+    color: var(--highlight-text);
+    margin-bottom: 1rem;
+  }
+  
+  .feature-card h4 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .feature-card p {
+    font-size: 1.25rem;
+    color: #666;
+  }
+  
+  /* Consultation Section */
+  .appdev-consultation {
+    background: #fff;
+    padding: 4rem 2rem;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  }
+  
+  .appdev-consultation h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .appdev-consultation p {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+    color: #555;
+  }
+  
+  .input-wrapper {
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto 1.5rem;
+  }
+  
+  .input-wrapper input {
+    width: 100%;
+    padding: 1rem 1rem 1rem 2.8rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1.2rem;
+  }
+  
+  .input-icon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    color: #999;
+  }
+  
+  .appdev-consultation button {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 0.9rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease;
+  }
+  
+  .appdev-consultation button:hover {
+    background: var(--accent-color);
+  }
+
+  .hero-bullets {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-bullets li {
+    font-size: 1.25rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+  
+  .hero-bullets li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    color: var(--highlight-text);
+    font-weight: bold;
+  }
+  
+  .features-description {
+    font-size: 1.2rem;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+  }
+
+  /* Why Us Section */
+.appdev-whyus {
+    text-align: center;
+    margin-bottom: 6rem;
+  }
+  
+  .whyus-heading {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+  }
+  
+  .whyus-subtext {
+    font-size: 1.4rem;
+    color: #555;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+  }
+  
+  .whyus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    justify-content: center;
+    align-items: stretch;
+  }
+  
+  .whyus-card {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .whyus-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .whyus-icon {
+    font-size: 2.5rem;
+    color: var(--highlight-text);
+    margin-bottom: 1rem;
+  }
+  
+  .whyus-card h4 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+  }
+  
+  .whyus-card p {
+    font-size: 1.3rem;
+    color: #666;
+  }
+  
+  /* Responsive Grid Fix */
+  @media (max-width: 768px) {
+    .whyus-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  
+  
+  /* Responsive */
+  @media (max-width: 992px) {
+    .appdev-main {
+      padding: 2rem;
+      margin-top: 8rem;
+    }
+  
+    .appdev-hero {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .features-grid {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  

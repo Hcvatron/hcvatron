@@ -6,6 +6,8 @@ import Disclaimer from "../../T&C/Disclaimer";
 import { useLocalContext } from "../../../context/LocalContext";
 import TopSeller from "./TopSeller/TopSeller";
 import { useMetadata } from "../../../context/Metadatacontext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeadset, faPhone } from "@fortawesome/free-solid-svg-icons";
 
 const Categories = () => {
   const navigate = useNavigate();
@@ -18,7 +20,6 @@ const Categories = () => {
   useEffect(() => {
     document.title = `Brands | ${webinfo.name}`;
   }, []);
-
 
 
 
@@ -47,13 +48,14 @@ const Categories = () => {
     <>
       <div  className="categories-container"
         style={{
-          marginTop: location.pathname === '/categories/antivirus' ? window.innerWidth <= 768 ? "5rem" :  '12rem' : '0rem',
+          marginTop: location.pathname === '/antivirus' ? window.innerWidth <= 768 ? "5rem" :  '12rem' : '0rem',
         }}
       >
         <h1 className="categories-title">Top Antivirus Brands</h1>
         <p className="categories-description">
           Stay protected with the most reliable antivirus solutions. Explore our curated selection of top brands trusted by millions worldwide for cutting-edge security and performance.
         </p>
+
         <div className="categories-grid">
           {categories.map((category) => (
             <div
@@ -69,7 +71,54 @@ const Categories = () => {
             </div>
           ))}
         </div>
+        {location.pathname === '/antivirus' && (
+  <div className="categories-extra-feature">
+    {/* Info Section */}
+    <div className="info-block">
+      <h2>Why Choose Trusted Antivirus Brands?</h2>
+      <p>
+        Our featured antivirus products are globally trusted for their unmatched protection,
+        lightning-fast performance, and comprehensive security. Whether you're an individual
+        user or managing devices across an organization, these solutions are tailored to
+        keep your digital life safe.
+      </p>
+    </div>
+
+    {/* Security Highlights */}
+    <div className="highlight-grid">
+      <div className="highlight-card">
+        <h3>Real-Time Threat Detection</h3>
+        <p>Blocks malware, ransomware, and phishing attempts before they cause harm.</p>
       </div>
+      <div className="highlight-card">
+        <h3>Multi-Device Protection</h3>
+        <p>Protect all your devices — Windows, macOS, Android, and iOS — from one dashboard.</p>
+      </div>
+      <div className="highlight-card">
+        <h3>Secure Online Privacy</h3>
+        <p>Encrypt your data and guard your identity while browsing, shopping, or banking.</p>
+      </div>
+    </div>
+
+    {/* Call to Action */}
+    <div className="cta-section">
+      <h2>Need Help Choosing an Antivirus?</h2>
+      <p>Our security advisors can help you pick the perfect solution for your home or business.</p>
+      
+      <div className="cta-actions">
+        <a href={`tel:${webinfo.phonecall}`} className="cta-call-button">
+        <FontAwesomeIcon icon={faHeadset} />   <span>Call Now: {webinfo.phone}</span>
+        </a>
+        <p className="cta-note">Available 24/7 | Expert guidance | Free consultation</p>
+      </div>
+    </div>
+  </div>
+)}
+
+
+    </div>
+   
+
      {location.pathname === '/all-categories' ? (
       <p></p>
      ):(

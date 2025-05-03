@@ -12,17 +12,19 @@ const Blogs = () => {
 
   useEffect(() => {
     const fetchBlogs = async () => {
-      const querySnapshot = await getDocs(collection(db, "antivirus_blogs"));
+      const querySnapshot = await getDocs(collection(db, "_blogs"));
       const blogData = querySnapshot.docs.map((doc) => {
         const data = doc.data();
         return {
           id: doc.id, 
           ...data,
-          formattedDate: data.formattedDate || new Date(data.createdAt.seconds * 1000).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          }),
+          formattedDate: data.date
+            ? new Date(data.date).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })
+            : "Date not available", // If the date field is missing
         };
       });
       setBlogPosts(blogData);
@@ -49,22 +51,37 @@ const Blogs = () => {
           {blogPosts.map((blog) => (
             <div className="blog-card" key={blog.id} onClick={() => handleBlogClick(blog)}>
               <div className="blog-card-top">
-              {blog.imageBase64 && (
-                <img src={blog.imageBase64} alt={blog.title} className="blog-image" />
-              )}
-              <div className="blog-content">
                 <h3 className="blog-title">{blog.title}</h3>
-                <p className="blog-description">{blog.content.replace(/<[^>]+>/g, "").slice(0, 150)}...</p>
-              </div>
-              </div>
-              <p className="blog-meta">
+                <p className="blog-meta">
                   <span>{blog.formattedDate}</span> • <span>{blog.author}</span>
                 </p>
+              </div>
+              <div className="blog-card-bot">
+                <div className="blog-content">
+                  {(blog.imageBase64 || blog.imageLink) && (
+                    <img
+                      src={blog.imageBase64 || blog.imageLink}
+                      alt="Blog"
+                      className="blog-image"
+                    />
+                  )}
+                  <div className="blog-content-right">
+                    <p className="blog-description">
+                      {blog.content.replace(/<[^>]+>/g, "").slice(0, 180)}...
+                    </p>
+                    <button className="blog-btn" onClick={() => handleBlogClick(blog)}>
+                      Read More
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           ))}
         </div>
         <div className="blogs-footer">
-          <button className="explore-button" onClick={()=>navigate('/blogs')}>Explore Our Blogs</button>
+          <button className="explore-button" onClick={() => navigate('/blogs')}>
+            Explore Our Blogs
+          </button>
         </div>
       </div>
     </>

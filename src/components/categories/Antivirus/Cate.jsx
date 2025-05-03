@@ -92,6 +92,8 @@ const Cate = () => {
         {/* Product Image */}
         <div className="antivlistitemtop" onClick={() => handleNavigation(product)}>
           <img src={product.img} alt={product.name} className="product-image" />
+          {product.category?.includes('top-rated') && <span className="badge">Top Rated</span>}
+          {product.category?.includes('best-seller') && <span className="badge best-seller">Best Seller</span>}
         </div>
 
         {/* Product Details */}
@@ -122,7 +124,7 @@ const Cate = () => {
 
         {/* How to Buy and Install Section */}
 <div className="how-to-section">
-  <h2>🔹 Quick & Easy Steps to Get Your Antivirus</h2>
+  <h2>🔸 Quick & Easy Steps to Get Your Antivirus</h2>
   <ul>
     <li>
       <FontAwesomeIcon icon={faShoppingCart} className="step-icon" />
@@ -157,7 +159,7 @@ const Cate = () => {
 <div className="bottom-section">
   {/* Why Choose Us */}
   <div className="why-choose">
-    <h2>🔹 Why Trust {title} for Your Security?</h2>
+    <h2>🔸 Why Trust {title} for Your Security?</h2>
     <p>
       {whyChoose ||
         'Our advanced antivirus solutions offer unbeatable protection, ensuring your digital safety at all times.'}

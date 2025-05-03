@@ -4,6 +4,9 @@ import { useUserContext } from "../../../context/UserContext";
 import { toast } from "react-toastify";
 import { doc, updateDoc, arrayUnion, getDoc } from "firebase/firestore";
 import { db } from "../../../firebase/firebaseConfig";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+import { parsePhoneNumberFromString } from 'libphonenumber-js';
 
 const AddAddress = ({ setAddAddress }) => {
   const [address, setAddress] = useState({
@@ -14,12 +17,21 @@ const AddAddress = ({ setAddAddress }) => {
     state: "",
     postcode: "",
     country: "",
+    phone: "",
   });
 
   const { isUserLoggedIn, fetchUser } = useUserContext();
 
   const handleChange = (e) => {
     setAddress({ ...address, [e.target.name]: e.target.value });
+  };
+
+  const handlePhoneChange = (value, country) => {
+    setAddress({
+      ...address,
+      phone: value,
+      countryCode: country.dialCode,  // Set the country code based on selected country
+    });
   };
 
   const handleSubmit = async (e) => {
@@ -30,9 +42,16 @@ const AddAddress = ({ setAddAddress }) => {
       return;
     }
 
+    const fullNumber = `${address.phone}`;
+    if(!fullNumber){
+      toast.warning("Add Your Phone Number");
+      return;
+    }
+
+
     try {
-      const userRef = doc(db, "antivirus_user", isUserLoggedIn.uid);
-      const userSnapshot = await getDoc(userRef); // Fetch the user document
+      const userRef = doc(db, "_user", isUserLoggedIn.uid);
+      const userSnapshot = await getDoc(userRef);
 
       if (userSnapshot.exists()) {
         const userData = userSnapshot.data();
@@ -45,15 +64,13 @@ const AddAddress = ({ setAddAddress }) => {
         }
       }
 
-      // Add new address
       await updateDoc(userRef, {
-        address: arrayUnion(address),
+        address: arrayUnion({ ...address, phone: fullNumber }),
       });
 
       toast.success("Address Added Successfully! ✅");
       setAddAddress(false);
-      fetchUser(isUserLoggedIn.uid); // Refresh user data
-
+      fetchUser(isUserLoggedIn.uid);
     } catch (error) {
       console.error("Error adding address:", error);
       toast.error("Failed to add address. Please try again.");
@@ -146,6 +163,20 @@ const AddAddress = ({ setAddAddress }) => {
               value={address.country}
               onChange={handleChange}
               required
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Phone</label>
+            <PhoneInput
+              country={'us'} 
+              value={address.phone}
+              onChange={handlePhoneChange}
+              inputProps={{
+                name: "phone",
+                required: true,
+                autoFocus: true,
+              }}
             />
           </div>
 

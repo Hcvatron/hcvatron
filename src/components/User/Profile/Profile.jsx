@@ -15,19 +15,14 @@ const Profile = () => {
   const [addAddress, setAddAddress] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState(null);
 
-
-
   if(!isUserLoggedIn){
     navigate('/login');
   }
-
-
 
   useEffect(()=>{
     window.scrollTo(0,0);
     if (isUserLoggedIn?.uid) {
       fetchUser(isUserLoggedIn.uid);
-      console.log("--->",isUserLoggedIn);
     }
   },[]);
 
@@ -39,6 +34,7 @@ const Profile = () => {
     firstName: isUserLoggedIn.firstName,
     lastName: isUserLoggedIn.lastName,
     email: isUserLoggedIn.email,
+    phone: isUserLoggedIn.phone,
     
   });
 
@@ -54,16 +50,33 @@ const Profile = () => {
   const [editMode, setEditMode] = useState(false);
   const [editUser, setEditUser] = useState(user);
 
-  const handleEditUser = () => {
-    setUser(editUser);
-    setEditMode(false);
+  const handleEditUser = async () => {
+    try {
+      const userRef = doc(db, "_user", isUserLoggedIn.uid);
+  
+      await updateDoc(userRef, {
+        firstName: editUser.firstName,
+        lastName: editUser.lastName,
+        email: editUser.email,
+        phone: editUser.phone,
+      });
+  
+      toast.success("Profile updated successfully! ✅");
+      setUser(editUser);
+      setEditMode(false);
+      fetchUser(isUserLoggedIn.uid);
+    } catch (error) {
+      console.error("Error updating user profile:", error);
+      toast.error("Failed to update profile. Please try again.");
+    }
   };
+  
 
   // Delete Address
   const deleteAddress = async (addtitle) =>{
     console.log('delete address');
     try {
-      const userRef = doc(db, "antivirus_user", isUserLoggedIn.uid);
+      const userRef = doc(db, "_user", isUserLoggedIn.uid);
       const userSnapshot = await getDoc(userRef);
   
       if (userSnapshot.exists()) {
@@ -85,6 +98,31 @@ const Profile = () => {
     }
   }
 
+  const formatPhoneNumber = (phone) => {
+    if (!phone) return '';
+  
+    const cleaned = phone.replace(/\D/g, '');
+  
+    // India (+91)
+    if (cleaned.startsWith('91') && cleaned.length === 12) {
+      return `+91 ${cleaned.slice(2, 7)} ${cleaned.slice(7)}`;
+    }
+  
+    // US (+1)
+    if (cleaned.startsWith('1') && cleaned.length === 11) {
+      return `+1 (${cleaned.slice(1, 4)}) ${cleaned.slice(4, 7)}-${cleaned.slice(7)}`;
+    }
+  
+    // Fallback for local 10-digit number
+    if (cleaned.length === 10) {
+      return `(${cleaned.slice(0, 3)}) ${cleaned.slice(3, 6)}-${cleaned.slice(6)}`;
+    }
+  
+    return phone;
+  };
+  
+  
+
   return (
     <div className={`profile-container`}>
       {/* Top Section */}
@@ -96,8 +134,13 @@ const Profile = () => {
             <div className="edit-profile">
               <input
                 type="text"
-                value={editUser.name}
-                onChange={(e) => setEditUser({ ...editUser, name: e.target.value })}
+                value={editUser.firstName}
+                onChange={(e) => setEditUser({ ...editUser, firstName: e.target.value })}
+              />
+              <input
+                type="text"
+                value={editUser.lastName}
+                onChange={(e) => setEditUser({ ...editUser, lastName: e.target.value })}
               />
               <input
                 type="email"
@@ -115,6 +158,7 @@ const Profile = () => {
             <div>
               <p><strong>Name:</strong> {user.firstName} {user.lastName}</p>
               <p><strong>Email:</strong> {user.email}</p>
+              <p><strong>Phone:</strong> {formatPhoneNumber(user.phone)}</p>
               {/* <p><strong>Phone:</strong> {user.phone}</p> */}
               <button onClick={() => setEditMode(true)}>Edit</button>
             </div>
@@ -131,8 +175,10 @@ const Profile = () => {
           <h3>{address.title}</h3>
           <p><strong>Street:</strong> {address.street}</p>
           <p><strong>Suburb:</strong> {address.suburb}</p>
-          <p><strong>City:</strong> {address.city}, {address.state} {address.postcode}</p>
+          <p><strong>City / State:</strong> {address.city}, {address.state}</p>
           <p><strong>Country:</strong> {address.country}</p>
+          <p><strong>Zip:</strong> {address.postcode}</p>
+          <p><strong>Phone:</strong> {formatPhoneNumber(address.phone)}</p>
           <div className="address-actions">
             <button onClick={() => alert(`Editing Address: ${address.title}`)}>Edit</button>
             <button onClick={() => deleteAddress(address.title)}>Delete</button>

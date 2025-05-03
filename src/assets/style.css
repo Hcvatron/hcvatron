@@ -10,13 +10,18 @@
 }
 
 :root {
-    --primary-color: #ff3d00;  
-    --secondary-color: #1e293b; 
-    --light-bg: #f8f8f0; 
-    --text-dark: #333333;
-    --text-light: #ffffff; 
-    --accent-color: #ffd700; 
-}
+    --primary-color: #1f3442;      
+    --secondary-color: #b78a4d;
+    --secondary-color-faded: rgba(183, 138, 77, 0.15);
+    --ternary-color: #10b981;
+    --light-bg: #f8f8f0;    
+    --text-dark: #1f3442;          
+    --text-light: #ffffff;          
+    --accent-color: #d4b16a;       
+    --gear-color: #1f3442;  
+    --highlight-text: #b78a4d;       
+  }
+  
 
 html{
     font-size: 10px;
@@ -32,7 +37,7 @@ body{
 }
 
 .comp{
-    margin-top:8rem;
+    margin-top:16rem;
 }
 
 .head h2{
@@ -48,6 +53,6 @@ body{
 
 @media screen and (max-width: 768px) {
     .comp{
-        margin-top: 1rem;
+        margin-top: 6rem;
     }
 }

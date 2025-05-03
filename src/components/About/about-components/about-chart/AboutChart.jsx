@@ -30,7 +30,7 @@ const AboutChart = () => {
         label: "Company Growth (%)",
         data: [15, 30, 45, 65, 80, 98],
         borderColor: "#48A6F2",
-        backgroundColor: "rgba(72, 166, 242, 0.2)", // Blue shade
+        backgroundColor: "#b78a4d", // Blue shade
         borderWidth: 3,
         pointBackgroundColor: "#48A6F2",
         pointBorderColor: "#fff",

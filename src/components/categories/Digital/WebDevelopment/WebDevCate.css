@@ -1,11 +1,13 @@
+/* Main Container */
 .webdev-main {
   font-family: "Segoe UI", sans-serif;
-  /* padding: 5rem 8rem; */
-  background-color: #ffffff;
-  color: #1a1a1a;
+  background-color: var(--light-bg);
+  color: var(--text-dark);
+  padding: 2rem 16rem;
+  margin-top: 8rem;
 }
 
-/* HERO */
+/* Hero Section */
 .webdev-main-hero-section {
   display: flex;
   justify-content: space-between;
@@ -19,12 +21,12 @@
   max-width: 580px;
 }
 
-.tagline {
-  color: #ff5722;
-  font-weight: 700;
-  font-size: 0.85rem;
+.webdev-main-hero-text .tagline {
+  color: var(--highlight-text);
+  font-size: 1.25rem;
   text-transform: uppercase;
   margin-bottom: 1rem;
+  font-weight: 600;
 }
 
 .webdev-main-hero-text h1 {
@@ -34,18 +36,18 @@
 }
 
 .webdev-main-hero-text h1 span {
-  color: #ff5722;
+  color: var(--secondary-color);
 }
 
 .webdev-main-hero-text p {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: #444;
   margin-bottom: 2rem;
 }
 
 .hero-buttons button {
   padding: 0.9rem 2rem;
-  font-size: 1rem;
+  font-size: 1.4rem;
   margin-right: 1rem;
   border-radius: 6px;
   transition: all 0.3s ease;
@@ -54,28 +56,28 @@
 }
 
 .primary-btn {
-  background-color: #ff5722;
+  background-color: var(--secondary-color);
   color: white;
   border: none;
 }
 
 .outline-btn {
-  border: 2px solid #ff5722;
+  border: 2px solid var(--secondary-color);
   background: transparent;
-  color: #ff5722;
+  color: var(--secondary-color);
 }
 
 .outline-btn:hover {
-  background-color: #fff6f0;
+  background-color: var(--secondary-color-faded);
 }
 
 .hero-image img {
   max-width: 420px;
   border-radius: 12px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  /* box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08); */
 }
 
-/* SERVICES */
+/* Services Overview */
 .services-overview {
   display: flex;
   gap: 2rem;
@@ -87,7 +89,7 @@
 .service-box {
   flex: 1;
   padding: 2.5rem 2rem;
-  background: #f9f9f9;
+  background: #ffffff;
   border-radius: 12px;
   text-align: center;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.03);
@@ -99,22 +101,22 @@
 }
 
 .service-box svg {
-  font-size: 2.4rem;
+  font-size: 2.8rem;
   margin-bottom: 1rem;
-  color: #ff5722;
+  color: var(--highlight-text);
 }
 
 .service-box h4 {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   margin-bottom: 0.8rem;
 }
 
 .service-box p {
-  font-size: 1rem;
+  font-size: 1.25rem;
   color: #555;
 }
 
-/* EXPERIENCE */
+/* Experience Section */
 .experience-section {
   display: flex;
   align-items: center;
@@ -130,7 +132,7 @@
 }
 
 .experience-text h2 {
-  font-size: 2rem;
+  font-size: 2.8rem;
   margin-bottom: 1.2rem;
 }
 
@@ -140,7 +142,7 @@
 }
 
 .experience-text li {
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   margin-bottom: 1rem;
   color: #333;
 }
@@ -150,21 +152,22 @@
   color: #4caf50;
 }
 
-/* CONTACT FORM */
+/* Consultation Form */
 .consultation-form {
-  background: linear-gradient(to right, #fff6f0, #fdf8f6);
+  background: linear-gradient(to right, var(--light-bg), #ffffff);
   padding: 4rem 2rem;
   text-align: center;
   border-radius: 12px;
 }
 
 .consultation-form h2 {
-  font-size: 2rem;
+  font-size: 4rem;
   margin-bottom: 1rem;
+  color: var(--text-dark);
 }
 
 .consultation-form p {
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   margin-bottom: 2rem;
   color: #555;
 }
@@ -180,7 +183,7 @@
   padding: 1rem 1rem 1rem 2.8rem;
   border: 1px solid #ccc;
   border-radius: 6px;
-  font-size: 1rem;
+  font-size: 1.25rem;
 }
 
 .input-icon {
@@ -192,11 +195,11 @@
 }
 
 .consultation-form button {
-  background-color: #ff5722;
+  background-color: var(--secondary-color);
   color: white;
   border: none;
   padding: 0.9rem 2rem;
-  font-size: 1rem;
+  font-size: 1.4rem;
   border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
@@ -204,26 +207,133 @@
 }
 
 .consultation-form button:hover {
-  background: #e64a19;
+  background: var(--accent-color);
 }
 
-/* RESPONSIVE */
-@media (max-width: 992px) {
+/* Responsive */
+/* Medium Devices (Tablets) */
+@media (max-width: 768px) {
   .webdev-main {
-    padding: 3rem 2rem;
+    padding: 2rem 1.5rem;
+    margin-top: 8.5rem;
   }
 
-  .hero-section,
-  .experience-section {
-    flex-direction: column;
+  .webdev-main .tagline{
+    align-items: center;
     text-align: center;
+  }
+
+  .webdev-main-hero-text h1 {
+    font-size: 2.5rem;
+  }
+
+  .webdev-main-hero-text p {
+    font-size: 1.4rem;
+  }
+
+  .webdev-main-hero-section{
+    margin-bottom: 1rem;
+  }
+
+  .hero-image img{
+    display: none;
+  }
+
+  .hero-buttons button {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.5rem;
+  }
+
+  .services-overview {
+    gap: 1.5rem;
+  }
+
+  .service-box {
+    padding: 2rem 1.5rem;
+  }
+
+  .service-box h4 {
+    font-size: 1.5rem;
+  }
+
+  .service-box p {
+    font-size: 1.1rem;
+  }
+
+  .experience-text h2 {
+    font-size: 2.4rem;
+  }
+
+  .experience-text li {
+    font-size: 1.2rem;
+  }
+
+  .consultation-form h2 {
+    font-size: 2.6rem;
+  }
+
+  .consultation-form p {
+    font-size: 1.1rem;
+  }
+
+  .consultation-form button {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.5rem;
+  }
+}
+
+/* Small Devices (Phones) */
+@media (max-width: 480px) {
+  .webdev-main {
+    padding: 2rem 1rem;
+  }
+
+  .webdev-main-hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 
   .services-overview {
     flex-direction: column;
+    gap: 1.5rem;
   }
 
-  .hero-buttons button {
-    margin-bottom: 1rem;
+  .service-box {
+    width: 100%;
+  }
+
+  .experience-image img {
+    width: 100%;
+    height: auto;
+  }
+
+  .experience-text h2 {
+    font-size: 2rem;
+  }
+
+  .experience-text li {
+    font-size: 1rem;
+  }
+
+  .consultation-form h2 {
+    font-size: 2.2rem;
+  }
+
+  .consultation-form p {
+    font-size: 1rem;
+  }
+
+  .input-wrapper input {
+    font-size: 1rem;
+  }
+
+  .consultation-form button {
+    width: 100%;
+    font-size: 1.1rem;
   }
 }

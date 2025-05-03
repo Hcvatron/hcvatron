@@ -47,7 +47,7 @@ const TopSeller = () => {
     <div
       className="products-container"
       style={{
-        marginTop: location.pathname === '/top-rated' ? window.innerWidth <= 768 ? "4rem" :  '10rem' : '0rem',
+        marginTop: location.pathname === '/top-rated' ? window.innerWidth <= 768 ? "8rem" :  '14rem' : '0rem',
       }}
     >
       <div className="products-header">
@@ -62,14 +62,15 @@ privacy as well as device performance.
           <div className="product-card" key={item.id}>
             <div className="card-image" onClick={() => handleNavigation(item)}>
               <img src={item.img} alt={item.name} />
-              {item.category === 'top-rated' && <span className="badge">Top Rated</span>}
+              {item.category?.includes('top-rated') && <span className="badge">Top Rated</span>}
             </div>
             <div className="card-content">
                 <div className="card-content-text">
                 <h2 onClick={() => handleNavigation(item)}>{item.name}</h2>
-              <p className="price">
-                ${item.price} 
-              </p>
+                <div className="price-group">
+    <span className="original-price">${(item.originalPrice * 1.2).toFixed(2)}</span>
+    <span className="discounted-price">${item.discountedPrice}</span>
+  </div>
                 </div>
                 <span className="price-note">(Limited-time offer!)</span>
               <div className="card-buttons">

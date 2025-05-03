@@ -39,7 +39,7 @@ const DashNav = ({ isScrolled }) => {
       {/* Logout Button */}
       <button className="logout-button" onClick={() => navigate("/logout")}>
         <FontAwesomeIcon icon={faSignOutAlt} className="nav-icon" />
-        Logout
+        <span>Logout</span>
       </button>
     </div>
   );

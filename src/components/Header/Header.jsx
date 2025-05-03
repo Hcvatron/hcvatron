@@ -29,11 +29,11 @@ const Header = () => {
   const isLoginPage = location.pathname.includes("/user/login");
 
   const categories = [
-    { id: "02", name: "Antivirus", route: "/categories/antivirus" },
-    { id: "03", name: "Windows", route: "/categories/windows" },
-    { id: "04", name: "Printer", route: "/categories/printer" },
-    { id: "05", name: "Router", route: "/categories/router" },
-    { id: "06", name: "Digital", route: "/categories/digital" },
+    { id: "02", name: "Antivirus", route: "/antivirus" },
+    { id: "03", name: "Windows", route: "/windows" },
+    { id: "04", name: "Printer", route: "/printer" },
+    { id: "05", name: "Router", route: "/router" },
+    { id: "06", name: "Digital", route: "/digital" },
     { id: "07", name: "Blogs", route: "/blogs" },
   ];
 
@@ -96,18 +96,19 @@ const Header = () => {
           <span>
             <FontAwesomeIcon
               icon={faHeadset}
-              style={{ marginRight: "5px", color: "#ff3d00" }}
+              style={{ marginRight: "5px", color: "var(--secondary-color)" }}
             />{" "}
             24/7 Support
           </span>
-          <a href={`${webinfo.phonecall}`} className="phone-number">
+          <a href={`tel:${webinfo.phonecall}`} className="phone-number">
             {webinfo.phone}
           </a>
         </div>
 
         {/* Logo */}
         <div className="header-logo" onClick={() => navigate("/")}>
-          <h1 className="logo-main">{webinfo.name}</h1>
+          {/* <h1 className="logo-main">{webinfo.name}</h1> */}
+          <img src="https://res.cloudinary.com/dcf3mojai/image/upload/v1746119244/Najis_pfxwjp.png" alt="" />
         </div>
 
         {/* Cart & Login */}

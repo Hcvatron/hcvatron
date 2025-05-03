@@ -1,10 +1,9 @@
 /* Product Page Container */
 .productPage-container {
   max-width: 1200px;
-  margin: 14rem auto;
-  margin-bottom: 8rem;
-  padding: 2rem;
-  background: linear-gradient(to right, #ffffff, #f9fafb);
+  margin: 16rem auto 8rem;
+  padding: 4rem;
+  background: linear-gradient(to right, var(--text-light), var(--light-bg));
   border-radius: 16px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -17,15 +16,15 @@
   display: grid;
   grid-template-columns: 1fr 1.5fr;
   gap: 2rem;
-  /* align-items: center; */
 }
 
 /* Product Image Section */
 .productPage-image img {
   width: 80%;
   border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); */
   transition: transform 0.3s ease;
+  /* filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.1)); */
 }
 
 .productPage-image img:hover {
@@ -42,7 +41,7 @@
 .productPage-title {
   font-size: 2.8rem;
   font-weight: 700;
-  color: #1f2937;
+  color: var(--primary-color);
 }
 
 .productPage-category {
@@ -52,7 +51,7 @@
 
 .productPage-rating {
   font-size: 1.2rem;
-  color: #22c55e;
+  color: var(--ternary-color); /* green for rating */
 }
 
 .productPage-description {
@@ -64,7 +63,7 @@
 /* Features Section */
 .productPage-features h3 {
   font-size: 1.8rem;
-  color: #1f2937;
+  color: var(--primary-color);
   margin-bottom: 0.5rem;
 }
 
@@ -86,14 +85,14 @@
   content: "✔";
   position: absolute;
   left: 0;
-  color: #22c55e;
+  color: var(--ternary-color);
 }
 
 /* Button */
 .productPage-btn {
   padding: 1rem 2rem;
-  background-color: #2563eb;
-  color: #ffffff;
+  background-color: var(--primary-color);
+  color: var(--text-light);
   font-size: 1.4rem;
   font-weight: bold;
   border: none;
@@ -103,15 +102,15 @@
 }
 
 .productPage-btn:hover {
-  background-color: #1e40af;
+  background-color: var(--highlight-text);
   transform: translateY(-2px);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Specifications Section */
+/* Specifications */
 .productPage-specifications h3 {
   font-size: 1.8rem;
-  color: #1f2937;
+  color: var(--primary-color);
   margin-bottom: 0.5rem;
 }
 
@@ -127,11 +126,12 @@
   color: #475569;
 }
 
-.productPage-specifications li span{
+.productPage-specifications li span {
   font-weight: bold;
+  color: var(--text-dark);
 }
 
-/* Pricing Section */
+/* Pricing */
 .productPage-pricing {
   margin: 1.5rem 0;
 }
@@ -145,11 +145,11 @@
 .discounted-price {
   font-size: 2rem;
   font-weight: bold;
-  color: #2563eb;
+  color: var(--highlight-text);
 }
 
 .discount-badge {
-  background: #22c55e;
+  background: var(--ternary-color);
   color: white;
   padding: 0.3rem 0.8rem;
   font-size: 1rem;
@@ -157,7 +157,7 @@
   margin-left: 1rem;
 }
 
-/* Reviews Section */
+/* Reviews */
 .productPage-reviews {
   margin-top: 2rem;
 }
@@ -165,17 +165,18 @@
 .productPage-reviews h3 {
   font-size: 1.6rem;
   margin-bottom: 1rem;
+  color: var(--primary-color);
 }
 
 .review {
-  background: #f9fafb;
+  background: var(--light-bg);
   padding: 1rem;
   margin-bottom: 1rem;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
-/* FAQ Section */
+/* FAQ */
 .productPage-faq {
   margin-top: 2rem;
 }
@@ -183,25 +184,26 @@
 .productPage-faq h3 {
   font-size: 1.6rem;
   margin-bottom: 1rem;
+  color: var(--primary-color);
 }
 
 .productPage-faq p {
   font-size: 1.2rem;
   margin-bottom: 1rem;
+  color: #475569;
 }
 
-/* Additional Information Section */
+/* Additional Info */
 .additional-info {
-  background: #f9fafb;
+  background: var(--light-bg);
   padding: 1.5rem;
-  border-left: 4px solid #2563eb;
+  border-left: 4px solid var(--highlight-text);
   border-radius: 8px;
-  /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); */
 }
 
 .additional-info h3 {
   font-size: 1.6rem;
-  color: #1f2937;
+  color: var(--primary-color);
   margin-bottom: 1rem;
 }
 
@@ -222,12 +224,12 @@
   content: "➤ ";
   position: absolute;
   left: 0;
-  color: #2563eb;
+  color: var(--highlight-text);
   font-weight: bold;
 }
 
 .additional-info a {
-  color: #2563eb;
+  color: var(--highlight-text);
   font-weight: bold;
   text-decoration: none;
 }
@@ -236,20 +238,19 @@
   text-decoration: underline;
 }
 
-.aboutbrandsection{
+/* About Brand Title */
+.aboutbrandsection {
   width: 100%;
-  font-size: 2.5rem;
+  font-size: 2rem;
   display: flex;
   justify-content: center;
-  color: rgb(196, 9, 41);
-  margin-bottom: 1rem;
+  color: var(--highlight-text);
+  margin-bottom: 2rem;
 }
 
-.aboutbrandsection h2{
-  border-bottom: 2px solid rgb(196, 9, 41);
+.aboutbrandsection h2 {
+  border-bottom: 2px solid var(--highlight-text);
 }
-
-
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -257,7 +258,7 @@
     margin: 8rem auto;
     padding: 1rem 2rem;
   }
-  
+
   .productPage-grid {
     grid-template-columns: 1fr;
   }

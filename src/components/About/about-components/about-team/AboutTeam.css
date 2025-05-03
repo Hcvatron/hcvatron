@@ -1,7 +1,7 @@
 .aboutTeam {
     text-align: center;
     padding: 60px 20px;
-    background: #f8f9fa;
+    background: var(--light-bg);
 }
 
 .aboutTeam h2 {

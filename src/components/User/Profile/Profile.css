@@ -1,157 +1,311 @@
+/* Profile Container */
 .profile-container {
-    width: 100%;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 10px;
-    /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); */
-    /* background-color: hsl(0, 0%, 100%); */
-    margin-top: 10rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 12px;
+  /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); */
+  margin-top: 13rem;
+}
+
+/* Scroll state */
+.profile-container.scrolled {
+  position: relative;
+  width: 110%;
+}
+
+/* Profile Section */
+.profile-section p {
+  margin-top: 1rem;
+  font-size: 1.4rem;
+}
+
+/* Profile Section Buttons */
+.profile-section button {
+  margin-top: 1rem;
+  font-size: 1.25rem;
+}
+
+.profile-section button:nth-child(2) {
+  margin-left: 1rem;
+}
+
+/* Top Section: User Details & Address */
+.top-section {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+/* User Details - Left (30% width) */
+.top-section .user-details {
+  width: 25%;
+  flex: 1;
+  padding: 20px;
+  background: #fffefa;
+  border-radius: 8px;
+  /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); */
+}
+
+/* Address List - Right (70% width) */
+.address-list {
+  width: 80%;
+  padding: 20px 25px;
+  background: #fffefa;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.address-list .address-list-main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  height: 32rem;
+  padding: 0 10px;
+  overflow-y: auto;
+}
+
+.address-list .address-card {
+  width: 25rem;
+  margin-top: 1rem;
+  padding-top: 15px;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.address-list .address-card h3 {
+  font-size: 1.8rem;
+}
+
+/* Order List - Bottom */
+.order-list {
+  margin-top: 20px;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.order-list .order-list-main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 30rem;
+  overflow-y: auto;
+}
+
+.order-list .order-card {
+  display: flex;
+  justify-content: space-between;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.order-list .order-card .order-card-details {
+  flex: 1;
+}
+
+.order-list .order-card .order-button {
+  display: flex;
+  flex-direction: column;
+}
+
+.order-card button {
+  padding: 8px 16px;
+  background-color: #28a745; /* Green Button */
+  color: white;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.order-card button:hover {
+  background-color: #218838;
+}
+
+/* Address & Order Cards */
+.address-card, .order-card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+
+/* Empty State for No Addresses / Orders */
+.no-address, .no-orders {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 1.2rem;
+  color: #888;
+}
+
+.no-address button, .no-orders button {
+  padding: 12px 20px;
+  background-color: #007bff; /* Primary Color */
+  color: white;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.no-address button:hover, .no-orders button:hover {
+  background-color: #0056b3; /* Hover color */
+}
+
+/* Edit Profile Inputs */
+.edit-profile input {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1.25rem;
+  margin-top: 1rem;
+}
+
+/* Profile Edit Button */
+.edit-profile button {
+  padding: 10px 20px;
+  background-color: #28a745; /* Green Button */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.edit-profile button:hover {
+  background-color: #218838;
+}
+
+/* Buttons */
+.profile-section button {
+  padding: 12px 20px;
+  background-color: var(--secondary-color); /* Primary Color */
+  color: white;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.profile-section button:hover {
+  background-color: var(--primary-color); /* Hover color */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  /* Stack User Details and Address List on smaller screens */
+  .profile-container{
+    margin-top: 8rem;
+    padding: 5px;
   }
 
-  .profile-container.scrolled {
-    position: relative;
-    width: 110%;
-  }
-
-
-  
-
-  .profile-section p{
-    margin-top: 1rem;
-    font-size: 1.4rem;
-  }
-
-
-  .profile-section button{
-   margin-top: 1rem;
-   font-size: 1.25rem; 
-  }
-
-  .profile-section button:nth-child(2){
-    margin-left: 1rem;
-  }
-
-  
-  /* Top Section: User Details & Address */
   .top-section {
-    display: flex;
-    /* justify-content: space-between; */
-    gap: 20px;
+    flex-direction: column;
+  }
+
+  .top-section .user-details {
     width: 100%;
   }
-  
 
-
-  /* User Details - Left */
-  .top-section .user-details {
-    width: 30%;
-    flex: 1;
-    padding: 15px;
-    border-radius: 8px;
-    background: #f9f9f9;
-  }
-
-
-
-  
-  /* Address List - Right */
   .address-list {
-    flex: 1;
-    flex-direction: row;
-    padding: 15px;
-    border-radius: 8px;
-    background: #f9f9f9;
+    width: 100%;
+    margin-top: 20px;
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
   }
 
-  .address-list .address-list-main{
-    width: 105%;
+  .address-list .address-list-main {
     display: flex;
-    gap:20px;  
-    height: 30rem;
-    flex-wrap: wrap;
-    overflow-y: auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    height: auto;
+    padding: 0;
   }
 
   .address-list .address-card{
-    width: 25rem;
+    width: 30rem;
   }
-  
-  /* Order List - Bottom */
+
+  .address-list .address-card h3{
+    font-size: 1.25rem;
+  }
+
+  .address-list .address-card {
+    width: 100%;
+  }
+
+  /* Order List */
   .order-list {
     margin-top: 20px;
-    padding: 15px;
-    border-top: 2px solid #ddd;
   }
 
-  .order-list .order-list-main{
+  .order-list .order-list-main {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    height: 30rem;
-    overflow-y: auto;
-    margin-top: 1rem;
+    gap: 15px;
   }
 
-  .order-list .order-card{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .order-list .order-card .order-card-details{
-    display: flex;
-    align-items: center;
-    gap: 20rem
-  }
-
-  .order-list .order-card .order-button{
-    display: flex;
+  .order-list .order-card {
     flex-direction: column;
-    /* align-items: center; */
+    gap: 10px;
   }
 
+  .order-list .order-card .order-button {
+    align-items: center;
+  }
 
-  
-  /* Address & Order Cards */
-  .address-card, .order-card {
-    background: #fff;
-    padding: 25px;
-    border-radius: 5px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 10px;
-  }
-  
-  .order-list  h2 {
-    margin-bottom: 10px;
-  }
-  
-  .order-list  p {
-    margin: 5px 0;
-  }
-  
-  /* Edit Profile Inputs */
-  .edit-profile input {
-    display: block;
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
   /* Buttons */
   .profile-section button {
-    padding: 8px 12px;
-    background-color: var(--primary-color);
-    transition: 0.2s ease;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 1rem;
+    padding: 10px 12px;
   }
-  
-  .profile-section button:hover{
-    /* background-color: #0056b3; */
-    background-color: var(--secondary-color);
+
+  .profile-section button:nth-child(2){
+    margin-left: 0;
   }
-  
+}
+
+@media (max-width: 480px) {
+  /* Further adjustments for very small screens (mobile) */
+  .profile-section p {
+    font-size: 1.2rem;
+  }
+
+  .profile-section button {
+    font-size: 1rem;
+    padding: 10px 15px;
+  }
+
+  .top-section .user-details h2 {
+    font-size: 1.5rem;
+  }
+
+  .address-list .address-card h3{
+    font-size: 1.25rem;
+  }
+
+  .order-list .order-card button {
+    width: 100%;
+  }
+}

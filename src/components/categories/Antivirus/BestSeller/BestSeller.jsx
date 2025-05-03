@@ -62,6 +62,7 @@ const BestSeller = () => {
           <div className="product-card" key={item.id}>
             <div className="card-image" onClick={() => handleNavigation(item)}>
               <img src={item.img} alt={item.name} />
+              {item.category?.includes('best-seller') && <span className="badge best-seller">Best Seller</span>}
             </div>
             <div className="card-content">
                 <div className="card-content-text">

@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "hcvatron-56126"
-  }
+    "default": "hcvatron-56126",
+    "production": "antivirus-b05d0"
+  },
+  "targets": {},
+  "etags": {}
 }

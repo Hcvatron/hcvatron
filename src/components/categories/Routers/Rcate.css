@@ -138,7 +138,7 @@
   .windowslist {
     width: 100%;
     padding: 5rem 2rem;
-    background: #f9fafb;
+    background: var(--light-bg);
     text-align: center;
   }
   
@@ -188,11 +188,16 @@
   /* 🔹 Product Image */
   .windowslistitemtop {
     height: 250px;
-    background: #e0f2fe;
+    background: var(--light-bg);
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    transition: background 0.3s ease;
+  }
+
+  .windowslistitemtop:hover{
+    background: var(--secondary-color-faded);
   }
   
   .product-image {
@@ -251,16 +256,7 @@
     gap: 0.5rem;
   }
   
-  /* 🔹 Add to Cart Button */
-  .add-to-cart {
-    background: linear-gradient(135deg, rgb(0, 112, 192), rgb(0, 112, 192));
-    color: white;
-  }
-  
-  .add-to-cart:hover {
-    background: linear-gradient(135deg, rgb(0, 92, 172), rgb(0, 92, 172));
-    transform: scale(1.05);
-  }
+
   
   /* 🔹 Added to Cart Button */
   .added-to-cart {

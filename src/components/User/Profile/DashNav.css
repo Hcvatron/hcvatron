@@ -6,52 +6,35 @@
     border-right: 1px solid #ddd;
     padding: 20px 10px;
     display: flex;
-    position: sticky; 
-    /* top: 15%; */
+    position: sticky;
     margin-top: 8%;
     flex-direction: column;
-    /* align-items: center; */
-}
-
-.user-side-nav.scrolled {
-    position: relative;
-    width: 360px;
   }
-
-/* Profile Section */
-.profile-section {
-    /* text-align: center; */
+  
+  /* Profile Section */
+  .profile-section {
     margin-bottom: 20px;
     padding-left: 20px;
     font-size: 16px;
     color: #333;
     margin-top: 10px;
-}
-
-.profile-pic {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-
-
-/* Navigation List */
-.user-side-nav  .nav-list {
+  }
+  
+  /* Navigation List */
+  .user-side-nav .nav-list {
     width: 100%;
     list-style: none;
     padding: 0;
     margin: 0;
-}
-
-/* Navigation Item */
-.user-side-nav  .nav-item {
+  }
+  
+  /* Navigation Item */
+  .user-side-nav .nav-item {
     width: 100%;
-}
-
-/* Navigation Link */
-.user-side-nav .nav-link {
+  }
+  
+  /* Navigation Link */
+  .user-side-nav .nav-link {
     width: 100%;
     text-align: left;
     background: none;
@@ -64,35 +47,33 @@
     margin-top: 20px;
     color: #333;
     transition: 0.3s;
-}
-
-/* Icons Styling */
-.user-side-nav .nav-icon {
+  }
+  
+  /* Icons Styling */
+  .user-side-nav .nav-icon {
     margin-right: 10px;
-    color: var(--primary-color);
-}
-
-
-
-/* Hover Effect */
-.user-side-nav .nav-link:hover {
+    color: var(--secondary-color);
+  }
+  
+  /* Hover Effect */
+  .user-side-nav .nav-link:hover {
     background-color: #f1f5f9;
     color: #d9534f;
-}
-
-/* Active (Selected) menu item */
-.user-side-nav .nav-item.active .nav-link {
-    background-color: var(--primary-color);
+  }
+  
+  /* Active (Selected) menu item */
+  .user-side-nav .nav-item.active .nav-link {
+    background-color: var(--secondary-color);
     color: white;
     border-radius: 5px;
-}
-
-.user-side-nav .nav-item.active .nav-icon{
+  }
+  
+  .user-side-nav .nav-item.active .nav-icon {
     color: #ffffff;
-}
-
-/* Logout Button */
-.logout-button {
+  }
+  
+  /* Logout Button */
+  .logout-button {
     width: 80%;
     background: none;
     border: none;
@@ -104,9 +85,90 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.logout-button:hover {
+  }
+  
+  .logout-button:hover {
     background-color: #f8d7da;
     border-radius: 5px;
-}
+  }
+  
+  /* Responsive Design for Mobile */
+  @media (max-width: 768px) {
+    /* Stack the nav items for smaller screens */
+    .user-side-nav {
+      width: 60px;
+    }
+  
+    /* Hide text in navigation links on smaller screens */
+    .user-side-nav .nav-link span {
+      display: none; /* Hide text */
+    }
+  
+    /* Display only icons in the navigation list */
+    .user-side-nav .nav-icon {
+      font-size: 9.8rem; /* Increase icon size for better visibility */
+    }
+  
+    /* Make profile section more compact */
+    .profile-section {
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+  
+    .profile-pic {
+      width: 60px;
+      height: 60px;
+    }
+  
+    /* Adjust font size for the links */
+    .user-side-nav .nav-link {
+      font-size: 14px;
+      padding: 10px 15px;
+    }
+
+  
+    /* Adjust logout button */
+    .logout-button {
+      font-size: 14px;
+      padding: 8px 15px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .user-side-nav {
+      width: 60px;
+      height: auto;
+      padding: 10px;
+    }
+  
+    /* Profile Section */
+    .profile-section {
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+  
+    .profile-pic {
+      width: 50px;
+      height: 50px;
+    }
+  
+    /* Navigation Links */
+    .user-side-nav .nav-link {
+      font-size: 20px;
+      padding: 8px 12px;
+    }
+  
+    /* Icons */
+    .user-side-nav .nav-icon {
+      font-size: 1.6rem;
+    }
+  
+    /* Logout Button */
+    .logout-button {
+      font-size: 12px;
+      padding: 8px 12px;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  

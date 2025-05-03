@@ -1,0 +1,249 @@
+
+    /* Main Container */
+  .content-main {
+    font-family: "Segoe UI", sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-dark);
+    padding: 2rem 16rem;
+    margin-top: 8rem;
+  }
+  
+  /* Hero Section */
+  .content-hero-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    margin-bottom: 6rem;
+  }
+  
+  .content-hero-text {
+    max-width: 580px;
+  }
+  
+  .content-hero-text .tagline {
+    color: var(--highlight-text);
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  
+  .content-hero-text h1 {
+    font-size: 3.2rem;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+  
+  .content-hero-text h1 span {
+    color: var(--secondary-color);
+  }
+  
+  .content-hero-text p {
+    font-size: 1.5rem;
+    color: #444;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-buttons button {
+    padding: 0.9rem 2rem;
+    font-size: 1.4rem;
+    margin-right: 1rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  
+  .primary-btn {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+  }
+  
+  .outline-btn {
+    border: 2px solid var(--secondary-color);
+    background: transparent;
+    color: var(--secondary-color);
+  }
+  
+  .outline-btn:hover {
+    background-color: var(--secondary-color-faded);
+  }
+  
+  .hero-image img {
+    max-width: 420px;
+    border-radius: 12px;
+  }
+  
+  /* Services Overview */
+  .services-overview {
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+    margin-bottom: 6rem;
+    flex-wrap: wrap;
+  }
+  
+  .service-box {
+    flex: 1;
+    padding: 2.5rem 2rem;
+    background: #ffffff;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s ease;
+  }
+  
+  .service-box:hover {
+    transform: translateY(-5px);
+  }
+  
+  .service-box svg {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: var(--highlight-text);
+  }
+  
+  .service-box h4 {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .service-box p {
+    font-size: 1.25rem;
+    color: #555;
+  }
+  
+  /* Experience Section */
+  .experience-section {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    margin-bottom: 6rem;
+  }
+  
+  .experience-image img {
+    max-width: 520px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+  }
+  
+  .experience-text h2 {
+    font-size: 2.8rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .experience-text ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .experience-text li {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  .experience-text li svg {
+    margin-right: 10px;
+    color: #4caf50;
+  }
+  
+  /* Consultation Form */
+  .consultation-form {
+    background: linear-gradient(to right, var(--light-bg), #ffffff);
+    padding: 4rem 2rem;
+    text-align: center;
+    border-radius: 12px;
+  }
+  
+  .consultation-form h2 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+  }
+  
+  .consultation-form p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    color: #555;
+  }
+  
+  .input-wrapper {
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto 1.5rem;
+  }
+  
+  .input-wrapper input {
+    width: 100%;
+    padding: 1rem 1rem 1rem 2.8rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1.25rem;
+  }
+  
+  .input-icon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    color: #999;
+  }
+  
+  .consultation-form button {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 0.9rem 2rem;
+    font-size: 1.4rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease;
+  }
+  
+  .consultation-form button:hover {
+    background: var(--accent-color);
+  }
+  
+  /* Responsive */
+  @media (max-width: 992px) {
+    .content-main {
+      padding: 3rem 1rem;
+    }
+
+    .content-hero-text h1{
+        font-size: 2.4rem;
+    }
+
+    .content-hero-text p{
+        font-size: 1.4rem;
+    }
+
+    .content-hero-section{
+        margin-bottom: 1rem;
+    }
+  
+    .content-hero-section{
+      flex-direction: column;
+      text-align: center;
+    }
+
+  
+    .services-overview {
+      flex-direction: column;
+    }
+  
+    .hero-buttons button {
+      margin-bottom: 1rem;
+    }
+
+    .consultation-form h2{
+    font-size: 2.5rem;
+    }
+}
+  

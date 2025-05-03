@@ -6,6 +6,8 @@ import Disclaimer from "../../T&C/Disclaimer";
 import { useLocalContext } from "../../../context/LocalContext";
 // import TopSeller from "./TopSeller/TopSeller";
 import { useMetadata } from "../../../context/Metadatacontext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeadset, faPhone } from "@fortawesome/free-solid-svg-icons";
 
 const DigitalCategories = () => {
   const navigate = useNavigate();
@@ -61,13 +63,14 @@ const DigitalCategories = () => {
     <>
       <div  className="categories-container"
         style={{
-          marginTop: location.pathname === '/categories/digital' ? window.innerWidth <= 768 ? "5rem" :  '12rem' : '0rem',
+          marginTop: location.pathname === '/digital' ? window.innerWidth <= 768 ? "5rem" :  '12rem' : '0rem',
         }}
       >
         <h1 className="categories-title">Top Digital Services</h1>
         <p className="categories-description">
-        Discover expert digital solutions tailored for your business. From marketing to app development, explore top-tier services trusted by clients worldwide for innovation and performance.
-        </p>
+  Discover expert digital solutions tailored for your business. From marketing to app development, explore top-tier services trusted by clients worldwide for innovation and performance.  
+  Our team specializes in delivering measurable results through data-driven strategies, sleek user experiences, and scalable technology.
+</p>
         <div className="categories-grid">
           {services.map((category) => (
             <div
@@ -83,7 +86,50 @@ const DigitalCategories = () => {
             </div>
           ))}
         </div>
+        {location.pathname === '/digital' && (
+  <div className="categories-extra-feature">
+    {/* Info Section */}
+    <div className="info-block">
+      <h2>Why Choose Our Digital Services?</h2>
+      <p>
+        From startups to global brands, businesses trust us to power their growth through high-impact digital strategies. Our expertise spans marketing, development, content, and apps—each service designed to boost visibility, user engagement, and long-term results.
+      </p>
+    </div>
+
+    {/* Service Highlights */}
+    <div className="highlight-grid">
+      <div className="highlight-card">
+        <h3>Result-Oriented Marketing</h3>
+        <p>SEO, paid ads, and social media strategies that deliver qualified leads and measurable ROI.</p>
       </div>
+      <div className="highlight-card">
+        <h3>Modern Web & App Development</h3>
+        <p>Responsive, scalable, and fast—built using the latest frameworks for seamless user experiences.</p>
+      </div>
+      <div className="highlight-card">
+        <h3>Creative Content Writing</h3>
+        <p>Convert readers into customers with persuasive blogs, landing pages, and brand messaging.</p>
+      </div>
+    </div>
+
+    {/* Call to Action */}
+    <div className="cta-section">
+      <h2>Want to Transform Your Digital Presence?</h2>
+      <p>Let’s discuss your goals. Our team will guide you through services that suit your business best.</p>
+      
+      <div className="cta-actions">
+        <a href={`tel:${webinfo.phonecall}`} className="cta-call-button">
+          <FontAwesomeIcon icon={faHeadset} /> <span>Talk to Us: {webinfo.phone}</span>
+        </a>
+        <p className="cta-note">Free consultation | Proven expertise | Friendly support</p>
+      </div>
+    </div>
+  </div>
+)}
+
+        
+      </div>
+      
      {location.pathname === '/all-categories' ? (
       <p></p>
      ):(

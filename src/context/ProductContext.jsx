@@ -314,7 +314,6 @@ export const ProductProvider = ({ children }) => {
         "price": "129.99",
         "originalPrice": "149.99",
         "discountedPrice": "129.99",
-        "category": ["top-rated"],
         "img": "https://res.cloudinary.com/dcf3mojai/image/upload/v1738063068/webrootendpoint_erk6rg.jpg",
         "route": "/antivirus/webroot/webroot-business-endpoint-protection",
         "specifications": {
@@ -520,6 +519,7 @@ export const ProductProvider = ({ children }) => {
         "price": "99.99",
         "originalPrice": "119.99",
         "discountedPrice": "99.99",
+        "category": ["top-rated"],
         "img": "https://res.cloudinary.com/dcf3mojai/image/upload/v1727775608/Bitdefender_Total_Security_x80nf7.png",
         "route": "/antivirus/bitdefender/bitdefender-total-security",
         "specifications": {
@@ -632,7 +632,7 @@ export const ProductProvider = ({ children }) => {
           "desc": "Avira Internet Security provides all-around protection against malware, ransomware, and online threats. It includes a built-in password manager, secure browsing, and anti-phishing tools. The software automatically blocks unsafe emails, downloads, and links. With real-time updates and cloud-based threat detection, it ensures the highest level of security. The lightweight design ensures a smooth user experience without slowing down your device.",
           "price": "79.99",
           "originalPrice": "89.99",
-          "category": ["top-rated"],
+          "category": [""],
           "discountedPrice": "79.99",
           "img": "https://res.cloudinary.com/dcf3mojai/image/upload/v1738589105/avira-antivirus-500x500_qqva1k.png",
           "route": "/antivirus/avira/avira-internet-security",
@@ -691,7 +691,7 @@ export const ProductProvider = ({ children }) => {
             "price": "99.99",
             "originalPrice": "129.99",
             "discountedPrice": "99.99",
-            "category": ["top-rated"],
+            "category": [""],
             "img": "https://res.cloudinary.com/dcf3mojai/image/upload/v1738340505/pc-matic-kit-removebg-preview_zekzbt.png",
             "route": "/antvirus/pcmatic/pc-matic-ultimate",
             "specifications": {
@@ -767,7 +767,7 @@ export const ProductProvider = ({ children }) => {
               "price": "99.99",
               "originalPrice": "119.99",
               "discountedPrice": "99.99",
-              "category": ["best-seller","top-rated"],
+              "category": ["best-seller",""],
               "img": "https://res.cloudinary.com/dcf3mojai/image/upload/v1738593055/box-maximum-security_uspgbq.png",
               "route": "/antivirus/trendmicro/trendmicro-maximum-security",
               "specifications": {
@@ -824,7 +824,7 @@ export const ProductProvider = ({ children }) => {
                 "price": "99.99",
                 "originalPrice": "119.99",
                 "discountedPrice": "99.99",
-                "category": ["best-seller","top-rated"],
+                "category": ["best-seller",""],
                 "img": "https://res.cloudinary.com/dcf3mojai/image/upload/v1738590948/74318095-removebg-preview_mul1to.png",
                 "route": "/antivirus/bullguard/bullguard-premium-protection",
                 "specifications": {
@@ -879,6 +879,7 @@ export const ProductProvider = ({ children }) => {
     "price": "129.99",
     "originalPrice": "149.99",
     "discountedPrice": "129.99",
+    "category": ["top-rated"],
     "img": "https://res.cloudinary.com/dcf3mojai/image/upload/v1738671477/microsoft-windows-7-windows-7-ultimate-32-64-bit-full-pack-original-imadcacgtkzmsj3a_j6ibrb.jpg",
     "route": "/windows/windows7/ultimate",
     "specifications": {
@@ -932,6 +933,7 @@ export const ProductProvider = ({ children }) => {
     "price": "119.99",
     "originalPrice": "139.99",
     "discountedPrice": "119.99",
+    "category": ["top-rated"],
     "img": "https://res.cloudinary.com/dcf3mojai/image/upload/v1738672388/win10-pro-8.1_xxnayg.jpg",
     "route": "/windows/windows8/pro",
     "specifications": {
@@ -966,6 +968,7 @@ export const ProductProvider = ({ children }) => {
     "price": "119.99",
     "originalPrice": "139.99",
     "discountedPrice": "119.99",
+    "category": ["top-rated"],
     "img": "https://res.cloudinary.com/dcf3mojai/image/upload/v1738672639/microsoft-windows-8-1-pro-500x500_ry9st7.png",
     "route": "/windows/windows8/professional",
     "specifications": {
@@ -1020,6 +1023,7 @@ export const ProductProvider = ({ children }) => {
     "price": "99.99",
     "originalPrice": "129.99",
     "discountedPrice": "99.99",
+    "category": ["top-rated"],
     "img": "https://res.cloudinary.com/dcf3mojai/image/upload/v1738673403/Windows-XP-SP3-ISO-Full-Version-Free-Download_ghdeke.jpg",
     "route": "/windows/windowsxp/sp3",
     "specifications": {
@@ -1039,6 +1043,7 @@ export const ProductProvider = ({ children }) => {
     "price": "249.99",
     "originalPrice": "299.99",
     "discountedPrice": "249.99",
+    "category": ["top-rated"],
     "img": "https://res.cloudinary.com/dcf3mojai/image/upload/v1738939098/c05288908_uzxkdi.png",
     "route": "/printer/hp-laserjet-pro-mfp-m227fdw",
     "specifications": {
@@ -1092,6 +1097,7 @@ export const ProductProvider = ({ children }) => {
     "price": "199.99",
     "originalPrice": "249.99",
     "discountedPrice": "199.99",
+    "category": ["top-rated"],
     "img": "https://res.cloudinary.com/dcf3mojai/image/upload/v1738940711/TR8620_580_580_02_rs47gy.png",
     "route": "/printer/canon-pixma-tr8620a",
     "specifications": {
@@ -1145,6 +1151,7 @@ export const ProductProvider = ({ children }) => {
     "price": "399.99",
     "originalPrice": "449.99",
     "discountedPrice": "399.99",
+    "category": ["top-rated"],
     "img": "https://res.cloudinary.com/dcf3mojai/image/upload/v1738941195/06ZcqLgdazrqbaxrpv3wZEr-1..v1569469957-removebg-preview_vnnh8j.png",
     "route": "/printer/epson-ecotank-et-4760",
     "specifications": {
@@ -1179,6 +1186,7 @@ export const ProductProvider = ({ children }) => {
     "price": "799.99",
     "originalPrice": "899.99",
     "discountedPrice": "799.99",
+    "category": ["top-rated"],
     "img": "https://res.cloudinary.com/dcf3mojai/image/upload/v1738941377/epson_c11ce21201_surecolor_p600_inkjet_printer_1418655906000_1091547-removebg-preview_v9mcmt.png",
     "route": "/printer/epson-surecolor-p600",
     "specifications": {
@@ -1215,6 +1223,7 @@ export const ProductProvider = ({ children }) => {
     "price": "299.99",
     "originalPrice": "349.99",
     "discountedPrice": "299.99",
+    "category": ["top-rated"],
     "img": "https://res.cloudinary.com/dcf3mojai/image/upload/v1740581883/B1_CBK752_32_tcm148-139315_nhzhr1.png",
     "route": "/router/netgear/netgear-orbi-rbk752",
     "specifications": {
@@ -1251,6 +1260,7 @@ export const ProductProvider = ({ children }) => {
     "price": "279.99",
     "originalPrice": "329.99",
     "discountedPrice": "279.99",
+    "category": ["top-rated"],
     "img": "https://res.cloudinary.com/dcf3mojai/image/upload/v1740582855/images_kmuc2c.jpg",
     "route": "/router/tplink/tp-link-archer-ax6000",
     "specifications": {
@@ -1304,6 +1314,7 @@ export const ProductProvider = ({ children }) => {
     "price": "399.99",
     "originalPrice": "449.99",
     "discountedPrice": "399.99",
+    "category": ["top-rated"],
     "img": "https://res.cloudinary.com/dcf3mojai/image/upload/v1740583490/h525_ywbiag.png",
     "route": "/router/asus/asus-rog-rapture-gt-ax11000",
     "specifications": {
@@ -1444,6 +1455,7 @@ export const ProductProvider = ({ children }) => {
     "price": "399.99",
     "originalPrice": "449.99",
     "discountedPrice": "399.99",
+    "category": ["top-rated"],
     "img": "https://res.cloudinary.com/dcf3mojai/image/upload/v1740584253/untitled-1-20-500x500_xwmmbd.jpg",
     "route": "/router/cisco/cisco-meraki-mx64-cloud-managed-router",
     "specifications": {

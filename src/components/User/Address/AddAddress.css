@@ -5,11 +5,12 @@
     align-items: center;
     height: 100vh;
     position: absolute;
-    top:6%;
+    top:0%;
     left: 0;
     right:0;
     bottom: 0;
     background-color: #00000023;
+    z-index: 100000;
   }
   
   .add-address-form {

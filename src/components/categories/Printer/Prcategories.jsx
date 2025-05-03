@@ -5,6 +5,8 @@ import { useProduct } from "../../../context/ProductContext";
 import Disclaimer from "../../T&C/Disclaimer";
 import { useLocalContext } from "../../../context/LocalContext";
 import { useMetadata } from "../../../context/Metadatacontext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeadset, faPhone } from "@fortawesome/free-solid-svg-icons";
 
 const Prcategories = () => {
   const navigate = useNavigate();
@@ -34,8 +36,8 @@ const Prcategories = () => {
     <>
       <div className="categories-container"
         style={{
-          marginTop: location.pathname === '/categories/printer' ? window.innerWidth <= 768 ? "5rem" :  '12rem' : '0rem',
-          height: location.pathname === '/categories/printer' ?  window.innerWidth <= 768 ? "" : '60vh' : ''
+          marginTop: location.pathname === '/printer' ? window.innerWidth <= 768 ? "5rem" :  '12rem' : '0rem',
+          height: location.pathname === '/printer' ?  window.innerWidth <= 768 ? "" : '100%' : ''
         }}
       >
         <h1 className="categories-title">Top Printer Brands</h1>
@@ -58,6 +60,47 @@ const Prcategories = () => {
             </div>
           ))}
         </div>
+        {location.pathname === '/printer' && (
+  <div className="categories-extra-feature">
+    {/* Info Section */}
+    <div className="info-block">
+      <h2>Why Choose Our Printer Services?</h2>
+      <p>
+        Whether you're using inkjet or laser printers, our services are designed to ensure optimal setup, connectivity, and print quality. We work with all major brands—HP, Canon, Epson, Brother, and more—to deliver smooth printing experiences at home and in offices.
+      </p>
+    </div>
+
+    {/* Printer Service Highlights */}
+    <div className="highlight-grid">
+      <div className="highlight-card">
+        <h3>Printer Setup & Installation</h3>
+        <p>We help install and configure printers via USB, network, or Wi-Fi, ensuring compatibility and performance.</p>
+      </div>
+      <div className="highlight-card">
+        <h3>Wireless Connectivity Support</h3>
+        <p>Resolve connection issues and set up wireless printing across all devices—PC, Mac, mobile, and tablets.</p>
+      </div>
+      <div className="highlight-card">
+        <h3>Driver & Error Troubleshooting</h3>
+        <p>Get help fixing driver errors, paper jams, spooler issues, and unresponsive printer problems in no time.</p>
+      </div>
+    </div>
+
+    {/* Call to Action */}
+    <div className="cta-section">
+      <h2>Need Help with Your Printer?</h2>
+      <p>From simple setup to complex issues, our printer experts are here to provide quick and reliable solutions.</p>
+
+      <div className="cta-actions">
+        <a href={`tel:${webinfo.phonecall}`} className="cta-call-button">
+          <FontAwesomeIcon icon={faHeadset} /> <span>Call Now: {webinfo.phone}</span>
+        </a>
+        <p className="cta-note">Expert Support | Multi-brand Assistance | 24/7 Help Desk</p>
+      </div>
+    </div>
+  </div>
+)}
+
       </div>
      {location.pathname === '/categories' ? (
       <p></p>

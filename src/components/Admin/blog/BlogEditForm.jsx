@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { db } from '../../../firebase/firebaseConfig';
+import { db } from '../../../firebase/firebaseConfig'; // Adjust path as needed
 import { doc, updateDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 import './BlogEditForm.css';
@@ -17,6 +17,9 @@ const BlogEditForm = () => {
   const [content, setContent] = useState('');
   const [category, setCategory] = useState('');
   const [imageBase64, setImageBase64] = useState('');
+  const [imageLink, setImageLink] = useState('');  // New field for image link
+  const [author, setAuthor] = useState('');  // New field for author
+  const [date, setDate] = useState('');  // New field for date
 
   // Categories list
   const categories = ['Antivirus', 'Printer', 'Windows OS'];
@@ -27,6 +30,9 @@ const BlogEditForm = () => {
       setContent(selectedBlog.content);
       setCategory(selectedBlog.category);
       setImageBase64(selectedBlog.imageBase64 || '');
+      setImageLink(selectedBlog.imageLink || ''); // Set the image link if available
+      setAuthor(selectedBlog.author || ''); // Set the author if available
+      setDate(selectedBlog.date || ''); // Set the date if available
     }
   }, [selectedBlog]);
 
@@ -46,18 +52,21 @@ const BlogEditForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!title || !content || !category) {
+    if (!title || !content || !category || !author || !date) {
       toast.error('All fields are required!');
       return;
     }
 
     try {
-      const blogRef = doc(db, 'antivirus_blogs', selectedBlog.id);
+      const blogRef = doc(db, '_blogs', selectedBlog.id);
       await updateDoc(blogRef, {
         title,
         content,
         category,
         imageBase64,
+        imageLink,  // Save the image link if provided
+        author,
+        date,
         updatedAt: new Date(),
       });
 
@@ -93,7 +102,7 @@ const BlogEditForm = () => {
               modules={{
                 toolbar: [
                   [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
-                  [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                  [{ 'list': 'ordered' }, { 'list': 'bullet' }],
                   ['bold', 'italic', 'underline'],
                   [{ 'align': [] }],
                   ['link'],
@@ -101,8 +110,8 @@ const BlogEditForm = () => {
                   ['blockquote'],
                   [{ 'direction': 'rtl' }],
                   [{ 'color': [] }, { 'background': [] }],
-                  [{ 'script': 'sub'}, { 'script': 'super' }],
-                  [{ 'indent': '-1'}, { 'indent': '+1' }],
+                  [{ 'script': 'sub' }, { 'script': 'super' }],
+                  [{ 'indent': '-1' }, { 'indent': '+1' }],
                   [{ 'size': ['small', 'medium', 'large', 'huge'] }],
                   ['code'],
                   ['clean']
@@ -128,6 +137,43 @@ const BlogEditForm = () => {
                 <option key={index} value={cat}>{cat}</option>
               ))}
             </select>
+          </div>
+
+          {/* New Image URL input field */}
+          <div className="form-group">
+            <label htmlFor="imageLink">Image URL (optional)</label>
+            <input
+              type="url"
+              id="imageLink"
+              value={imageLink}
+              onChange={(e) => setImageLink(e.target.value)}
+              placeholder="Enter image URL"
+            />
+          </div>
+
+          {/* New Author input field */}
+          <div className="form-group">
+            <label htmlFor="author">Author</label>
+            <input
+              type="text"
+              id="author"
+              value={author}
+              onChange={(e) => setAuthor(e.target.value)}
+              placeholder="Enter author name"
+              required
+            />
+          </div>
+
+          {/* New Date input field */}
+          <div className="form-group">
+            <label htmlFor="date">Date</label>
+            <input
+              type="date"
+              id="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              required
+            />
           </div>
 
           <div className="form-group">

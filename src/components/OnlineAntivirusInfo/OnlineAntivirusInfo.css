@@ -2,7 +2,7 @@
 .online-antivirus-info {
     width: 100%;
     padding: 4rem 2rem;
-    background: #f9fafb;
+    background: var(--light-bg);
     text-align: center;
 }
 
@@ -10,7 +10,7 @@
 .section-title {
     font-size: 2.4rem;
     font-weight: bold;
-    color: #1e293b;
+    color: var(--text-dark);
     margin-bottom: 2rem;
 }
 
@@ -25,7 +25,7 @@
 
 /* 🔹 Individual Info Box */
 .info-box {
-    background: white;
+    background: var(--text-light);
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
@@ -43,13 +43,13 @@
 /* 🔹 Icons */
 .info-icon {
     font-size: 2.5rem;
-    color: rgb(196, 9, 41);
+    color: var(--highlight-text);
 }
 
 /* 🔹 Text Formatting */
 .info-box p {
     font-size: 1.6rem;
-    color: #475569;
+    color: var(--gear-color);
     text-align: left;
 }
 

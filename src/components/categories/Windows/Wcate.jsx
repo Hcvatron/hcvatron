@@ -119,7 +119,7 @@ const Wcate = () => {
 
         {/* How to Buy and Install Section */}
         <div className="how-to-section">
-          <h2>🔹 Quick & Easy Steps to Get Your Windows OS</h2>
+          <h2>🔸 Quick & Easy Steps to Get Your Windows OS</h2>
           <ul>
             <li>
               <FontAwesomeIcon icon={faShoppingCart} className="step-icon" />
@@ -153,7 +153,7 @@ const Wcate = () => {
         {/* Bottom Section */}
         <div className="bottom-section">
           <div className="why-choose">
-            <h2>🔹 Why Buy Windows OS from Us?</h2>
+            <h2>🔸 Why Buy Windows OS from Us?</h2>
             <p>
               {whyChoose ||
                 "We offer 100% genuine Windows licenses with instant delivery and dedicated support."}

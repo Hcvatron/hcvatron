@@ -38,6 +38,9 @@ import DigitalCategories from "../components/categories/Digital/DigitalCategorie
 import DigitalCate from "../components/categories/Digital/DigitalMarketting/DigitalCate";
 import WebDevCate from "../components/categories/Digital/WebDevelopment/WebDevCate";
 import { useLocalContext } from "../context/LocalContext";
+import UnderDevelopment from "../components/UnderDevelopment/UnderDevelopment";
+import ContentWriting from "../components/categories/Digital/ContentWriting/ContentWriting";
+import AppDevelopment from "../components/categories/Digital/AppDevelopment/AppDevelopment";
 
 const ScrollToTop = () => {
   const location = useLocation();
@@ -135,12 +138,32 @@ const MainContent = () => {
   const isLoginPage = location.pathname.includes("/user/login");
   const { isUserLoggedIn } = useUserContext();
 
+  const underDevPaths = [
+    // "/digital/content-writing",
+    // "/digital/app-development",
+    "/antivirus/future-brand",
+    "/some/future-page"
+  ];
+
+  const isUnderDevelopment = underDevPaths.includes(location.pathname);
+
+ 
+  if (isUnderDevelopment) {
+    return (
+      <>
+      <Header />
+    <UnderDevelopment />
+    <Footer />
+     </>
+    );
+  }
+
   return (
     <>
       {!isAdminPage && <Header />}
       {!isAdminPage && <URLStateHandler />}
       {!isAdminPage && <ScrollToTop />}
-      {/* <RouteDetermination /> */}
+      <RouteDetermination />
       {!isAdminPage && (
         <Routes>
           <Route exact path="/" element={<Home />} />
@@ -149,18 +172,21 @@ const MainContent = () => {
           <Route exact path="/about" element={<About />} />
           <Route exact path="/contact" element={<Contact />} />
           <Route exact path="/blogs" element={<AllBlogs />} />
-          <Route exact path="/categories/antivirus" element={<Categories />} />
-          <Route exact path="/categories/digital" element={<DigitalCategories />} />
-          <Route exact path="/categories/windows" element={<Wcategories />} />
-          <Route exact path="/categories/printer" element={<Prcategories />} />
-          <Route exact path="/categories/router" element={<Rcategories />} />
+          <Route exact path="/antivirus" element={<Categories />} />
+          <Route exact path="/digital" element={<DigitalCategories />} />
+          <Route exact path="/windows" element={<Wcategories />} />
+          <Route exact path="/printer" element={<Prcategories />} />
+          <Route exact path="/router" element={<Rcategories />} />
           <Route exact path="/disclaimer" element={<Disclaimer />} />
           <Route exact path="/best-sellers" element={<BestSeller />} />
           <Route exact path="/top-rated" element={<TopSeller />} />
           <Route path="/blog/:blog" element={<Blogspage />} />
           <Route exact path="/categories" element={<AllCate />} />
-          <Route path="/digital/digital-marketing" element={<DigitalCate />} />
-          <Route path="/digital/web-development" element={<WebDevCate />} />
+          <Route exact path="/digital/digital-marketing" element={<DigitalCate />} />
+          <Route exact path="/digital/web-development" element={<WebDevCate />} />
+          <Route exact path="/digital/content-writing" element={<ContentWriting />} />
+          <Route exact path="/digital/app-development" element={<AppDevelopment />} />
+          <Route path="/antivirus/:category" element={<Cate />} />
           <Route path="/router/:category" element={<Rcate />} />
           <Route path="/windows/:category" element={<Wcate />} />
           <Route path="/printer/:category" element={<Prcate />} />
@@ -175,6 +201,7 @@ const MainContent = () => {
           <Route path="/returnandrefundpolicy" element={<Refund />} />
           <Route path="/shipping-policy" element={<ShippingPolicy />} />
           <Route exact path="/user/login" element={<UserLogin />} />
+          {/* <Route exact path="*" element={<UnderDevelopment />} /> */}
         </Routes>
       )}
       {isAdminPage && <AdminLayout />}

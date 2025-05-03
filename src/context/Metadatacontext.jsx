@@ -773,6 +773,92 @@ const categoryMetadata = {
                 }
               ]
             },
+              "TrendMicro": {
+                "title": "Trend Micro Antivirus Support",
+                "bannerImg": "https://res.cloudinary.com/dcf3mojai/image/upload/v1738593055/box-maximum-security_uspgbq.png",
+                "backgroundImage": "",
+                "logo": "https://res.cloudinary.com/dcf3mojai/image/upload/v1738567995/Trend_Micro_Logo_2023_adnhlu.png",
+                "whyChoose": "Trend Micro is a global cybersecurity leader offering multilayered protection against malware, ransomware, and phishing across devices. With advanced AI-powered threat intelligence, web protection, and privacy controls, it ensures a secure digital experience for both home and business users. Trend Micro also includes Pay Guard for secure online banking and Folder Shield for ransomware defense.",
+                "contact": {
+                  "supportPhone": "+1 (877) 275-8612",
+                  "supportEmail": "support@trendmicro.com",
+                  "website": "https://www.trendmicro.com"
+                },
+                "benefits": [
+                  {
+                    "title": "AI-Powered Threat Detection",
+                    "desc": "Real-time protection using cloud-based smart scans and behavior monitoring.",
+                    "icon": "https://img.icons8.com/ios-filled/50/artificial-intelligence.png"
+                  },
+                  {
+                    "title": "Pay Guard",
+                    "desc": "Keeps your online banking and shopping activities safe from hackers.",
+                    "icon": "https://img.icons8.com/ios-filled/50/online-payment.png"
+                  },
+                  {
+                    "title": "Ransomware Protection",
+                    "desc": "Folder Shield blocks unauthorized access to critical files and folders.",
+                    "icon": "https://img.icons8.com/ios-filled/50/lock.png"
+                  }
+                ],
+                "features": [
+                  "Advanced AI Learning for smarter threat prevention.",
+                  "Web Threat Protection to block dangerous websites in real time.",
+                  "Anti-Ransomware Folder Shield for critical file protection.",
+                  "Email Scanning to filter malicious attachments and phishing links.",
+                  "Parental Controls to safeguard kids' internet usage.",
+                  "Pay Guard for secure financial transactions online.",
+                  "PC Optimization Tools to clean junk and boost speed.",
+                  "Secure Web Browser Extension for Chrome, Firefox, and Edge.",
+                  "Identity Theft Prevention to monitor sensitive data breaches.",
+                  "Multi-Device Support including PC, Mac, Android, and iOS.",
+                  "Cloud-based Smart Protection Network for global threat detection.",
+                  "24/7 Support and Easy Installation Assistance."
+                ],
+                "testimonials": [
+                  {
+                    "quote": "Trend Micro's Pay Guard gives me peace of mind during online banking.",
+                    "author": "Amanda T."
+                  },
+                  {
+                    "quote": "It's the best at stopping phishing attacks before I even click.",
+                    "author": "James K."
+                  },
+                  {
+                    "quote": "My files are safe thanks to Folder Shield. Great ransomware protection.",
+                    "author": "Rachel M."
+                  },
+                  {
+                    "quote": "Very light on system resources and easy to use interface.",
+                    "author": "Chris W."
+                  },
+                  {
+                    "quote": "Their customer support is extremely helpful and knowledgeable.",
+                    "author": "Olivia L."
+                  },
+                  {
+                    "quote": "I trust Trend Micro for protecting all my family's devices.",
+                    "author": "Brian D."
+                  },
+                  {
+                    "quote": "It even warns me about risky sites when I search on Google.",
+                    "author": "Emily S."
+                  },
+                  {
+                    "quote": "Seamless protection across my phone and laptop. Totally worth it.",
+                    "author": "Josh A."
+                  },
+                  {
+                    "quote": "Easy installation and quick scans. No lags!",
+                    "author": "Victoria P."
+                  },
+                  {
+                    "quote": "Great antivirus for professionals and families alike.",
+                    "author": "Daniel R."
+                  }
+                ]
+              },
+                        
               "Windows7": {
                 "title": "Microsoft Windows Support",
                 "bannerImg": "https://res.cloudinary.com/dcf3mojai/image/upload/v1738593055/windows-banner.png",

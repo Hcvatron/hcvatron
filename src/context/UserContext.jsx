@@ -25,7 +25,7 @@ export const UserProvider = ({ children }) => {
     const fetchUser = async (uid) => {
       if (!uid) return;
   
-      const userDocRef = doc(db, "antivirus_user", uid);
+      const userDocRef = doc(db, "_user", uid);
   
       const unsubscribe = onSnapshot(userDocRef, (docSnap) => {
           if (docSnap.exists()) {

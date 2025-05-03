@@ -1,7 +1,7 @@
 .aboutMission {
     display: flex;
     justify-content: space-around;
-    background: #f8f9fa;
+    background: var(--light-bg);
     padding: 50px;
 }
 

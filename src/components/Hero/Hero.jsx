@@ -20,7 +20,7 @@ const Hero = () => {
           
           {/* Call-to-Action Buttons */}
           <div className="hero-buttons">
-            <button className="cta-btn primary-btn" onClick={()=>navigate('/categories')}>Get Protected</button>
+            <button className="cta-btn primary-btn" onClick={()=>navigate('/antivirus')}>Get Protected</button>
             <button className="cta-btn secondary-btn" onClick={()=>navigate('/about')}>Learn More</button>
           </div>
         </div>

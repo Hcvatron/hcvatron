@@ -117,7 +117,7 @@ const Prcate = () => {
 
         {/* How to Buy a Printer Section */}
         <div className="how-to-section">
-          <h2>🔹 Easy Steps to Get Your Printer</h2>
+          <h2>🔸 Easy Steps to Get Your Printer</h2>
           <ul>
             <li>
               <FontAwesomeIcon icon={faShoppingCart} className="step-icon" />
@@ -147,7 +147,7 @@ const Prcate = () => {
         {/* Bottom Section */}
         <div className="bottom-section">
           <div className="why-choose">
-            <h2>🔹 Why Buy Printers from Us?</h2>
+            <h2>🔸 Why Buy Printers from Us?</h2>
             <p>
               {whyChoose ||
                 "We offer the best selection of HP, Canon, and Epson printers with competitive pricing and expert support."}

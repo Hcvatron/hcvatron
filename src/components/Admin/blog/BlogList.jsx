@@ -15,10 +15,12 @@ const BlogList = ({ count, main }) => {
 
   useEffect(() => {
     const fetchBlogs = async () => {
-      const querySnapshot = await getDocs(collection(db, 'antivirus_blogs'));
+      const querySnapshot = await getDocs(collection(db, '_blogs'));
       const blogData = querySnapshot.docs.map(doc => ({
         id: doc.id,
         ...doc.data(),
+        formattedDate: formatDate(doc.data().date), // Format date here
+        createdAtFormatted: formatDate(doc.data().createdAt), // Format createdAt
       }));
       setBlogs(blogData);
       setLoading(false); // Stop loading when data is fetched
@@ -26,6 +28,20 @@ const BlogList = ({ count, main }) => {
 
     fetchBlogs();
   }, []);
+
+  // Format the date as 'May 3, 2025'
+  const formatDate = (date) => {
+    if (date) {
+      const formattedDate = new Date(date.seconds * 1000 || date);  // Handle Firestore timestamp
+      return formattedDate.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      });
+    }
+    return ''; // Return an empty string if no date is available
+  };
+
   const handleBlogClick = (blog) => {
     selectBlog(blog);
     const encodedTitle = encodeURIComponent(blog.title); // Encode before navigation
@@ -74,7 +90,7 @@ const BlogList = ({ count, main }) => {
             return (
               <div key={blog.id} className="blog-card">
                 <div className="blog-image" onClick={() => handleBlogClick(blog)}>
-                  {blog.imageBase64 && <img src={blog.imageBase64} alt="Blog" />}
+                  {(blog.imageBase64 || blog.imageLink) && <img src={blog.imageBase64 || blog.imageLink} alt="Blog" />}
                 </div>
                 <div className="blog-content">
                   <h3 onClick={() => handleBlogClick(blog)}>{blog.title}</h3>
@@ -87,12 +103,13 @@ const BlogList = ({ count, main }) => {
                           handleBlogClick(blog);
                         }}
                       >
-                        <span onClick={()=>handleBlogClick(blog)}>Read More</span>
+                        <span>Read More</span>
                       </button>
                     )}
                   </p>
                   <p><strong>Category:</strong> {blog.category}</p>
                   <p><strong>Date:</strong> {blog.formattedDate}</p>
+                  <p><strong>Created At:</strong> {blog.createdAtFormatted}</p>
 
                   {main && (
                     <div className="blog-actions">

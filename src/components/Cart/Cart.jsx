@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useProduct } from "../../context/ProductContext";
-import "./Cart.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useLocalContext } from "../../context/LocalContext";
 import { useUserContext } from "../../context/UserContext";
+import "./Cart.css";
+import BestSeller from "../categories/Antivirus/BestSeller/BestSeller";
 
 const Cart = () => {
   const { cart, setCart } = useProduct();
@@ -49,88 +50,71 @@ const Cart = () => {
 
   const handleProceedToPay = () => {
     if (cart.length > 0) {
-      if(isUserLoggedIn){
-        navigate("/payment");
-      }else{
-          navigate('/user/login')
-          toast.warning("Kindly login to proceed!!");
-      }
-     
+      isUserLoggedIn ? navigate("/payment") : navigate("/user/login");
+      if (!isUserLoggedIn) toast.warning("Kindly login to proceed!");
     } else {
-      toast.warning("Can't Proceed! Cart Is Empty");
+      toast.warning("Your cart is empty!");
     }
   };
 
   return (
-    <div className="cart">
-      <h1 className="cart-title">Your Cart ({cart.length} items)</h1>
-      <div className="cart-layout">
-        <div className="cart-items-container">
-          {cart.length === 0 ? (
-            <p className="empty-cart-message">Your cart is empty</p>
-          ) : (
-            <table className="cart-table">
-              <thead>
-                <tr>
-                  <th>Item</th>
-                  <th>Price</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {cart.map((item) => (
-                  <tr key={item.id}>
-                    <td className="cart-item-info">
-                      <img src={item.img} alt={item.name} />
-                      <span>{item.name}</span>
-                    </td>
-                    <td>${item.price}</td>
-                    <td>
-                      <button
-                        onClick={() => handleRemove(item.id)}
-                        className="remove-item-btn"
-                      >
-                        Remove
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          )}
-        </div>
+    <>
+    <div className="cart-container">
+      <h1 className="cart-heading">Your Cart</h1>
 
-        <div className="cart-summary">
-          <h2>Order Summary</h2>
-          <p>
-            Subtotal: <span>${calculateOriginalTotal()}</span>
-          </p>
-          <p>
-            Discount: <span>{discount > 0 ? `${discount}%` : "$0.00"}</span>
-          </p>
-          <p className="final-total">
-            Grand Total: <span>${calculateDiscountedTotal()}</span>
-          </p>
-          <button className="proceed-btn" onClick={handleProceedToPay}>
-            Proceed to Checkout
-          </button>
-          <div className="payment-partners">
-            <h3>Accepted Payments</h3>
-            <div className="partner-icons">
-              <img src="https://img.icons8.com/color/50/visa.png" alt="Visa" />
-              <img
-                src="https://img.icons8.com/color/50/mastercard.png"
-                alt="Mastercard"
+      {cart.length === 0 ? (
+        <div className="cart-empty">
+          <img src="https://img.icons8.com/ios/100/shopping-cart--v1.png" alt="Empty" />
+          <p>Your cart is currently empty.</p>
+        </div>
+      ) : (
+        <div className="cart-content">
+          <div className="cart-items">
+            {cart.map((item) => (
+              <div className="cart-item" key={item.id}>
+                <img src={item.img} alt={item.name} />
+                <div className="item-details">
+                  <h4>{item.name}</h4>
+                  <p>${item.price}</p>
+                  <button onClick={() => handleRemove(item.id)}>Remove</button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="cart-summary">
+            <h3>Order Summary</h3>
+            <p>Subtotal: <strong>${calculateOriginalTotal()}</strong></p>
+            <p>Discount: <strong>{discount > 0 ? `${discount}%` : "None"}</strong></p>
+
+            <div className="coupon-block">
+              <input
+                type="text"
+                placeholder="Enter Coupon Code"
+                value={couponCode}
+                onChange={(e) => setCouponCode(e.target.value)}
               />
-              <img
-                src="https://img.icons8.com/color/50/paypal.png"
-                alt="Paypal"
-              />
+              <button onClick={handleApplyCoupon}>Apply</button>
+            </div>
+
+            <p className="total">Total: <strong>${calculateDiscountedTotal()}</strong></p>
+
+            <button className="checkout-btn" onClick={handleProceedToPay}>
+              Proceed to Checkout
+            </button>
+
+            <div className="payment-logos">
+              <h5>Accepted Payments</h5>
+              <img src="https://img.icons8.com/color/48/visa.png" alt="Visa" />
+              <img src="https://img.icons8.com/color/48/mastercard.png" alt="Mastercard" />
+              <img src="https://img.icons8.com/color/48/paypal.png" alt="PayPal" />
             </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
+    <BestSeller />
+    </>
   );
 };
 

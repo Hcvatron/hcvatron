@@ -1,6 +1,6 @@
-.antiv{
-    width: 100%;
-    height: 100%;
+.antiv {
+  width: 100%;
+  height: 100%;
 }
 
 /* 🔹 General Banner Styling */
@@ -17,21 +17,20 @@
   z-index: 10;
 }
 
-.antivBanner:before{
+.antivBanner:before {
   content: '';
   width: 100%;
   height: 100%;
   position: absolute;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
-  background-color: black;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--primary-color);
   z-index: -1;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
-/* 🔹 Container to Organize Left & Right Sections */
 .antivBannerContainer {
   display: flex;
   align-items: center;
@@ -42,12 +41,9 @@
   gap: 3rem;
 }
 
-
-
-/* 🔹 Left Side - Text Content */
 .antivBannerLeft {
   flex: 1;
-  color: white;
+  color: var(--text-light);
   max-width: 600px;
 }
 
@@ -55,22 +51,22 @@
   font-size: 3rem;
   font-weight: bold;
   margin-bottom: 1rem;
-  color: white;
+  color: var(--text-light);
 }
 
 .antivBannerLeft p {
   font-size: 1.6rem;
   margin-bottom: 2rem;
   line-height: 1.6;
+  color: var(--accent-color);
 }
 
-/* 🔹 Customer Support Box */
-.customersupportbox {
+.antiv .customersupportbox {
   background: rgba(255, 255, 255, 0.15);
   padding: 1rem 2rem;
   border-radius: 8px;
-  display: inline-block;
-  text-align: center;
+  /* display: inline-block; */
+  /* text-align: center; */
   transition: transform 0.3s ease-in-out;
 }
 
@@ -78,24 +74,24 @@
   transform: scale(1.05);
 }
 
-.customersupportbox h3 {
-  font-size: 1.6rem;
+.antiv .customersupportbox h3 {
+  font-size: 1.4rem;
   margin-bottom: 0.5rem;
+  color: var(--text-light);
 }
 
-.customersupportbox a {
-  font-size: 2rem;
+.antiv .customersupportbox a {
+  font-size: 2.8rem;
   font-weight: bold;
-  color: white;
+  color: var(--text-light);
   text-decoration: none;
   transition: color 0.3s;
 }
 
 .customersupportbox a:hover {
-  color: #facc15;
+  color: var(--highlight-text);
 }
 
-/* 🔹 Right Side - Banner Image */
 .antivBannerRight {
   flex: 1;
   display: flex;
@@ -111,17 +107,16 @@
   transform: scale(1.05);
 }
 
-/* 🔹 Logo Section */
 .antivLogoContainer {
   position: absolute;
   bottom: -2rem;
   left: 90.5%;
   display: flex;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
   width: 14rem;
   height: 14rem;
-  background-color: #fffcfc;
+  background-color: #fff;
   border-radius: 50%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -140,30 +135,30 @@
   transform: scale(1.1);
 }
 
-/* 🔹 Responsive Design */
+/* 🔹 Responsive Banner */
 @media (max-width: 768px) {
   .antivBanner {
-      padding: 4rem 1rem;
-      text-align: center;
+    padding: 4rem 1rem;
+    text-align: center;
   }
 
   .antivBannerContainer {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
   .customersupportbox {
-      width: 100%;
-      max-width: 300px;
+    width: 100%;
+    max-width: 300px;
   }
 
   .antivBannerRight {
-      margin-top: 2rem;
+    margin-top: 2rem;
   }
 
   .bannerImage {
-      max-width: 280px;
+    max-width: 280px;
   }
 }
 
@@ -172,7 +167,7 @@
 .antivlist {
   width: 100%;
   padding: 5rem 2rem;
-  background: #f9fafb; /* Soft Gray Background */
+  background: var(--light-bg); /* Soft Gray Background */
   text-align: center;
 }
 
@@ -214,6 +209,7 @@
   display: flex;
   flex-direction: column;
   text-align: center;
+  position: relative;
 }
 
 .antivlistitem:hover {
@@ -224,16 +220,17 @@
 /* 🔹 Product Image Section */
 .antivlistitemtop {
   height: 250px;
-  background: #e0f2fe; /* Light Blue Background */
+  background-color: var(--light-bg);
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   transition: background 0.3s ease;
+  position: relative;
 }
 
 .antivlistitemtop:hover {
-  background: #bae6fd; /* Slightly Brighter */
+  background: var(--secondary-color-faded); /* Slightly Brighter */
 }
 
 .product-image {
@@ -308,12 +305,13 @@
 
 /* 🔹 Add to Cart Button */
 .add-to-cart {
-  background: linear-gradient(135deg, rgb(196, 9, 41), rgb(196, 9, 41));
+  background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+
   color: white;
 }
 
 .add-to-cart:hover {
-  background: linear-gradient(135deg, rgb(197, 29, 57), rgb(199, 30, 58));
+  background: linear-gradient(135deg, #c99a5e, #e0bf7e);
   transform: scale(1.05);
 }
 
@@ -351,6 +349,114 @@
   }
 }
 
+
+/* How to Buy and Install Section */
+/* 🔹 Updated How-to Section Styling */
+.how-to-section {
+  padding: 4rem 3rem;
+  margin: 3rem auto;
+  background: #ffffff; /* Pure White */
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  max-width: 1100px;
+  text-align: left;
+  transition: transform 0.3s ease-in-out;
+}
+
+.how-to-section:hover {
+  transform: scale(1.02);
+}
+
+/* 🔹 Section Heading */
+.how-to-section h2 {
+  font-size: 2.6rem;
+  font-weight: bold;
+  color: #1e293b; /* Dark Blue */
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* 🔹 Step List */
+.how-to-section ul {
+  list-style: none; /* Remove default bullets */
+  padding: 0;
+  font-size: 1.6rem;
+  line-height: 1.8;
+  color: #475569; /* Soft Gray */
+}
+
+.how-to-section ul li {
+  display: flex;
+  align-items: center;
+  background: #f8fafc; /* Light Gray Background */
+  padding: 1.4rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.how-to-section ul li:hover {
+  background: var( --secondary-color-faded); /* Light Blue */
+  transform: translateX(8px);
+}
+
+/* 🔹 Step Number Styling */
+.how-to-section ul li strong {
+  color: var(--highlight-text); /* Blue */
+  margin-left: 0.5rem;
+  margin-right: 1rem;
+}
+
+/* 🔹 Step Icon Styling */
+.step-icon {
+  font-size: 2rem;
+  color: var(--highlight-text);
+  margin-right: 1rem;
+  transition: color 0.3s ease-in-out;
+}
+
+.how-to-section ul li:hover .step-icon {
+  color: var(--secondary-color); /* Darker Blue */
+}
+
+.how-to-section ul li:hover strong{
+  color: var(--secondary-color);
+}
+
+/* 🔹 Last Step Margin Fix */
+.how-to-section ul li:last-child {
+  margin-bottom: 0;
+}
+
+/* 🔹 Responsive Design */
+@media (max-width: 768px) {
+  .how-to-section {
+    padding: 3rem 1.5rem;
+  }
+
+  .how-to-section h2 {
+    font-size: 2.2rem;
+  }
+
+  .how-to-section ul {
+    font-size: 1.4rem;
+  }
+
+  .step-icon {
+    font-size: 1.8rem;
+  }
+
+  .how-to-section ul li {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .how-to-section ul li strong {
+    margin-left: 0;
+  }
+}
 
 
 
@@ -470,108 +576,7 @@
 
 
 
-  /* How to Buy and Install Section */
-/* 🔹 Updated How-to Section Styling */
-.how-to-section {
-  padding: 4rem 3rem;
-  margin: 3rem auto;
-  background: #ffffff; /* Pure White */
-  border-radius: 14px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-  max-width: 1100px;
-  text-align: left;
-  transition: transform 0.3s ease-in-out;
-}
-
-.how-to-section:hover {
-  transform: scale(1.02);
-}
-
-/* 🔹 Section Heading */
-.how-to-section h2 {
-  font-size: 2.6rem;
-  font-weight: bold;
-  color: #1e293b; /* Dark Blue */
-  margin-bottom: 2rem;
-  text-align: center;
-}
-
-/* 🔹 Step List */
-.how-to-section ul {
-  list-style: none; /* Remove default bullets */
-  padding: 0;
-  font-size: 1.6rem;
-  line-height: 1.8;
-  color: #475569; /* Soft Gray */
-}
-
-.how-to-section ul li {
-  display: flex;
-  align-items: center;
-  background: #f8fafc; /* Light Gray Background */
-  padding: 1.4rem;
-  margin-bottom: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-  transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
-}
-
-.how-to-section ul li:hover {
-  background: #e0f2fe; /* Light Blue */
-  transform: translateX(8px);
-}
-
-/* 🔹 Step Number Styling */
-.how-to-section ul li strong {
-  color: #2563eb; /* Blue */
-  margin-left: 0.5rem;
-}
-
-/* 🔹 Step Icon Styling */
-.step-icon {
-  font-size: 2rem;
-  color: #2563eb;
-  margin-right: 1rem;
-  transition: color 0.3s ease-in-out;
-}
-
-.how-to-section ul li:hover .step-icon {
-  color: #1d4ed8; /* Darker Blue */
-}
-
-/* 🔹 Last Step Margin Fix */
-.how-to-section ul li:last-child {
-  margin-bottom: 0;
-}
-
-/* 🔹 Responsive Design */
-@media (max-width: 768px) {
-  .how-to-section {
-    padding: 3rem 1.5rem;
-  }
-
-  .how-to-section h2 {
-    font-size: 2.2rem;
-  }
-
-  .how-to-section ul {
-    font-size: 1.4rem;
-  }
-
-  .step-icon {
-    font-size: 1.8rem;
-  }
-
-  .how-to-section ul li {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1rem;
-  }
-
-  .how-to-section ul li strong {
-    margin-left: 0;
-  }
-}
+  
 
 
   

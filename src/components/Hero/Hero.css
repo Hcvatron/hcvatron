@@ -1,13 +1,13 @@
 /* 🔹 Main Hero Section */
 .hero-section {
   width: 100%;
-  padding: 5rem 3rem;
+  padding: 0rem 3rem;
+  padding-bottom: 5rem;
   background: var(--light-bg);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: left;
-  margin-top: 10rem;
 }
 
 /* 🔹 Hero Content Container */
@@ -28,22 +28,25 @@
 .hero-text h1 {
   font-size: 5rem;
   font-weight: bold;
-  color: #1e293b;
+  color: var(--text-dark);
 }
 
 .hero-text h1 span {
-  color: #ff3d00;
+  color: var(--highlight-text);
 }
 
 .hero-text p {
   font-size: 1.25rem;
-  color: #4b5563;
+  color: var(--gear-color);
   margin-top: 1rem;
 }
 
 /* 🔹 Buttons */
 .hero-buttons {
   margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .hero-section .cta-btn {
@@ -57,25 +60,24 @@
 }
 
 .hero-section .primary-btn {
-  background-color: #ff3d00;
-  color: white;
+  background-color: var(--highlight-text);
+  color: var(--text-light);
 }
 
 .hero-section .primary-btn:hover {
-  background-color: #d50000;
+  background-color: var(--accent-color);
 }
 
 .hero-section .secondary-btn {
   background: transparent;
-  color: #ff3d00;
-  border: 2px solid #ff3d00;
-  margin-left: 1rem;
+  color: var(--highlight-text);
+  border: 2px solid var(--highlight-text);
 }
 
 .hero-section .secondary-btn:hover {
-  background-color: #d50000;
-  color: white;
-  border: 2px solid #d50000;
+  background-color: var(--highlight-text);
+  color: var(--text-light);
+  border-color: var(--highlight-text);
 }
 
 /* 🔹 Right Side - Image */
@@ -94,7 +96,7 @@
 /* 🔹 Floating Stats */
 .floating-card {
   position: absolute;
-  background: white;
+  background: var(--text-light);
   padding: 0.8rem 1.2rem;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -106,7 +108,7 @@
 }
 
 .floating-card .icon {
-  color: #ff3d00;
+  color: var(--highlight-text);
   font-size: 1.5rem;
 }
 
@@ -129,7 +131,7 @@
 .hero-section .service-section h3 {
   font-size: 2.5rem;
   font-weight: bold;
-  color: #1e293b;
+  color: var(--text-dark);
 }
 
 .hero-section .service-list {
@@ -140,7 +142,7 @@
 }
 
 .hero-section .service-box {
-  background: white;
+  background: var(--text-light);
   padding: 1rem;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -149,9 +151,10 @@
   width: 180px;
 }
 
-.hero-section .service-box p{
+.hero-section .service-box p {
   font-size: 1.25rem;
   margin-top: 1rem;
+  color: var(--gear-color);
 }
 
 .hero-section .service-box:hover {
@@ -160,14 +163,18 @@
 
 .hero-section .service-icon {
   font-size: 4rem;
-  color: #ff3d00;
+  color: var(--highlight-text);
   margin-bottom: 0.5rem;
 }
 
 /* 🔹 Responsive Design */
 @media (max-width: 768px) {
-  .hero-section{
-   margin-top: 2.5rem;
+  .hero-section {
+    margin-top: 10rem;
+  }
+
+  .hero-text h1{
+    font-size: 4rem;
   }
 
   .hero-container {
@@ -185,7 +192,7 @@
     align-items: center;
   }
 
-  .hero-image{
+  .hero-image {
     width: 350px;
   }
 }
