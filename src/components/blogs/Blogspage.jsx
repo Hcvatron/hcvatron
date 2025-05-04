@@ -24,6 +24,35 @@ const BlogPage = () => {
   }, []);
 
   useEffect(() => {
+    if (selectedUserBlog) {
+
+      console.log("SelectedUserBlog-->",selectedUserBlog);
+
+      // Set document title
+      document.title = selectedUserBlog.seoTitle || selectedUserBlog.title;
+  
+      // Check if meta description exists, if not, create it
+      let metaDescription = document.querySelector('meta[name="description"]');
+      if (!metaDescription) {
+        metaDescription = document.createElement('meta');
+        metaDescription.name = 'description';
+        document.head.appendChild(metaDescription);
+      }
+      metaDescription.content = selectedUserBlog.seoDescription || 'Default blog description';
+  
+      // Check if meta keywords exists, if not, create it
+      let metaKeywords = document.querySelector('meta[name="keywords"]');
+      if (!metaKeywords) {
+        metaKeywords = document.createElement('meta');
+        metaKeywords.name = 'keywords';
+        document.head.appendChild(metaKeywords);
+      }
+      metaKeywords.content = selectedUserBlog.seoKeywords || 'blog, security, antivirus';
+    }
+  }, [selectedUserBlog]);
+  
+
+  useEffect(() => {
     const fetchBlog = async () => {
       try {
         if (!formattedTitle) return; // If formattedTitle is empty, return early
@@ -48,7 +77,10 @@ const BlogPage = () => {
                     month: "long",
                     day: "numeric",
                   })
-                : "Date not available", // If the date field is missing
+                : "Date not available", 
+                seoTitle: data.seoTitle, 
+                seoDescription: data.seoDescription,
+                seoKeywords: data.seoKeywords, 
             });
           });
         } else {

@@ -45,12 +45,12 @@ console.log("Users-->",users);
           </div>
         </div>
         <div className="right-part">
-          <h3>Admin Notifications</h3>
+          {/* <h3>Admin Notifications</h3>
           <ul>
             <li>New user registration</li>
             <li>Payment pending</li>
             <li>Blog comments approval needed</li>
-          </ul>
+          </ul> */}
         </div>
       </div>
 

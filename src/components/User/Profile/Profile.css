@@ -80,55 +80,6 @@
   font-size: 1.8rem;
 }
 
-/* Order List - Bottom */
-.order-list {
-  margin-top: 20px;
-  padding: 20px;
-  background: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.order-list .order-list-main {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  height: 30rem;
-  overflow-y: auto;
-}
-
-.order-list .order-card {
-  display: flex;
-  justify-content: space-between;
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.order-list .order-card .order-card-details {
-  flex: 1;
-}
-
-.order-list .order-card .order-button {
-  display: flex;
-  flex-direction: column;
-}
-
-.order-card button {
-  padding: 8px 16px;
-  background-color: #28a745; /* Green Button */
-  color: white;
-  font-size: 1.1rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.order-card button:hover {
-  background-color: #218838;
-}
 
 /* Address & Order Cards */
 .address-card, .order-card {
@@ -253,25 +204,7 @@
     width: 100%;
   }
 
-  /* Order List */
-  .order-list {
-    margin-top: 20px;
-  }
-
-  .order-list .order-list-main {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .order-list .order-card {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .order-list .order-card .order-button {
-    align-items: center;
-  }
+ 
 
   /* Buttons */
   .profile-section button {
@@ -305,7 +238,5 @@
     font-size: 1.25rem;
   }
 
-  .order-list .order-card button {
-    width: 100%;
-  }
+
 }

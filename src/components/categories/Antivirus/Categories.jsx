@@ -5,7 +5,6 @@ import { useProduct } from "../../../context/ProductContext";
 import Disclaimer from "../../T&C/Disclaimer";
 import { useLocalContext } from "../../../context/LocalContext";
 import TopSeller from "./TopSeller/TopSeller";
-import { useMetadata } from "../../../context/Metadatacontext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeadset, faPhone } from "@fortawesome/free-solid-svg-icons";
 
@@ -14,7 +13,6 @@ const Categories = () => {
   const { webinfo } = useLocalContext();
   const location = useLocation();
   const { setSelectedAntiv, setCatenav } = useProduct();
-  const { categoryMetadata } = useMetadata();
 
 
   useEffect(() => {

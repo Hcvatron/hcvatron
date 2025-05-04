@@ -19,7 +19,7 @@ import { toast } from "react-toastify";
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { isUserLoggedIn, setIsUserLoggedIn } = useUserContext();
+  const { isUserLoggedIn, setIsUserLoggedIn, userLogout } = useUserContext();
   const { cart } = useProduct();
   const { webinfo } = useLocalContext();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -65,12 +65,12 @@ const Header = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const userLogout = () => {
-    setIsUserLoggedIn(null);
-    localStorage.removeItem("user");
+  const handleLogout = () => {
+    userLogout();
     toast.success("Logged Out Successfully!");
     setIsMobileMenuOpen(false);
     navigate('/');
+   
   };
 
   const toggleMobileMenu = () => {
@@ -145,7 +145,7 @@ const Header = () => {
                   >
                     My Orders
                   </div>
-                  <div className="dropdown-item" onClick={userLogout}>
+                  <div className="dropdown-item" onClick={handleLogout}>
                     Logout
                   </div>
                 </div>
@@ -278,7 +278,7 @@ const Header = () => {
                 >
                   My Orders
                 </div>
-                <div className="mobile-user-action" onClick={userLogout}>
+                <div className="mobile-user-action" onClick={handleLogout}>
                   Logout
                 </div>
               </div>

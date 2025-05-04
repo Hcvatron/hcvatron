@@ -16,7 +16,7 @@ import UserManagement from '../components/Admin/Users/UserManagement';
 
 const AdminLayout = () => {
   const location = useLocation();
-  const { admin } = useAdminContext();
+  const { admin, users } = useAdminContext();
 
 
   return (
@@ -65,9 +65,9 @@ const AdminLayout = () => {
               </AdminPrivateRoute>
             } />
 
-<Route path="/admin/users" element={
+           <Route path="/admin/manage-user" element={
               <AdminPrivateRoute>
-                <UserManagement />
+                <UserManagement users={users} />
               </AdminPrivateRoute>
             } />
             <Route path="/admin/login" element={<AdminLogin />} />

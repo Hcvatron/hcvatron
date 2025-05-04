@@ -134,7 +134,7 @@ const URLStateHandler = () => {
 const MainContent = () => {
   const location = useLocation();
   const isAdminPage = location.pathname.includes("admin");
-  const isUserPage = location.pathname.includes("user");
+  const isUserPage = location.pathname.includes("/user");
   const isLoginPage = location.pathname.includes("/user/login");
   const { isUserLoggedIn } = useUserContext();
 

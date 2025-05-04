@@ -43,6 +43,10 @@
   text-align: center;
 }
 
+.addblog-form h3{
+  font-size: 1.8rem;
+}
+
 .blog-form {
   display: flex;
   flex-direction: column;
@@ -55,14 +59,14 @@
   flex-direction: column;
 }
 
-label {
+.addblog-form .form-group label {
   font-size: 16px;
   font-weight: 600;
-  color: #444;
+  color: #444444c6;
   margin-bottom: 5px;
 }
 
-input, select {
+.addblog-form .form-group input,.addblog-form .form-group select {
   padding: 10px;
   font-size: 14px;
   border: 1px solid #ccc;
@@ -71,7 +75,7 @@ input, select {
   transition: border 0.3s ease-in-out;
 }
 
-input:focus, select:focus {
+.addblog-form .form-group input:focus, .addblog-form .form-group select:focus {
   border: 1px solid #0077b6;
 }
 

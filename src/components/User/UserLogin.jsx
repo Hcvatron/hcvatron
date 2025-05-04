@@ -18,7 +18,7 @@ import { useLocalContext } from "../../context/LocalContext";
 
 const UserLogin = () => {
   const [isSignup, setIsSignup] = useState(false);
-  const { setIsUserLoggedIn } = useUserContext();
+  const { setIsUserLoggedIn, updateActivity  } = useUserContext();
   const { toPayment } = useLocalContext();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -83,6 +83,7 @@ const UserLogin = () => {
           }else{
             navigate("/");
           }
+          updateActivity("Active",user.uid)
           toast.success(`Welcome ${userData.firstName}!`);
           
         } else {

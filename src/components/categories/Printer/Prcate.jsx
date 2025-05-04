@@ -15,18 +15,18 @@ import {
   faPrint,
 } from "@fortawesome/free-solid-svg-icons";
 import WhyChooseUs from "../../WhyChooseUs/WhyChooseUs";
-import { useMetadata } from "../../../context/Metadatacontext";
 import Brandfeature from "../../productPage/Brandfeature";
+import { useCatedata } from "../../../context/CategorydataContext";
 
 const Prcate = () => {
   const { products, selectedAntiv, cart, setCart, setProductToShow } = useProduct();
   const { webinfo } = useLocalContext();
-  const categoryMetadata = useMetadata();
+  const categoryData = useCatedata();
   const navigate = useNavigate();
 
   const selectedProducts = products[selectedAntiv] || [];
   const { title, bannerImg, backgroundImage, logo, whyChoose, features, testimonials } =
-    categoryMetadata[selectedAntiv] || { title: "", bannerImg: "" };
+    categoryData[selectedAntiv] || { title: "", bannerImg: "" };
 
   useEffect(() => {
     document.title = `${selectedAntiv} | ${webinfo.name}`;

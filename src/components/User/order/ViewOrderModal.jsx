@@ -25,7 +25,7 @@ const ViewOrderModal = ({ order, onClose }) => {
         <div className="billing-info">
           <h3>Billing Information</h3>
           <p><strong>Name:</strong> {order.billingInfo?.fullName}</p>
-          <p><strong>Address:</strong> {order.billingInfo?.address}, {order.billingInfo?.city}, {order.billingInfo?.state} {order.billingInfo?.zip}</p>
+          <p><strong>Address:</strong> {order.billingInfo?.street}, {order.billingInfo?.city}, {order.billingInfo?.state} {order.billingInfo?.zip} {order.billingInfo?.country}</p>
         </div>
 
         {/* Purchased Items */}

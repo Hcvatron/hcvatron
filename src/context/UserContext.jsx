@@ -1,3 +1,4 @@
+import { updateDoc } from "firebase/firestore";
 import {
     auth,
     db,
@@ -8,6 +9,7 @@ import {
     getDoc,
     onSnapshot
   } from "../firebase/firebaseConfig";
+import { toast } from "react-toastify";
 const { createContext, useState, useEffect, useContext } = require("react");
 
 
@@ -49,7 +51,40 @@ export const UserProvider = ({ children }) => {
   
       return unsubscribe;
   };
+
+  const updateActivity = async (status, uid) =>{
+    try {
+      const userDocRef = doc(db,'_user',uid);
+         if(status === "Active"){
+            await updateDoc(userDocRef,{
+             status: status,
+             lastLogin: new Date(),
+             timestamp: new Date()
+            })
+         }else if(status === "InActive"){
+          await updateDoc(userDocRef,{
+            status: status,
+            lastLogout: new Date(),
+            timestamp: new Date()
+           })
+         }else{
+          toast.warning("Internal Error")
+         }
+
+    } catch (error) {
+      console.log("Error while updating activity-->",error);
+      toast.error("Error while updating activity");
+    }
+    
+   
+  }
   
+  const userLogout = () => {
+    updateActivity('InActive',isUserLoggedIn.uid)
+    setIsUserLoggedIn(null);
+    localStorage.removeItem("user");
+  };
+
     
   useEffect(() => {
     let unsubscribe;
@@ -70,7 +105,7 @@ export const UserProvider = ({ children }) => {
   }, [isUserLoggedIn?.uid]);
 
     return (
-        <UserContext.Provider value={{ isUserLoggedIn, setIsUserLoggedIn, fetchUser}}>
+        <UserContext.Provider value={{ isUserLoggedIn, setIsUserLoggedIn, fetchUser, userLogout,updateActivity }}>
             {children}
         </UserContext.Provider>
     )

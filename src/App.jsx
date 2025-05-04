@@ -6,6 +6,7 @@ import { ProductProvider } from './context/ProductContext';
 import { MetadataProvider } from './context/Metadatacontext';
 import { AdminProvider } from './context/AdminContext';
 import { UserProvider } from './context/UserContext';
+import { CatedataProvider } from './context/CategorydataContext';
 
 
 // const RedirectComponent = () => {
@@ -24,6 +25,7 @@ function App() {
       {/* <RedirectComponent /> */}
       <AdminProvider >
       <MetadataProvider >
+      <CatedataProvider >
       <LocalProvider >
       <ProductProvider >
         <UserProvider >
@@ -31,6 +33,7 @@ function App() {
       </UserProvider>
       </ProductProvider>
       </LocalProvider>
+      </CatedataProvider>
       </MetadataProvider>
       </AdminProvider>
     </div>

@@ -4,7 +4,7 @@ import { doc, updateDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 import './BlogEditForm.css';
 import { useNavigate } from 'react-router-dom';
-import { useAdminContext } from '../../../context/AdminContext'; 
+import { useAdminContext } from '../../../context/AdminContext';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
@@ -22,6 +22,11 @@ const BlogEditForm = () => {
   const [date, setDate] = useState('');  // New field for date
   const [urlSlug, setUrlSlug] = useState(''); // New field for URL slug
 
+  // SEO Fields
+  const [seoTitle, setSeoTitle] = useState('');
+  const [seoDescription, setSeoDescription] = useState('');
+  const [seoKeywords, setSeoKeywords] = useState('');
+
   // Categories list
   const categories = ['Antivirus', 'Printer', 'Windows OS'];
 
@@ -35,6 +40,9 @@ const BlogEditForm = () => {
       setAuthor(selectedBlog.author || ''); // Set the author if available
       setDate(selectedBlog.date || ''); // Set the date if available
       setUrlSlug(selectedBlog.urlSlug || ''); // Set the URL slug if available
+      setSeoTitle(selectedBlog.seoTitle || ''); // Set SEO Title if available
+      setSeoDescription(selectedBlog.seoDescription || ''); // Set SEO Description if available
+      setSeoKeywords(selectedBlog.seoKeywords || ''); // Set SEO Keywords if available
     }
   }, [selectedBlog]);
 
@@ -83,6 +91,9 @@ const BlogEditForm = () => {
         date,
         urlSlug,   // Save the URL slug
         updatedAt: new Date(),
+        seoTitle,   // Save SEO Title
+        seoDescription,  // Save SEO Description
+        seoKeywords,    // Save SEO Keywords
       });
 
       toast.success('Blog updated successfully!');
@@ -92,10 +103,19 @@ const BlogEditForm = () => {
     }
   };
 
+  // Handle the back button click
+  const handleBackClick = () => {
+    navigate('/admin/blog'); // Navigate to the blogs list page
+  };
+
   return (
     <div className="editblog">
       <div className="editblog-form">
+         {/* Back Button */}
+         <button onClick={handleBackClick} className="back-btn">Back to Blog List</button>
         <h2>Edit Blog</h2>
+
+        
         <form onSubmit={handleSubmit} className="blog-form">
           <div className="form-group">
             <label htmlFor="title">Title</label>
@@ -154,7 +174,7 @@ const BlogEditForm = () => {
             </select>
           </div>
 
-          {/* New Image URL input field */}
+          {/* Image URL input field */}
           <div className="form-group">
             <label htmlFor="imageLink">Image URL (optional)</label>
             <input
@@ -166,7 +186,7 @@ const BlogEditForm = () => {
             />
           </div>
 
-          {/* New Author input field */}
+          {/* Author input field */}
           <div className="form-group">
             <label htmlFor="author">Author</label>
             <input
@@ -179,7 +199,7 @@ const BlogEditForm = () => {
             />
           </div>
 
-          {/* New Date input field */}
+          {/* Date input field */}
           <div className="form-group">
             <label htmlFor="date">Date</label>
             <input
@@ -191,6 +211,7 @@ const BlogEditForm = () => {
             />
           </div>
 
+          {/* Image upload field */}
           <div className="form-group">
             <label htmlFor="image">Blog Image</label>
             <input
@@ -202,6 +223,41 @@ const BlogEditForm = () => {
           </div>
 
           {imageBase64 && <img src={imageBase64} alt="Blog preview" className="image-preview" />}
+
+          {/* SEO Fields */}
+          <h3>SEO Fields ↓</h3>
+          <div className="form-group">
+            <label htmlFor="seoTitle">SEO Title</label>
+            <input
+              type="text"
+              id="seoTitle"
+              value={seoTitle}
+              onChange={(e) => setSeoTitle(e.target.value)}
+              placeholder="Enter SEO Title"
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="seoDescription">SEO Description</label>
+            <input
+              type="text"
+              id="seoDescription"
+              value={seoDescription}
+              onChange={(e) => setSeoDescription(e.target.value)}
+              placeholder="Enter SEO Description"
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="seoKeywords">SEO Keywords (comma separated)</label>
+            <input
+              type="text"
+              id="seoKeywords"
+              value={seoKeywords}
+              onChange={(e) => setSeoKeywords(e.target.value)}
+              placeholder="Enter SEO Keywords"
+            />
+          </div>
 
           <button type="submit" className="submit-btn">Update Blog</button>
         </form>
