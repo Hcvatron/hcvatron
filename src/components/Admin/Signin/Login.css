@@ -1,56 +1,83 @@
-/* Login container */
-.login-container {
-    width: 100%;
-    max-width: 400px;
-    margin: auto;
-    margin-top: 10rem;
-    padding: 30px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-    text-align: center;
-  }
-  
-  /* Heading */
-  .login-container h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  /* Form input fields */
-  .login-container input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-  
-  /* Button styling */
-  .login-container  .adminbtn {
-    width: 100%;
-    padding: 12px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  /* Button hover effect */
-  .login-container .adminbtn:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Error message styling */
-  .login-container .error-message {
-    color: red;
-    font-size: 14px;
-    margin-top: 10px;
-  }
-  
+/* General Container */
+.admin-login {
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+  margin-top: 10rem;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Title Styling */
+.admin-login  .login-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+}
+
+/* Form and Input Styles */
+.admin-login  .login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.admin-login  .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-login  .form-group label {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.admin-login  .input-field {
+  width: 100%;
+  padding: 0.9rem;
+  font-size: 1.1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.admin-login  .input-field:focus {
+  border-color: #007bff;
+}
+
+/* Button Styling */
+.admin-login  .adminbtn {
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.admin-login  .adminbtn:hover {
+  background-color: #0056b3;
+}
+
+.admin-login  .adminbtn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Error Message Styling */
+.admin-login  .error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+  font-weight: 500;
+}

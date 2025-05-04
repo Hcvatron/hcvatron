@@ -3,7 +3,9 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { 
   faHome, faFileAlt, faImage, faCopy, faComments, 
-  faPaintBrush, faPlug, faUsers, faCogs, faTools 
+  faPaintBrush, faPlug, faUsers, faCogs, faTools, 
+  faPeopleGroup,
+  faReorder
 } from "@fortawesome/free-solid-svg-icons"; 
 import "./Nav.css";
 
@@ -15,13 +17,13 @@ const Nav = () => {
     { name: "Dashboard", path: "/admin/dashboard", icon: faHome },
     { name: "Blogs", path: "/admin/blog", icon: faFileAlt },
     { name: "Media", path: "/admin/media", icon: faImage },
-    { name: "Pages", path: "/admin/pages", icon: faCopy },
-    { name: "Comments", path: "/admin/comments", icon: faComments },
-    { name: "Appearance", path: "/admin/appearance", icon: faPaintBrush },
-    { name: "Plugins", path: "/admin/plugins", icon: faPlug },
-    { name: "Users", path: "/admin/users", icon: faUsers },
-    { name: "Settings", path: "/admin/settings", icon: faCogs },
-    { name: "Tools", path: "/admin/tools", icon: faTools },
+    { name: "Orders", path: "/admin/orders", icon: faReorder },
+    { name: "Users", path: "/admin/users", icon: faPeopleGroup },
+    // { name: "Appearance", path: "/admin/appearance", icon: faPaintBrush },
+    // { name: "Plugins", path: "/admin/plugins", icon: faPlug },
+    // { name: "Users", path: "/admin/users", icon: faUsers },
+    // { name: "Settings", path: "/admin/settings", icon: faCogs },
+    // { name: "Tools", path: "/admin/tools", icon: faTools },
   ];
 
   return (

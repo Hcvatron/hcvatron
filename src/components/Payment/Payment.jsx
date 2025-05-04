@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import "./Payment.css";
+import { db } from "../../firebase/firebaseConfig";
 import { toast } from "react-toastify";
 import { useUserContext } from "../../context/UserContext";
 import { useProduct } from "../../context/ProductContext";
-import { db } from "../../firebase/firebaseConfig";
-import { doc, getDoc, collection, addDoc, serverTimestamp,updateDoc, arrayUnion } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { doc, getDoc, setDoc, collection, addDoc, updateDoc, serverTimestamp, arrayUnion, runTransaction } from "firebase/firestore"; // 
+import "./Payment.css";
 
 const Payment = () => {
-  const { isUserLoggedIn,fetchUser } = useUserContext();
+  const { isUserLoggedIn, fetchUser } = useUserContext();
   const { cart, setCart } = useProduct();
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("credit-card");
   const [cardNumber, setCardNumber] = useState("");
@@ -18,10 +18,12 @@ const Payment = () => {
   const [selectedAddress, setSelectedAddress] = useState("");
   const [billingInfo, setBillingInfo] = useState({
     fullName: "",
-    address: "",
+    street: "",
     city: "",
     state: "",
     zip: "",
+    country: "",
+    phone: "",
   });
 
   const navigate = useNavigate();
@@ -31,7 +33,7 @@ const Payment = () => {
       if (!isUserLoggedIn?.uid) return;
 
       try {
-        const userRef = doc(db, "antivirus_user", isUserLoggedIn.uid);
+        const userRef = doc(db, "_user", isUserLoggedIn.uid);
         const userSnap = await getDoc(userRef);
 
         if (userSnap.exists() && userSnap.data().address) {
@@ -51,11 +53,13 @@ const Payment = () => {
       const address = addresses.find((addr) => addr.title === selectedAddress);
       if (address) {
         setBillingInfo({
-          fullName: isUserLoggedIn?.name || "Guest",
-          address: address.street,
+          fullName: isUserLoggedIn?.firstName + " " + isUserLoggedIn?.lastName || "Guest",
+          street: address.street,
           city: address.city,
           state: address.state,
           zip: address.postcode,
+          country: address.country,
+          phone: address.phone || "Not Available",
         });
       }
     }
@@ -73,21 +77,51 @@ const Payment = () => {
 
   const handlePaymentSubmit = async (event) => {
     event.preventDefault();
+  
     if (!isUserLoggedIn?.uid) {
       toast.error("You must be logged in to complete the payment.");
       return;
     }
-
+  
     if (cart.length === 0) {
       toast.error("Your cart is empty!");
       return;
     }
-
+  
     setIsProcessing(true);
-
+  
+    // Generate new Order ID
+    let newOrderId = "";
+    try {
+      const orderIdRef = doc(db, "order_id_counter", "counter");
+  
+      // Using Firestore transaction to atomically increment the order ID
+      await runTransaction(db, async (transaction) => {
+        const orderIdDoc = await transaction.get(orderIdRef);
+  
+        if (orderIdDoc.exists()) {
+          const lastOrderId = orderIdDoc.data().lastOrderId;
+          newOrderId = `OD2025${lastOrderId + 1}`; // Generate new ID based on the last one
+  
+          // Update the counter atomically
+          transaction.update(orderIdRef, { lastOrderId: lastOrderId + 1 });
+        } else {
+          newOrderId = "OD20250001";
+          transaction.set(orderIdRef, { lastOrderId: 1 });
+        }
+      });
+    } catch (error) {
+      console.error("Error generating order ID:", error);
+      toast.error("Failed to generate order ID.");
+      return;
+    }
+  
+    const timestamp = new Date(); // Use current date as timestamp
+  
     const orderData = {
+      orderId: newOrderId,
       userId: isUserLoggedIn.uid,
-      userName: isUserLoggedIn.name || "Guest",
+      userName: isUserLoggedIn.firstName + " " + isUserLoggedIn.lastName || "Guest",
       userEmail: isUserLoggedIn.email || "N/A",
       items: cart,
       subtotal: calculateOriginalTotal(),
@@ -95,33 +129,32 @@ const Payment = () => {
       grandTotal: calculateDiscountedTotal(),
       paymentMethod: selectedPaymentMethod,
       billingInfo,
-      timestamp: serverTimestamp(),
+      timestamp: timestamp, // Directly set the timestamp here
       status: "Processing",
     };
-
-    try {
-      const orderRef = collection(db, "antivirus_orders");
-      const orderDoc = await addDoc(orderRef, orderData);
-    const orderId = orderDoc.id;
-
-      // 2️⃣ Fetch the exact timestamp after the order is created
-      const orderSnapshot = await getDoc(orderDoc);
-      const finalTimestamp = orderSnapshot.data()?.timestamp || new Date();
   
-      // 3️⃣ Update user document with the full order details
-      const userRef = doc(db, "antivirus_user", isUserLoggedIn.uid);
-      await updateDoc(userRef, {
-        orders: arrayUnion({
-          orderId,
-          ...orderData,
-          timestamp: finalTimestamp, // Store the actual timestamp here
-        }),
-      });
-      fetchUser(isUserLoggedIn.uid);
-
-      setCart([]); 
+    try {
+      // Create the order in the "_orders" collection
+      const orderRef = collection(db, "_orders");
+      const orderDoc = await addDoc(orderRef, orderData);
+  
+      const userRef = doc(db, "_user", isUserLoggedIn.uid);
+  
+      // Fetch current user's orders
+      const userSnap = await getDoc(userRef);
+      const currentOrders = userSnap.exists() ? userSnap.data().orders || [] : [];
+  
+      // Add the new order data to the current user's orders
+      const updatedOrders = [...currentOrders, { ...orderData, orderId: newOrderId, timestamp }];
+  
+      // Update the user's orders array using set() to avoid arrayUnion()
+      await setDoc(userRef, { orders: updatedOrders }, { merge: true });
+  
+      fetchUser(isUserLoggedIn.uid); // Refresh user data
+      setCart([]); // Empty the cart after successful order placement
       toast.success("Order placed successfully!");
       navigate("/home");
+  
     } catch (error) {
       console.error("Error placing order:", error);
       toast.error("Failed to process order. Please try again.");
@@ -129,6 +162,8 @@ const Payment = () => {
       setIsProcessing(false);
     }
   };
+  
+  
 
   const handleCardNumberChange = (event) => {
     const number = event.target.value;
@@ -174,8 +209,8 @@ const Payment = () => {
               <input type="text" value={billingInfo.fullName} onChange={(e) => setBillingInfo({ ...billingInfo, fullName: e.target.value })} />
             </div>
             <div className="form-group">
-              <label>Address</label>
-              <input type="text" value={billingInfo.address} readOnly />
+              <label>Street Address</label>
+              <input type="text" value={billingInfo.street} readOnly />
             </div>
             <div className="form-row">
               <div className="form-group">
@@ -189,6 +224,16 @@ const Payment = () => {
               <div className="form-group">
                 <label>ZIP Code</label>
                 <input type="text" value={billingInfo.zip} readOnly />
+              </div>
+              <div className="form-group">
+                <label>Country</label>
+                <input type="text" value={billingInfo.country} readOnly />
+              </div>
+            </div>
+            <div className="form-row">
+              <div className="form-group">
+                <label>Phone Number</label>
+                <input type="text" value={billingInfo.phone} onChange={(e) => setBillingInfo({ ...billingInfo, phone: e.target.value })} />
               </div>
             </div>
           </form>

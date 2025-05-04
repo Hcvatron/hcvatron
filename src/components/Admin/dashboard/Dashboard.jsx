@@ -1,44 +1,61 @@
 import React, { useState, useEffect } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../../firebase/firebaseConfig'; 
-// import './Dashboard.css';
+import './Dashboard.css';
 import BlogList from '../blog/BlogList';
 import { useNavigate } from 'react-router-dom';
+import { useAdminContext } from '../../../context/AdminContext';
 
 const Dashboard = () => {
-  const [blogs, setBlogs] = useState([]);
   const [visitCount, setVisitCount] = useState(123); // Placeholder for visit count
   const [tfnClicks, setTfnClicks] = useState(15); // Placeholder for TFN Clicks
   const navigate = useNavigate();  
+  const { users, orders, blogs } = useAdminContext();
+
+console.log("Users-->",users);
 
 
   return (
     <div className="dashboard-container">
-      {/* Top Section */}
+      {/* Top Section - Stats in a row */}
       <div className="top-section">
-        <div className="stats-container">
-          <div className="stat-item">
-            <h3>User Visited</h3>
-            <p>{visitCount}</p>
+        <div className="stat-item">
+          <h3>Total Users</h3>
+          <p>{users.length}</p>
+        </div>
+        <div className="stat-item">
+          <h3>Total Blogs</h3>
+          <p>{blogs.length}</p>
+        </div>
+        <div className="stat-item">
+          <h3>Total Orders</h3>
+          <p>{orders.length}</p>
+        </div>
+        {/* <div className="stat-item">
+          <h3>Total Blogs</h3>
+          <p>{blogs.length}</p>
+        </div> */}
+      </div>
+
+      {/* Bottom Section - Latest Blogs and Another Content */}
+      <div className="bottom-section">
+        <div className="left-part">
+          <h3>Latest Blogs</h3>
+          <div className="latest-blogs">
+            <BlogList count={4} />
           </div>
-          <div className="stat-item">
-            <h3>TFN Clicks</h3>
-            <button className="tfn-clicks-btn" onClick={() => setTfnClicks(tfnClicks + 1)}>
-              {tfnClicks} Clicks
-            </button>
-          </div>
+        </div>
+        <div className="right-part">
+          <h3>Admin Notifications</h3>
+          <ul>
+            <li>New user registration</li>
+            <li>Payment pending</li>
+            <li>Blog comments approval needed</li>
+          </ul>
         </div>
       </div>
 
-      {/* Bottom Section - Latest Blogs */}
-      <div className="bottom-section">
-        <h3>Latest Blogs</h3>
-        <div className="latest-blogs">
-         <BlogList count={4} />
-        </div>
-        {/* See More Button */}
-        <button className="see-all-btn" onClick={()=>navigate('/admin/blog')}>See All Blogs</button>
-      </div>
+      {/* See More Button */}
+      <button className="see-all-btn" onClick={() => navigate('/admin/blog')}>See All Blogs</button>
     </div>
   );
 };

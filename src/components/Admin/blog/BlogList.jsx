@@ -44,8 +44,8 @@ const BlogList = ({ count, main }) => {
 
   const handleBlogClick = (blog) => {
     selectBlog(blog);
-    const encodedTitle = encodeURIComponent(blog.title); // Encode before navigation
-    navigate(`/admin/blog/${encodedTitle}`);
+    const formattedTitle = blog.title.toLowerCase().replace(/\s+/g, '-');  // Replace spaces with hyphens
+    navigate(`/blog/${formattedTitle}`);
   };
   
   const handleEdit = (blog) => {

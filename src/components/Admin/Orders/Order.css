@@ -1,0 +1,100 @@
+/* General styling for the orders container */
+.admin-orders-container {
+  padding: 20px;
+}
+
+/* Table styles */
+.admin-orders-container .orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 1.25rem;
+  overflow-x: auto; /* Make the table horizontally scrollable */
+}
+
+/* Table header and cells */
+.admin-orders-container .orders-table th,
+.admin-orders-container .orders-table td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+  word-wrap: break-word; /* Handle long content */
+}
+
+/* Table header styles */
+.admin-orders-container .orders-table th {
+  background-color: #f4f4f4;
+}
+
+/* Button styling */
+.admin-orders-container button {
+  background-color: #3498db;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* Button hover effect */
+.admin-orders-container button:hover {
+  background-color: #2980b9;
+}
+
+/* Modal body styles for overflow handling */
+.admin-orders-container .modal-body {
+  max-height: 400px;
+  overflow-y: auto; /* Make the modal body scrollable */
+}
+
+/* Modal footer styling */
+.admin-orders-container .modal-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.admin-orders-container .modal-footer button {
+  background-color: #e74c3c;
+  border-radius: 4px;
+}
+
+.admin-orders-container .modal-footer button:hover {
+  background-color: #c0392b;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .admin-orders-container .orders-table {
+    font-size: 1rem; /* Make the text smaller on smaller screens */
+    overflow-x: auto; /* Make the table scrollable horizontally */
+  }
+
+  .admin-orders-container .orders-table th,
+  .admin-orders-container .orders-table td {
+    padding: 8px; /* Smaller padding for mobile */
+  }
+
+  .admin-orders-container .orders-table th {
+    font-size: 1.1rem; /* Adjust font size for headers on mobile */
+  }
+
+  .admin-orders-container button {
+    padding: 6px 10px; /* Smaller button on mobile */
+  }
+
+  /* Modal and content in the modal should scale for small screens */
+  .admin-orders-container .modal-body {
+    max-height: 300px; /* Reduce max height for smaller screens */
+  }
+}
+
+/* Add styles for larger screen devices */
+@media (min-width: 769px) {
+  .admin-orders-container .orders-table {
+    font-size: 1.25rem; /* Larger font size for desktops and tablets */
+  }
+
+  .admin-orders-container button {
+    padding: 10px 14px; /* Larger button padding for larger screens */
+  }
+}

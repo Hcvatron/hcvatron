@@ -95,7 +95,7 @@ const UserLogin = () => {
   };
 
   return (
-    <div className="login-page-wrapper">
+    <div className="login-page-wrapper user-login">
       <div className="login-container">
         <div className="login-left">
           <h1>Stay Protected with Hcvatron</h1>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import Nav from '../components/Admin/nav/Nav'; 
 import Dashboard from '../components/Admin/dashboard/Dashboard';
@@ -11,16 +11,17 @@ import { useAdminContext } from '../context/AdminContext';
 import AdminLogin from '../components/Admin/Signin/AdminLogin';
 import AdminPrivateRoute from './AdminPrivateRoute';  // Import your AdminPrivateRoute
 import { Navigate } from 'react-router-dom';
-
+import Orders from '../components/Admin/Orders/Orders';
+import UserManagement from '../components/Admin/Users/UserManagement';
 
 const AdminLayout = () => {
-
   const location = useLocation();
   const { admin } = useAdminContext();
 
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', overflow: 'hidden' }}>
-     {location.pathname !== "/admin/login" && <TopNav />}
+      {location.pathname !== "/admin/login" && <TopNav />}
       
       <div style={{ display: 'flex', flexDirection: 'row', height: 'calc(100vh - 60px)' }}> {/* Adjust height */}
         {/* Left Side: Navigation */}
@@ -29,9 +30,14 @@ const AdminLayout = () => {
         {/* Right Side: Content */}
         <div style={{ flex: 1, padding: '20px', overflowY: 'auto' }}>
           <Routes>
-          <Route path="/admin" element={
-    admin ? <Navigate to="/admin/dashboard" replace /> : <Navigate to="/admin/login" replace />
-  } />
+            <Route path="/admin" element={
+              admin ? <Navigate to="/admin/dashboard" replace /> : <Navigate to="/admin/login" replace />
+            } />
+            <Route path="/admin/dashboard" element={
+              <AdminPrivateRoute>
+                <Dashboard />
+              </AdminPrivateRoute>
+            } />
 
             <Route path="/admin/blog" element={
               <AdminPrivateRoute>
@@ -51,6 +57,17 @@ const AdminLayout = () => {
             <Route path="/admin/media" element={
               <AdminPrivateRoute>
                 <MediaUploader />
+              </AdminPrivateRoute>
+            } />
+            <Route path="/admin/orders" element={
+              <AdminPrivateRoute>
+                <Orders />
+              </AdminPrivateRoute>
+            } />
+
+<Route path="/admin/users" element={
+              <AdminPrivateRoute>
+                <UserManagement />
               </AdminPrivateRoute>
             } />
             <Route path="/admin/login" element={<AdminLogin />} />

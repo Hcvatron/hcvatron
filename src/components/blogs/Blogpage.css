@@ -48,6 +48,10 @@
   width: 60%;
   object-fit: cover;
   border-radius: 10px;
+
+}
+
+.blog-image{
   transition: transform 0.3s ease;
 }
 
@@ -90,7 +94,7 @@
 /* Responsive Styles */
 @media only screen and (max-width: 768px) {
   .blogpage-container {
-    margin: 3rem auto;
+    margin: 8rem auto;
     padding: 1.5rem;
   }
 
