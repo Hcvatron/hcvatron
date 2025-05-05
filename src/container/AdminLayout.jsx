@@ -13,6 +13,7 @@ import AdminPrivateRoute from './AdminPrivateRoute';  // Import your AdminPrivat
 import { Navigate } from 'react-router-dom';
 import Orders from '../components/Admin/Orders/Orders';
 import UserManagement from '../components/Admin/Users/UserManagement';
+import Banner from '../components/Admin/Banner/Banner';
 
 const AdminLayout = () => {
   const location = useLocation();
@@ -70,6 +71,13 @@ const AdminLayout = () => {
                 <UserManagement users={users} />
               </AdminPrivateRoute>
             } />
+
+            <Route path="/admin/manage-banner" element={
+              <AdminPrivateRoute>
+                <Banner users={users} />
+              </AdminPrivateRoute>
+            } />
+
             <Route path="/admin/login" element={<AdminLogin />} />
           </Routes>
         </div>

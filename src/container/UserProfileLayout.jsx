@@ -71,6 +71,7 @@ const UserProfileLayout = () => {
       </PrivateRoute>
     }
   />
+  
           </Routes>
         </div>
       </div>

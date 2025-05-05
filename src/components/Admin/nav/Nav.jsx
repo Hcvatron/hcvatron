@@ -5,7 +5,8 @@ import {
   faHome, faFileAlt, faImage, faCopy, faComments, 
   faPaintBrush, faPlug, faUsers, faCogs, faTools, 
   faPeopleGroup,
-  faReorder
+  faReorder,
+  faPhotoFilm
 } from "@fortawesome/free-solid-svg-icons"; 
 import "./Nav.css";
 
@@ -19,6 +20,7 @@ const Nav = () => {
     { name: "Media", path: "/admin/media", icon: faImage },
     { name: "Orders", path: "/admin/orders", icon: faReorder },
     { name: "Users", path: "/admin/manage-user", icon: faPeopleGroup },
+    { name: "Banner", path: "/admin/manage-banner", icon: faPhotoFilm },
     // { name: "Appearance", path: "/admin/appearance", icon: faPaintBrush },
     // { name: "Plugins", path: "/admin/plugins", icon: faPlug },
     // { name: "Users", path: "/admin/users", icon: faUsers },
