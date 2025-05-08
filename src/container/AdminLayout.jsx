@@ -14,6 +14,7 @@ import { Navigate } from 'react-router-dom';
 import Orders from '../components/Admin/Orders/Orders';
 import UserManagement from '../components/Admin/Users/UserManagement';
 import Banner from '../components/Admin/Banner/Banner';
+import Seo from '../components/Admin/Seo/Seo';
 
 const AdminLayout = () => {
   const location = useLocation();
@@ -24,12 +25,12 @@ const AdminLayout = () => {
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', overflow: 'hidden' }}>
       {location.pathname !== "/admin/login" && <TopNav />}
       
-      <div style={{ display: 'flex', flexDirection: 'row', height: 'calc(100vh - 60px)' }}> {/* Adjust height */}
+      <div style={{ display: 'flex',width:"100%", height: location.pathname === '/admin/login' ? 'calc(100vh - 5px)':'calc(100vh - 60px)' }}> {/* Adjust height */}
         {/* Left Side: Navigation */}
         {location.pathname !== "/admin/login" && <Nav style={{ flex: 0.2, backgroundColor: '#2c3e50', padding: '20px', height: '100%' }} />}
         
         {/* Right Side: Content */}
-        <div style={{ flex: 1, padding: '20px', overflowY: 'auto' }}>
+        <div style={{  flex:1, overflowY: 'auto' }}>
           <Routes>
             <Route path="/admin" element={
               admin ? <Navigate to="/admin/dashboard" replace /> : <Navigate to="/admin/login" replace />
@@ -75,6 +76,13 @@ const AdminLayout = () => {
             <Route path="/admin/manage-banner" element={
               <AdminPrivateRoute>
                 <Banner users={users} />
+              </AdminPrivateRoute>
+            } />
+
+
+            <Route path="/admin/seo" element={
+              <AdminPrivateRoute>
+                <Seo />
               </AdminPrivateRoute>
             } />
 

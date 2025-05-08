@@ -15,10 +15,6 @@ const Rcategories = () => {
     const { setSelectedAntiv, setCatenav } = useProduct();
     const { categoryMetadata } = useMetadata();
   
-    useEffect(() => {
-      document.title = `Brands | ${webinfo.name}`;
-    }, []);
-  
     const categories = [
       { id: "16", name: "Netgear", img: "https://res.cloudinary.com/dcf3mojai/image/upload/v1740500792/Netgear-Logo.wine_wiehvt.png", route: "/netgear" },
       { id: "17", name: "TP-Link", img: "https://res.cloudinary.com/dcf3mojai/image/upload/v1740500857/TP-Link-Logo.wine_fdplj8.png", route: "/tplink" },

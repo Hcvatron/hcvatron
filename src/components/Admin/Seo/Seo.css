@@ -1,0 +1,176 @@
+.seo-page {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem 2rem;
+  background-color: #f8f8f8;
+}
+
+.seo-form-container {
+  width:50%;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.seo-form h2 {
+  margin-bottom: 1rem;
+}
+
+.seo-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.seo-form label {
+  margin-top: 1rem;
+  font-weight: 600;
+  font-size: 1.26rem;
+}
+
+.seo-form input,
+.seo-form textarea {
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1.25rem;
+  background-color: #fdfdfd;
+}
+
+.seo-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.seo-form button {
+  margin-top: 1.5rem;
+  padding: 0.75rem;
+  background-color: #c2410c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.seo-form button:hover {
+  background-color: #a83607;
+}
+
+
+.seo-form-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.seo-form button,
+.cancel-btn {
+  padding: 0.7rem 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background-color: #999;
+  color: #fff;
+}
+
+.cancel-btn:hover {
+  background-color: #777;
+}
+
+.seo-list {
+  width: 100%;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.seo-list h2 {
+  margin-bottom: 1rem;
+}
+
+
+.seo-list  .seo-list-main{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem
+}
+
+.seo-card {
+  width:25rem;
+  background-color: #fefefe;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  transition: box-shadow 0.3s;
+}
+
+.seo-card:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.seo-card p {
+  margin: 0.8rem 0;
+  font-size: 1.3rem;
+  color: #333;
+}
+
+.seo-card-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.edit-btn,
+.delete-btn {
+  flex: 1;
+  padding: 0.6rem 0.75rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.edit-btn {
+  background-color: #2563eb; /* Tailwind blue-600 */
+}
+
+.delete-btn {
+  background-color: #dc2626; /* Tailwind red-600 */
+}
+
+.edit-btn:hover {
+  background-color: #1d4ed8; /* darker blue */
+}
+
+.delete-btn:hover {
+  background-color: #b91c1c; /* darker red */
+}
+
+@media (max-width: 500px) {
+  .seo-card-buttons {
+    flex-direction: column;
+  }
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .seo-page {
+    grid-template-columns: 1fr;
+  }
+}

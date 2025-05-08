@@ -11,7 +11,6 @@ const OrderList = () => {
   const location = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
     if (isUserLoggedIn?.uid) {
       fetchUser(isUserLoggedIn.uid);
     }

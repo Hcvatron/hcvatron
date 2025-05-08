@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { db } from '../../../firebase/firebaseConfig'; // Adjust path as needed
-import { doc, updateDoc, getDoc, collection, getDocs } from 'firebase/firestore';
+import { doc, setDoc, updateDoc, getDoc, collection, getDocs } from 'firebase/firestore';
 import './Banner.css';
+import { toast } from 'react-toastify';
 
 const Banner = () => {
   const [bannerName, setBannerName] = useState('');
   const [bannerImage, setBannerImage] = useState(null);
   const [bannerImageLink, setBannerImageLink] = useState(''); // State for image URL
   const [selectedSection, setSelectedSection] = useState('');
+  const [selectedBanner, setSelectedBanner] = useState(null); // For selected banner
   const [currentBanner, setCurrentBanner] = useState(null); // To display the current banner
   const [bannerList, setBannerList] = useState([]); // List of available banners in the selected section
 
@@ -17,7 +19,6 @@ const Banner = () => {
     const fetchBanners = async () => {
       if (selectedSection) {
         try {
-          // Fetch all banners from Firestore and filter by selected section
           const bannersRef = collection(db, 'banners');
           const bannerQuery = getDocs(bannersRef);
           const banners = [];
@@ -42,41 +43,59 @@ const Banner = () => {
       const reader = new FileReader();
       reader.onloadend = () => {
         setBannerImage(reader.result);
-        setBannerImageLink(''); 
+        setBannerImageLink('');
       };
       reader.readAsDataURL(file);
     }
   };
 
   const handleSaveBanner = async () => {
-    // Save the banner to Firebase
     try {
       const bannerRef = doc(db, "banners", bannerName); // Save by banner name as document ID
-      await updateDoc(bannerRef, {
-        name: bannerName,
-        imageBase64: bannerImage,
-        imageLink: bannerImageLink, 
-        section: selectedSection,
-      });
-      alert('Banner updated successfully!');
-      setCurrentBanner({ name: bannerName, imageBase64: bannerImage, imageLink: bannerImageLink }); // Update the current banner preview
+      const bannerDoc = await getDoc(bannerRef);
+
+      if (bannerDoc.exists()) {
+        // Document exists, so update it
+        await updateDoc(bannerRef, {
+          name: bannerName,
+          imageBase64: bannerImage,
+          imageLink: bannerImageLink,
+          section: selectedSection,
+        });
+        toast.success('Banner updated successfully!');
+      } else {
+        // Document does not exist, so create it
+        await setDoc(bannerRef, {
+          name: bannerName,
+          imageBase64: bannerImage,
+          imageLink: bannerImageLink,
+          section: selectedSection,
+        });
+        toast.success('Banner created successfully!');
+      }
+
+      setCurrentBanner({ name: bannerName, imageBase64: bannerImage, imageLink: bannerImageLink });
     } catch (error) {
       console.error("Error saving banner: ", error);
     }
   };
 
-  const handleBannerSelection = async (selectedBanner) => {
-    // Set the selected banner as the current banner for the section
-    setCurrentBanner(selectedBanner);
+  const handleBannerSelection = async () => {
+    if (!selectedBanner) {
+      alert('Please select a banner.');
+      return;
+    }
 
-    // Save the selected banner to the section in Firestore
     try {
-      const sectionRef = doc(db, "sections", selectedSection); // Assuming you have a 'sections' collection
-      await updateDoc(sectionRef, {
-        selectedBannerName: selectedBanner.name,
-        selectedBannerImage: selectedBanner.imageBase64 || selectedBanner.imageLink,
+      // Save the selected banner to the `banner_selected` collection
+      const selectedBannerRef = doc(db, "banner_selected", selectedSection);
+      await setDoc(selectedBannerRef, {
+        section: selectedSection,
+        bannerName: selectedBanner.name,
+        bannerImage: selectedBanner.imageBase64 || selectedBanner.imageLink,
       });
-      alert('Banner selection saved for this section!');
+
+      toast.success('Banner selection saved for this section!');
     } catch (error) {
       console.error("Error saving selected banner: ", error);
     }
@@ -86,7 +105,7 @@ const Banner = () => {
     <div className="admin-banner">
       {/* Top Section */}
       <div className="top-section">
-        {/* Form Section (Left) */}
+        {/* Left Section: Banner Upload Form */}
         <div className="form-section">
           <h2>Update Banner</h2>
           <div className="form-group">
@@ -122,7 +141,7 @@ const Banner = () => {
           <button onClick={handleSaveBanner}>Save Banner</button>
         </div>
 
-        {/* Selection Section (Right) */}
+        {/* Right Section: Select Section & Banner */}
         <div className="selection-section">
           <h3>Select Section</h3>
           <select
@@ -139,7 +158,7 @@ const Banner = () => {
             <div>
               <h3>Select Banner</h3>
               <select
-                onChange={(e) => handleBannerSelection(JSON.parse(e.target.value))}
+                onChange={(e) => setSelectedBanner(JSON.parse(e.target.value))}
               >
                 <option value="">Choose a Banner</option>
                 {bannerList.map((banner, index) => (
@@ -148,6 +167,8 @@ const Banner = () => {
                   </option>
                 ))}
               </select>
+
+              <button onClick={handleBannerSelection}>Save Banner Selection</button>
             </div>
           )}
         </div>

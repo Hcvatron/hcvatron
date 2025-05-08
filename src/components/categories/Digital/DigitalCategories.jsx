@@ -17,11 +17,6 @@ const DigitalCategories = () => {
   const { categoryMetadata } = useMetadata();
 
 
-  useEffect(() => {
-    document.title = `Brands | ${webinfo.name}`;
-  }, []);
-
-
 
 
   const services = [

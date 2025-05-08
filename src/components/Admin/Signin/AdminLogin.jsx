@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
+import './Login.css';
+import { useNavigate } from 'react-router-dom';
 import { auth } from '../../../firebase/firebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
-import { useAdminContext } from '../../../context/AdminContext';
-import './Login.css';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../../../firebase/firebaseConfig';
+import { useAdminContext } from '../../../context/AdminContext';
 
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
@@ -17,62 +17,58 @@ const AdminLogin = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      const userEmail = userCredential.user.email;
-
-      // Check if the user exists in the admin collection
-      const adminDocRef = doc(db, 'admin', userCredential.user.uid);
-      const adminDoc = await getDoc(adminDocRef);
-
-      if (!adminDoc.exists()) {
-        throw new Error('Access denied: Not an admin');
+      const uid = userCredential.user.uid;
+      const adminRef = doc(db, 'admin', uid);
+      const adminDoc = await getDoc(adminRef);
+      if (!adminDoc.exists() || adminDoc.data().role !== 'all') {
+        throw new Error('Access denied');
       }
-
-      const adminData = adminDoc.data();
-      if (adminData.email !== userEmail || adminData.role !== 'all') {
-        throw new Error('Access denied: Unauthorized role');
-      }
-
-      toast.success('Sign in successful');
-      setAdmin(userEmail);
-      localStorage.setItem('admin', userEmail); // Corrected this line
+      toast.success('Login successful');
+      setAdmin(email);
+      localStorage.setItem('admin', email);
       navigate('/admin/dashboard');
     } catch (err) {
-      console.error('Login error:', err);
       toast.error(err.message);
       setError(err.message);
     }
   };
 
   return (
-    <div className=" admin-login">
-      <h2 className="login-title">Admin Login</h2>
-      {error && <p className="error-message">{error}</p>}
-      <form onSubmit={handleLogin} className="login-form">
-        <div className="form-group">
-          <label>Email</label>
+    <div className="admin-login-wrapper">
+      <div className="admin-left-panel">
+        <img src="https://res.cloudinary.com/dcf3mojai/image/upload/v1746119244/Najis_pfxwjp.png" alt="Bailey and Co." className="login-logo" />
+        <h1>Hcvatron and Co.</h1>
+      </div>
+      <div className="admin-right-panel">
+        <form className="admin-login-form" onSubmit={handleLogin}>
+          <h2>Welcome</h2>
+          <p className="form-subtitle">Please login to Admin Dashboard.</p>
+
           <input
             type="email"
+            placeholder="Username"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="input-field"
           />
-        </div>
-        <div className="form-group">
-          <label>Password</label>
+
           <input
             type="password"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            className="input-field"
           />
-        </div>
-        <button className="adminbtn" type="submit">Login</button>
-      </form>
+
+          {error && <p className="error-text">{error}</p>}
+
+          <button type="submit">Login</button>
+
+          <p className="forgot-password">Forgotten your password?</p>
+        </form>
+      </div>
     </div>
   );
 };

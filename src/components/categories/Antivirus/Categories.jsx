@@ -15,10 +15,6 @@ const Categories = () => {
   const { setSelectedAntiv, setCatenav } = useProduct();
 
 
-  useEffect(() => {
-    document.title = `Brands | ${webinfo.name}`;
-  }, []);
-
 
 
   const categories = [

@@ -135,7 +135,7 @@ const Header = () => {
                 <div className="dropdown-menu">
                   <div
                     className="dropdown-item"
-                    onClick={() => handleNavigation("/user/account")}
+                    onClick={() => handleNavigation("/user/dashboard")}
                   >
                     Profile
                   </div>

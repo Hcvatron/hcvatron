@@ -7,7 +7,7 @@ import { toast } from "react-toastify"; // Import the toast notification functio
 import { db } from "../../../firebase/firebaseConfig"; // Firestore db instance
 
 const Orders = () => {
-  const { orders,getAllUsersOrdersAndBlogs } = useAdminContext();
+  const { orders,getAllData } = useAdminContext();
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [status, setStatus] = useState("");
@@ -44,7 +44,7 @@ const Orders = () => {
           timestamp: serverTimestamp(), 
         });
 
-        await getAllUsersOrdersAndBlogs();
+        await getAllData();
 
         toast.success("Order status updated successfully!");
       } else {

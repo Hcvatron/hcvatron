@@ -1,4 +1,4 @@
-import { useMetadata } from "../../context/Metadatacontext";
+
 import { useProduct } from "../../context/ProductContext";
 import "./Brandfeature.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,10 +9,11 @@ import {
   faCheckCircle,
   faQuoteLeft, faUserCircle
 } from "@fortawesome/free-solid-svg-icons";
+import { useCatedata } from "../../context/CategorydataContext";
 
 const Brandfeature = () => {
   const { selectedAntiv } = useProduct();
-  const categoryMetadata = useMetadata();
+  const categoryMetadata = useCatedata();
   const brandData = categoryMetadata[selectedAntiv] || {};
 
   console.log("Selected Antiv-->",selectedAntiv);

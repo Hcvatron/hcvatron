@@ -1,96 +1,100 @@
-import { updateDoc } from "firebase/firestore";
-import {
-    auth,
-    db,
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    setDoc,
-    doc,
-    getDoc,
-    onSnapshot
-  } from "../firebase/firebaseConfig";
+import { updateDoc, doc, collection, getDocs, onSnapshot } from "firebase/firestore";
+import { db } from "../firebase/firebaseConfig"; // Firebase config
 import { toast } from "react-toastify";
-const { createContext, useState, useEffect, useContext } = require("react");
-
+import { createContext, useState, useEffect, useContext } from "react";
 
 const UserContext = createContext();
 
-
 export const UserProvider = ({ children }) => {
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(() => {
+    // Retrieve user from localStorage only if it's valid
+    const user = localStorage.getItem("user");
+    return user ? JSON.parse(user) : null;
+  });
 
-    const [isUserLoggedIn, setIsUserLoggedIn] = useState(()=>localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null);
+  // Sync the state to localStorage when the isUserLoggedIn changes
+  useEffect(() => {
+    if (isUserLoggedIn) {
+      localStorage.setItem("user", JSON.stringify(isUserLoggedIn)); // Save user to localStorage
+    } else {
+      localStorage.removeItem("user"); 
+    }
+  }, [isUserLoggedIn]);
 
-    useEffect(()=>{
-            localStorage.setItem('user', JSON.stringify(isUserLoggedIn));
-    },[isUserLoggedIn])
+  // Fetch user data from Firestore based on UID
+  const fetchUser = async (uid) => {
+    if (!uid) return;
 
-    const fetchUser = async (uid) => {
-      if (!uid) return;
-  
-      const userDocRef = doc(db, "_user", uid);
-  
-      const unsubscribe = onSnapshot(userDocRef, (docSnap) => {
-          if (docSnap.exists()) {
-              let userData = { uid, ...docSnap.data() };
-  
-              // Convert Firestore Timestamps to JavaScript Date Strings
-              if (userData.orders) {
-                  userData.orders = userData.orders.map(order => ({
-                      ...order,
-                      timestamp: order.timestamp?.seconds 
-                          ? new Date(order.timestamp.seconds * 1000).toISOString() 
-                          : order.timestamp // Keep existing format if it's already a string
-                  }));
-              }
-  
-              setIsUserLoggedIn(userData);
-          } else {
-              setIsUserLoggedIn(null);
-          }
-      });
-  
-      return unsubscribe;
+    const userDocRef = doc(db, "_user", uid);
+    const unsubscribe = onSnapshot(userDocRef, (docSnap) => {
+      if (docSnap.exists()) {
+        let userData = { uid, ...docSnap.data() };
+
+        // Only update if user data is different
+        if (JSON.stringify(userData) !== JSON.stringify(isUserLoggedIn)) {
+          setIsUserLoggedIn(userData);
+        }
+
+        // Convert Firestore Timestamps to JavaScript Date Strings
+        if (userData.orders) {
+          userData.orders = userData.orders.map((order) => ({
+            ...order,
+            timestamp: order.timestamp?.seconds
+              ? new Date(order.timestamp.seconds * 1000).toISOString()
+              : order.timestamp,
+          }));
+        }
+      } else {
+        setIsUserLoggedIn(null); // Clear user data if not found
+      }
+    });
+
+    return unsubscribe; // Return unsubscribe function for cleanup
   };
 
-  const updateActivity = async (status, uid) =>{
+  // Update user activity status (Active/Inactive)
+  const updateActivity = async (status, uid) => {
     try {
-      const userDocRef = doc(db,'_user',uid);
-         if(status === "Active"){
-            await updateDoc(userDocRef,{
-             status: status,
-             lastLogin: new Date(),
-             timestamp: new Date()
-            })
-         }else if(status === "InActive"){
-          await updateDoc(userDocRef,{
-            status: status,
-            lastLogout: new Date(),
-            timestamp: new Date()
-           })
-         }else{
-          toast.warning("Internal Error")
-         }
-
+      const userDocRef = doc(db, "_user", uid);
+      const timestamp = new Date();
+      if (status === "Active") {
+        await updateDoc(userDocRef, {
+          status: status,
+          lastLogin: timestamp,
+          timestamp,
+        });
+      } else if (status === "InActive") {
+        await updateDoc(userDocRef, {
+          status: status,
+          lastLogout: timestamp,
+          timestamp,
+        });
+      } else {
+        toast.warning("Internal Error");
+      }
     } catch (error) {
-      console.log("Error while updating activity-->",error);
+      console.error("Error while updating activity-->", error);
       toast.error("Error while updating activity");
     }
-    
-   
-  }
-  
-  const userLogout = () => {
-    updateActivity('InActive',isUserLoggedIn.uid)
-    setIsUserLoggedIn(null);
-    localStorage.removeItem("user");
   };
 
-    
+  // Handle user logout (mark as inactive, reset state, and clear localStorage)
+  const userLogout = () => {
+    if (isUserLoggedIn?.uid) {
+      updateActivity("InActive", isUserLoggedIn.uid); // Mark user as inactive
+    }
+    setIsUserLoggedIn(null); // Clear state
+    localStorage.removeItem("user"); // Remove user from localStorage
+  };
+
+  // Fetch user data once the UID is available
   useEffect(() => {
     let unsubscribe;
   
     const handleFetch = async () => {
-      unsubscribe = await fetchUser(isUserLoggedIn.uid);
+      if (isUserLoggedIn?.uid) {
+        unsubscribe = await fetchUser(isUserLoggedIn.uid);
+      }
     };
   
     if (isUserLoggedIn?.uid) {
@@ -103,13 +107,13 @@ export const UserProvider = ({ children }) => {
       }
     };
   }, [isUserLoggedIn?.uid]);
+  
 
-    return (
-        <UserContext.Provider value={{ isUserLoggedIn, setIsUserLoggedIn, fetchUser, userLogout,updateActivity }}>
-            {children}
-        </UserContext.Provider>
-    )
-}
-
+  return (
+    <UserContext.Provider value={{ isUserLoggedIn, setIsUserLoggedIn, fetchUser, userLogout, updateActivity }}>
+      {children}
+    </UserContext.Provider>
+  );
+};
 
 export const useUserContext = () => useContext(UserContext);

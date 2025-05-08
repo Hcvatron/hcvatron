@@ -1,21 +1,42 @@
 import React, { useState, useEffect, useRef } from "react";
-import DashNav from "../components/User/Profile/DashNav";
-import { Routes, Route, Navigate } from "react-router-dom";
-import Profile from "../components/User/Profile/Profile";
+import { Outlet, useLocation } from "react-router-dom";
 import { useUserContext } from "../context/UserContext";
-import "./UserProfileLayout.css";
-import Footer from "../components/Footer/Footer";
-import OrderList from "../components/User/order/OrderList";
-import AddressList from "../components/User/Address/AddressList";
-import PrivateRoute from "./PrivateRoute";
-
+import DashNav from "../components/User/Profile/DashNav";
 
 const UserProfileLayout = () => {
   const { isUserLoggedIn } = useUserContext();
   const [isScrolled, setIsScrolled] = useState(false);
   const dashRightRef = useRef(null);
+  const location = useLocation();
+  const scrollPositions = useRef({});
 
+  // Save scroll position before navigation
+  useEffect(() => {
+    return () => {
+      if (dashRightRef.current) {
+        scrollPositions.current[location.pathname] = dashRightRef.current.scrollTop;
+      }
+    };
+  }, [location.pathname]);
 
+  // Restore scroll position AFTER DOM is painted
+  useEffect(() => {
+    const savedScroll = scrollPositions.current[location.pathname] || 0;
+
+    const restoreScroll = () => {
+      if (dashRightRef.current) {
+        dashRightRef.current.scrollTop = savedScroll;
+      }
+    };
+
+    const frame = requestAnimationFrame(() => {
+      setTimeout(restoreScroll, 100); // Wait for content layout
+    });
+
+    return () => cancelAnimationFrame(frame);
+  }, [location.pathname]);
+
+  // Track scroll for UI feedback
   useEffect(() => {
     const handleScroll = () => {
       if (dashRightRef.current) {
@@ -23,61 +44,27 @@ const UserProfileLayout = () => {
       }
     };
 
-    if (dashRightRef.current) {
-      dashRightRef.current.addEventListener("scroll", handleScroll);
-    }
-
-    return () => {
-      if (dashRightRef.current) {
-        dashRightRef.current.removeEventListener("scroll", handleScroll);
-      }
-    };
+    const ref = dashRightRef.current;
+    if (ref) ref.addEventListener("scroll", handleScroll);
+    return () => ref?.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <>
-      <div style={{ width: "100%", display: "flex", flexDirection: "row", height: "calc(100vh - 32px)", zIndex: "1" }}>
-        <DashNav isScrolled={isScrolled} />
-        <div ref={dashRightRef} style={{ width: '100%', padding: "20px", overflowY: "auto" }} className={`dashright  ${isScrolled ? "scrolled" : ""}`}>
-          <Routes>
-            
-          <Route path="/user/account" element={<Navigate to="/user/dashboard" />} />
-  
-  <Route
-    path="/user/dashboard"
-    element={
-      <PrivateRoute>
-        <Profile isScrolled={isScrolled} />
-      </PrivateRoute>
-    }
-  />
-
-
-
-  <Route
-    path="/user/orders"
-    element={
-      <PrivateRoute>
-        <OrderList />
-      </PrivateRoute>
-    }
-  />
-
-  <Route
-    path="/user/address"
-    element={
-      <PrivateRoute>
-        <AddressList />
-      </PrivateRoute>
-    }
-  />
-  
-          </Routes>
-        </div>
+    <div style={{ display: "flex", minHeight: "100vh", overflow: "hidden" }}>
+      <DashNav isScrolled={isScrolled} />
+      <div
+        style={{
+          flex: 1,
+          padding: "20px",
+          overflowY: "auto",
+          height: "100%",
+        }}
+      >
+        <Outlet />
       </div>
-      <Footer />
-    </>
+    </div>
   );
+  
 };
 
 export default UserProfileLayout;

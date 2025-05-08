@@ -17,11 +17,10 @@ const Profile = () => {
   const [selectedOrder, setSelectedOrder] = useState(null);
 
   if(!isUserLoggedIn){
-    navigate('/login');
+    navigate('/user/login');
   }
 
   useEffect(()=>{
-    window.scrollTo(0,0);
     if (isUserLoggedIn?.uid) {
       fetchUser(isUserLoggedIn.uid);
     }
