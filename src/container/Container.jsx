@@ -1,57 +1,58 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, lazy, Suspense } from "react";
 import {
   BrowserRouter as Router,
   Route,
   Routes,
+  Navigate,
   useLocation,
-  useNavigate,
 } from "react-router-dom";
-import { Navigate } from "react-router-dom";
-import PrivateRoute from "./PrivateRoute";
-import Home from "../components/home/Home";
-import Header from "../components/Header/Header";
-import Footer from "../components/Footer/Footer";
-import ProductPage from "../components/productPage/ProductPage";
-import Cart from "../components/Cart/Cart";
-import Payment from "../components/Payment/Payment";
-import Terms from "../components/T&C/Terms";
-import About from "../components/About/About";
-import Contact from "../components/Contact/Contact";
-import Disclaimer from "../components/T&C/Disclaimer";
-import PrivacyPolicy from "../components/T&C/PrivacyPolicy";
-import Refund from "../components/T&C/Refund";
-import ShippingPolicy from "../components/T&C/ShippingPolicy";
-import Cate from "../components/categories/Antivirus/Cate";
-import Categories from "../components/categories/Antivirus/Categories";
-import { useProduct } from "../context/ProductContext";
-import BestSeller from "../components/categories/Antivirus/BestSeller/BestSeller";
-import TopSeller from "../components/categories/Antivirus/TopSeller/TopSeller";
-import AllCate from "../components/categories/AllCate";
-import Wcategories from "../components/categories/Windows/Wcategories";
-import Wcate from "../components/categories/Windows/Wcate";
-import WproductPage from "../components/categories/Windows/WproductPage";
-import Prcategories from "../components/categories/Printer/Prcategories";
-import Prcate from "../components/categories/Printer/Prcate";
-import PrproductPage from "../components/categories/Printer/PrproductPage";
-import AdminLayout from "./AdminLayout";
-import Rcate from "../components/categories/Routers/Rcate";
-import Rcategories from "../components/categories/Routers/Rcategories";
-import RproductPage from "../components/categories/Routers/RproductPage";
-import UserLogin from "../components/User/UserLogin";
-import { useUserContext } from "../context/UserContext";
-import UserProfileLayout from "./UserProfileLayout";
-import DigitalCategories from "../components/categories/Digital/DigitalCategories";
-import DigitalCate from "../components/categories/Digital/DigitalMarketting/DigitalCate";
-import WebDevCate from "../components/categories/Digital/WebDevelopment/WebDevCate";
-import { useLocalContext } from "../context/LocalContext";
-import UnderDevelopment from "../components/UnderDevelopment/UnderDevelopment";
-import ContentWriting from "../components/categories/Digital/ContentWriting/ContentWriting";
-import AppDevelopment from "../components/categories/Digital/AppDevelopment/AppDevelopment";
 import { ClipLoader } from "react-spinners";
-import Profile from "../components/User/Profile/Profile";
-import OrderList from "../components/User/order/OrderList";
-import AddressList from "../components/User/Address/AddressList";
+import PrivateRoute from "./PrivateRoute";
+import { useProduct } from "../context/ProductContext";
+import { useUserContext } from "../context/UserContext";
+import { useLocalContext } from "../context/LocalContext";
 import SeoInjector from "./SeoInjector";
+
+// Lazy-loaded components
+const Home = lazy(() => import("../components/home/Home"));
+const Header = lazy(() => import("../components/Header/Header"));
+const Footer = lazy(() => import("../components/Footer/Footer"));
+const ProductPage = lazy(() => import("../components/productPage/ProductPage"));
+const Cart = lazy(() => import("../components/Cart/Cart"));
+const Payment = lazy(() => import("../components/Payment/Payment"));
+const Terms = lazy(() => import("../components/T&C/Terms"));
+const About = lazy(() => import("../components/About/About"));
+const Contact = lazy(() => import("../components/Contact/Contact"));
+const Disclaimer = lazy(() => import("../components/T&C/Disclaimer"));
+const PrivacyPolicy = lazy(() => import("../components/T&C/PrivacyPolicy"));
+const Refund = lazy(() => import("../components/T&C/Refund"));
+const ShippingPolicy = lazy(() => import("../components/T&C/ShippingPolicy"));
+const Cate = lazy(() => import("../components/categories/Antivirus/Cate"));
+const Categories = lazy(() => import("../components/categories/Antivirus/Categories"));
+const BestSeller = lazy(() => import("../components/categories/Antivirus/BestSeller/BestSeller"));
+const TopSeller = lazy(() => import("../components/categories/Antivirus/TopSeller/TopSeller"));
+const AllCate = lazy(() => import("../components/categories/AllCate"));
+const Wcategories = lazy(() => import("../components/categories/Windows/Wcategories"));
+const Wcate = lazy(() => import("../components/categories/Windows/Wcate"));
+const WproductPage = lazy(() => import("../components/categories/Windows/WproductPage"));
+const Prcategories = lazy(() => import("../components/categories/Printer/Prcategories"));
+const Prcate = lazy(() => import("../components/categories/Printer/Prcate"));
+const PrproductPage = lazy(() => import("../components/categories/Printer/PrproductPage"));
+const Rcate = lazy(() => import("../components/categories/Routers/Rcate"));
+const Rcategories = lazy(() => import("../components/categories/Routers/Rcategories"));
+const RproductPage = lazy(() => import("../components/categories/Routers/RproductPage"));
+const UserLogin = lazy(() => import("../components/User/UserLogin"));
+const UserProfileLayout = lazy(() => import("./UserProfileLayout"));
+const AdminLayout = lazy(() => import("./AdminLayout"));
+const DigitalCategories = lazy(() => import("../components/categories/Digital/DigitalCategories"));
+const DigitalCate = lazy(() => import("../components/categories/Digital/DigitalMarketting/DigitalCate"));
+const WebDevCate = lazy(() => import("../components/categories/Digital/WebDevelopment/WebDevCate"));
+const ContentWriting = lazy(() => import("../components/categories/Digital/ContentWriting/ContentWriting"));
+const AppDevelopment = lazy(() => import("../components/categories/Digital/AppDevelopment/AppDevelopment"));
+const UnderDevelopment = lazy(() => import("../components/UnderDevelopment/UnderDevelopment"));
+const Profile = lazy(() => import("../components/User/Profile/Profile"));
+const OrderList = lazy(() => import("../components/User/order/OrderList"));
+const AddressList = lazy(() => import("../components/User/Address/AddressList"));
 
 const ScrollToTop = () => {
   const location = useLocation();
@@ -69,9 +70,7 @@ const ScrollToTop = () => {
     const matchedCategory = categories.find((category) =>
       location.pathname.toLowerCase().includes(category.toLowerCase())
     );
-    if (matchedCategory) {
-      setSelectedAntiv(matchedCategory);
-    }
+    if (matchedCategory) setSelectedAntiv(matchedCategory);
   }, [location.pathname, setSelectedAntiv]);
 
   return null;
@@ -80,13 +79,11 @@ const ScrollToTop = () => {
 const RouteDetermination = () => {
   const location = useLocation();
   const { setToPayment } = useLocalContext();
+
   useEffect(() => {
-    if (location.pathname.toLowerCase() === "/payment") {
-      setToPayment(true);
-    } else {
-      setToPayment(false);
-    }
+    setToPayment(location.pathname.toLowerCase() === "/payment");
   }, [location.pathname]);
+
   return null;
 };
 
@@ -95,31 +92,24 @@ const URLStateHandler = () => {
   const { products, setProductToShow, setSelectedAntiv } = useProduct();
 
   useEffect(() => {
-    const validateRouteAndSetProduct = (path) => {
+    const validate = (path) => {
       if (!products || Object.keys(products).length === 0) return;
+      let matched = null, found = null;
 
-      let foundProduct = null;
-      let matchedCategory = null;
-
-      Object.keys(products).forEach((categoryKey) => {
-        const productList = products[categoryKey];
-        if (!Array.isArray(productList)) return;
-        const product = productList.find(
-          (item) => item.route.toLowerCase() === path.toLowerCase()
-        );
-        if (product) {
-          foundProduct = product;
-          matchedCategory = categoryKey;
-        }
+      Object.keys(products).forEach((key) => {
+        const list = products[key];
+        if (!Array.isArray(list)) return;
+        const prod = list.find(p => p.route.toLowerCase() === path.toLowerCase());
+        if (prod) [found, matched] = [prod, key];
       });
 
-      if (foundProduct && matchedCategory) {
-        setProductToShow(foundProduct);
-        setSelectedAntiv(matchedCategory);
+      if (found && matched) {
+        setProductToShow(found);
+        setSelectedAntiv(matched);
       }
     };
 
-    validateRouteAndSetProduct(location.pathname);
+    validate(location.pathname);
   }, [location.pathname, products, setProductToShow, setSelectedAntiv]);
 
   return null;
@@ -127,72 +117,57 @@ const URLStateHandler = () => {
 
 const Redirector = () => {
   const location = useLocation();
-  const targetURL = `https://blogs.hcvatron.com/${location.search}`;
   useEffect(() => {
-    window.location.replace(targetURL);
-  }, [targetURL]);
+    window.location.replace(`https://blogs.hcvatron.com/${location.search}`);
+  }, [location.search]);
   return null;
 };
 
 const MainContent = () => {
   const location = useLocation();
-  const isAdminPage = location.pathname.includes("admin");
-  const isUserPage = location.pathname.includes("/user");
-  const isLoginPage = location.pathname.includes("/user/login");
-  const { isUserLoggedIn } = useUserContext();
-
+  const isAdmin = location.pathname.includes("admin");
+  const underDev = ["/antivirus/future-brand", "/some/future-page"].includes(location.pathname);
   const [loading, setLoading] = useState(true);
-  const isFirstRender = useRef(true);
-
-  const { setToPayment } = useLocalContext();
-  const underDevPaths = ["/antivirus/future-brand", "/some/future-page"];
-  const isUnderDevelopment = underDevPaths.includes(location.pathname);
+  const first = useRef(true);
 
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
+    if (first.current) {
+      first.current = false;
       setLoading(false);
       return;
     }
     setLoading(true);
-    const timer = setTimeout(() => setLoading(false), 200);
-    return () => clearTimeout(timer);
+    const t = setTimeout(() => setLoading(false), 200);
+    return () => clearTimeout(t);
   }, [location.pathname]);
 
-  useEffect(() => {
-    if (location.pathname.toLowerCase() === "/payment") {
-      setToPayment(true);
-    } else {
-      setToPayment(false);
-    }
-  }, [location.pathname]);
-
-  if (isUnderDevelopment) {
-    return (
-      <>
-        <Header />
-        <UnderDevelopment />
-        <Footer />
-      </>
-    );
-  }
+  if (underDev) return (
+    <>
+      <Header />
+      <UnderDevelopment />
+      <Footer />
+    </>
+  );
 
   return (
     <>
-      {!isAdminPage && <Header />}
-      {!isAdminPage && <URLStateHandler />}
-      {!isAdminPage && <ScrollToTop />}
-      {!isAdminPage && <SeoInjector />}
-
+      {!isAdmin && <Header />}
+      {!isAdmin && <URLStateHandler />}
+      {!isAdmin && <ScrollToTop />}
+      {!isAdmin && <SeoInjector />}
       <RouteDetermination />
-      {!isAdminPage && (
+
+      <Suspense fallback={
+        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "60vh" }}>
+          <ClipLoader color="#c2410c" size={70} />
+        </div>
+      }>
         <div style={{ minHeight: "100vh", padding: "20px" }}>
           {loading ? (
             <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "60vh" }}>
               <ClipLoader color="#c2410c" size={70} />
             </div>
           ) : (
-            <div className="fade-in">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/home" element={<Home />} />
@@ -227,28 +202,23 @@ const MainContent = () => {
               <Route path="/shipping-policy" element={<ShippingPolicy />} />
               <Route path="/user/login" element={<UserLogin />} />
               <Route path="/blogs/*" element={<Redirector />} />
-              <Route path="/blogs" element={<Redirector />} />
               <Route path="/blog/*" element={<Redirector />} />
-              <Route path="/blog" element={<Redirector />} />
               <Route path="/user" element={<UserProfileLayout />}>
-                    <Route index element={<Navigate to="dashboard" />} />
-                    <Route path="dashboard" element={<PrivateRoute><Profile /></PrivateRoute>} />
-                    <Route path="orders" element={<PrivateRoute><OrderList /></PrivateRoute>} />
-                    <Route path="address" element={<PrivateRoute><AddressList /></PrivateRoute>} />
+                <Route index element={<Navigate to="dashboard" />} />
+                <Route path="dashboard" element={<PrivateRoute><Profile /></PrivateRoute>} />
+                <Route path="orders" element={<PrivateRoute><OrderList /></PrivateRoute>} />
+                <Route path="address" element={<PrivateRoute><AddressList /></PrivateRoute>} />
               </Route>
             </Routes>
-            </div>
           )}
         </div>
-      )}
+      </Suspense>
 
-      {isAdminPage && <AdminLayout />}
-      {/* {isUserPage && !isLoginPage && <UserProfileLayout />} */}
-      {!isAdminPage  && <Footer />}
+      {!isAdmin && <Footer />}
+      {isAdmin && <AdminLayout />}
     </>
   );
 };
-
 
 const Container = () => {
   return (
