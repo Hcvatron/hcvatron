@@ -8,7 +8,6 @@ import Disclaimer from '../T&C/Disclaimer';
 import BestSeller from '../categories/Antivirus/BestSeller/BestSeller';
 import TopSeller from '../categories/Antivirus/TopSeller/TopSeller';
 import ParallaxBanner from '../Banner/ParallaxBanner';
-import CarouselComponent from '../Carousel/CarouselComponent';
 import AboutServices from '../aboutServices/AboutServices';
 import OnlineAntivirusInfo from '../OnlineAntivirusInfo/OnlineAntivirusInfo';
 import Categories from '../categories/Antivirus/Categories';
@@ -17,6 +16,8 @@ import RoutersBrands from '../categories/Routers/Brands/RoutersBrands';
 import Prcategories from '../categories/Printer/Prcategories';
 import Rcategories from '../categories/Routers/Rcategories';
 import Wcategories from '../categories/Windows/Wcategories';
+import CarouselComponent from '../Hero/Carousel/CarouselComponent';
+import HeroBanner from '../Hero/HeroBanner/HeroBanner';
 
 
 const Home = () => {
@@ -31,6 +32,7 @@ const Home = () => {
       <div className='comp home' style={{ width: '100%' }}>
        <Hero  />
        {/* <Hero2 /> */}
+       {/* <HeroBanner /> */}
        {/* <CarouselComponent /> */}
        <AboutServices />
        <Blogs />

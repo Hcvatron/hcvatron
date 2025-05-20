@@ -2,8 +2,8 @@ import React from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "./CarouselComponent.css";
-import { useProduct } from "../../context/ProductContext";
-import { useLocalContext } from "../../context/LocalContext";
+import { useProduct } from '../../../context/ProductContext';
+import { useLocalContext } from '../../../context/LocalContext';
 import { useNavigate } from "react-router-dom";
 
 const truncateText = (text) => {

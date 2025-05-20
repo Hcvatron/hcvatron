@@ -1,188 +1,81 @@
-/* Admin Banner Form Styles */
 .admin-banner {
-    display: flex;
-    flex-direction: column;
-    max-width: 1200px;
-    margin: 3rem auto;
-    padding: 3rem;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    border: 1px solid #ddd;
-  }
-  
-  /* Top Section: Form on the Left, Selection on the Right */
-  .admin-banner .top-section {
-    display: flex;
-    justify-content: space-between;
-    gap: 2rem;
-    margin-bottom: 2rem;
-  }
-  
-  .admin-banner .form-section {
-    flex: 0.6;  /* Left Form Section */
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  
-  .admin-banner .form-section h2 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 1.5rem;
-  }
-  
-  .admin-banner .form-group {
-    margin-bottom: 2rem;
-  }
-  
-  .admin-banner .form-group label {
-    display: block;
-    font-weight: 600;
-    color: #444;
-    margin-bottom: 0.6rem;
-    font-size: 1.1rem;
-  }
-  
-  .admin-banner .form-group input,
-  .admin-banner .form-group select {
-    width: 100%;
-    padding: 0.9rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .admin-banner .form-group input[type="file"] {
-    padding: 1rem;
-  }
-  
-  .admin-banner .form-group button {
-    padding: 0.9rem 2rem;
-    font-size: 1.2rem;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s ease-in-out;
-    display: block;
-    margin: 0 auto;
-  }
-  
-  .admin-banner .form-group button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Right Section: Section Selection */
-  .admin-banner .selection-section {
-    flex: 0.4;  /* Right Selection Section */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
-  
-  .admin-banner .selection-section h3 {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 1rem;
-  }
-  
-  .admin-banner .selection-section select {
-    width: 100%;
-    padding: 0.9rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-  }
-  
-  .admin-banner button {
-    padding: 0.9rem 2rem;
-    font-size: 1.2rem;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s ease-in-out;
-    margin-top: 2rem;
-  }
-  
-  .admin-banner .selection-section button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Bottom Section: Current Banner Preview */
-  .admin-banner .current-banner-section {
-    margin-top: 2rem;
-    padding: 2rem;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    border: 1px solid #ddd;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .admin-banner .current-banner-section h4 {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 1rem;
-  }
-  
-  .admin-banner .current-banner-section img {
-    max-width: 100%;
-    max-height: 300px;
-    margin-top: 1rem;
-    border-radius: 8px;
-  }
-  
-  .admin-banner .current-banner-section p {
-    font-size: 1.1rem;
-    color: #555;
-    margin-top: 1rem;
-  }
-  
-  /* Admin Banner Image Preview */
-  .admin-banner .image-preview {
-    width: 100%;
-    max-height: 300px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-top: 1.5rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .admin-banner {
-      padding: 2rem;
-      width: 90%;
-    }
-  
-    .admin-banner h2 {
-      font-size: 2rem;
-    }
-  
-    .admin-banner .top-section {
-      flex-direction: column;
-    }
-  
-    .admin-banner .form-section,
-    .admin-banner .selection-section {
-      width: 100%;
-      flex: none;
-    }
-  
-    .admin-banner .form-group button {
-      width: 100%;
-      font-size: 1.1rem;
-    }
-  }
-  
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.admin-banner h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.banner-entry {
+  background: #f9f9f9;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="url"],
+input[type="file"] {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.save-btn {
+  padding: 0.8rem 1.5rem;
+  background: #c2410c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.preview-section {
+  margin-top: 2rem;
+}
+
+.preview-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.preview-card {
+  width: 180px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.preview-card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+
+.preview-card p {
+  margin: 0;
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #444;
+}
